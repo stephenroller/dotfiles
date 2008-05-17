@@ -20,11 +20,11 @@ fi
 export PS1="\[\033[00;31m\]\u \[\033[00m\]\W \$ "
 
 # SSH servers
-alias ssh_ncsu="ssh -C scroller@remote-linux.eos.ncsu.edu"
-alias ssh_srdotcom="ssh -C stephenroller.com"
-alias ssh_mattroot="ssh root@71.65.228.210"
-alias ssh_courtside-ec2="ssh ec2-75-101-218-196.compute-1.amazonaws.com"
-alias ssh_tenniscores="ssh tenniscores.com"
+alias ssh.ncsu="ssh -C scroller@remote-linux.eos.ncsu.edu"
+alias ssh.srdotcom="ssh -C stephenroller.com"
+alias ssh.mattroot="ssh root@71.65.228.210"
+alias ssh.courtside-ec2="ssh ec2-75-101-218-196.compute-1.amazonaws.com"
+alias ssh.tenniscores="ssh tenniscores.com"
 
 # extra commands.
 alias startmysql="sudo launchctl load -w \ 
