@@ -1,0 +1,14 @@
+[ui] 
+username = Stephen Roller <scroller@ncsu.edu>
+
+[extensions]
+loc =
+alias =
+cdiff =
+children =
+fetch =
+graph = 
+
+[alias]
+last = log --limit=5
+
