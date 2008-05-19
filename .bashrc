@@ -14,24 +14,16 @@ case `uname` in
 		    /opt/local/etc/LaunchDaemons/org.macports.mysql4/org.macports.mysql4.plist"
 		;;
 	Linux)
+		eval `dircolors -b`
 		alias ls="ls --color"
 		;;
 esac
 
 export PYTHONPATH=$PYTHONPATH:~/.hgext
 export PYTHONPATH=$PYTHONPATH:~/.pylibs
-
-
+PATH=.:~/bin:$PATH
 
 export HISTCONTROL=ignoreboth
-
-# Test for an interactive shell.  There is no need to set anything
-# past this point for scp and rcp, and it's important to refrain from
-# outputting anything in those cases.
-if [[ $- != *i* ]] ; then
-        # Shell is non-interactive.  Be done now!
-        return
-fi
 
 # Colored shell depending on host
 case `hostname` in
@@ -49,12 +41,12 @@ case `hostname` in
 		;;
 	"mshawking.asmallorange.com")
 		color=35
+		export PATH=~/.mz/bin:$PATH
 		;;
 	*)
 		color=30
 		;;
 esac
-export PS1="\[\033[00;${color}m\]\u \[\033[00m\]\W \$ ";
 
 # SSH servers
 alias ssh.ncsu="ssh -C scroller@remote-linux.eos.ncsu.edu"
@@ -69,6 +61,18 @@ alias ....="cd ../../.."
 alias screen="screen -q"
 alias clisp="clisp -q"
 alias delete_orig="find ./ -iname '*.orig' -exec rm {} ';'"
+
+
+
+# Test for an interactive shell.  There is no need to set anything
+# past this point for scp and rcp, and it's important to refrain from
+# outputting anything in those cases.
+if [[ $- != *i* ]] ; then
+        # Shell is non-interactive.  Be done now!
+        return
+fi
+
+export PS1="\[\033[00;${color}m\]\u \[\033[00m\]\W \$ ";
 
 # FORTUNE
 which fortune > /dev/null 2>&1
