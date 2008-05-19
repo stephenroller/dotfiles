@@ -40,7 +40,6 @@ case `uname` in
 		export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
 		export EDITOR="mate -w"
 		export CLICOLOR=1
-		export PYTHONPATH=$PTYHONPATH:~/.hgext
 		export MANPATH=$MANPATH:/opt/local/share/man
 		
 		# extra commands.
@@ -51,6 +50,9 @@ case `uname` in
 		alias ls="ls --color"
 		;;
 esac
+
+export PYTHONPATH=$PYTHONPATH:~/.hgext
+export PYTHONPATH=$PYTHONPATH:~/.pylibs
 
 # SSH servers
 alias ssh.ncsu="ssh -C scroller@remote-linux.eos.ncsu.edu"
