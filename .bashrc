@@ -8,6 +8,7 @@ case `uname` in
 		export EDITOR="mate -w"
 		export CLICOLOR=1
 		export MANPATH=$MANPATH:/opt/local/share/man
+		export PYTHONPATH=$PYTHONPATH:/opt/local/lib/python2.5/site-packages/
 		
 		# extra commands.
 		alias startmysql="sudo launchctl load -w \ 
@@ -51,7 +52,6 @@ esac
 # SSH servers
 alias ssh.ncsu="ssh -C scroller@remote-linux.eos.ncsu.edu"
 alias ssh.srdotcom="ssh -C stephenroller.com"
-alias ssh.mattroot="ssh root@71.65.228.210"
 alias ssh.courtside-ec2="ssh ec2-75-101-218-196.compute-1.amazonaws.com"
 alias ssh.tenniscores="ssh tenniscores.com"
 
