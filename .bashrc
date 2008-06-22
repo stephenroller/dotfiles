@@ -44,6 +44,9 @@ case `hostname` in
 		color=35
 		export PATH=~/.mz/bin:$PATH
 		;;
+	"cheddar.local")
+		color=31
+		;;
 	*)
 		color=30
 		;;
@@ -60,9 +63,17 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias screen="screen -q"
 alias clisp="clisp -q"
-alias delete_orig="find ./ -iname '*.orig' -exec rm {} ';'"
+alias delete_orig="find ./ -name '*.orig' -exec rm {} ';'"
+alias pm="python manage.py"
+alias col1="awk '{print \$1}'"
+alias beep="echo -ne '\a'"
+alias beeploop="while [ 1 ]; do beep; sleep 2; done"
 
-
+function courtside ()
+{
+	cd ~/Working/courtside
+	export DJANGO_SETTINGS_MODULE=settings.development_stephen
+}
 
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
