@@ -7,7 +7,6 @@ alias =
 cdiff =
 children =
 fetch =
-graph2 = 
 
 [alias]
 last = log --limit=5
