@@ -10,4 +10,4 @@ fetch =
 
 [alias]
 last = log --limit=5
-
+servealt = serve -p 8080

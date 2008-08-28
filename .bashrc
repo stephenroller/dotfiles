@@ -55,7 +55,7 @@ esac
 # SSH servers
 alias ssh.ncsu="ssh -C scroller@remote-linux.eos.ncsu.edu"
 alias ssh.srdotcom="ssh -C stephenroller.com"
-alias ssh.courtside-ec2="ssh ec2-75-101-218-196.compute-1.amazonaws.com"
+alias ssh.courtside-ec2="ssh getcourtside.com"
 alias ssh.tenniscores="ssh tenniscores.com"
 
 alias ..="cd .."
@@ -73,6 +73,8 @@ function courtside ()
 {
 	cd ~/Working/courtside
 	export DJANGO_SETTINGS_MODULE=settings.development_stephen
+	alias pmr="pm runserver"
+	alias pms="pm shell"
 }
 
 # Test for an interactive shell.  There is no need to set anything
