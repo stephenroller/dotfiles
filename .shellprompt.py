@@ -6,22 +6,22 @@ HOME = os.environ['HOME']
 USER = os.environ['USER']
 
 COLORS = {
-	'Black': '0;30',
-	'Blue': '0;34',
-	'Green': '0;32',
-	'Cyan': '0;36',
-	'Red': '0;31',
-	'Purple': '0;35',
-	'Brown': '0;33',
-	'Light Gray': '0;37',
-	'Dark Gray': '1;30',
-	'Light Blue': '1;34',
-	'Light Green': '1;32',
-	'Light Cyan': '1;36',
-	'Light Red': '1;31',
-	'Light Purple': '1;35',
-	'Yellow': '1;33',
-	'White': '1;37',
+    'Black': '0;30',
+    'Blue': '0;34',
+    'Green': '0;32',
+    'Cyan': '0;36',
+    'Red': '0;31',
+    'Purple': '0;35',
+    'Brown': '0;33',
+    'Light Gray': '0;37',
+    'Dark Gray': '1;30',
+    'Light Blue': '1;34',
+    'Light Green': '1;32',
+    'Light Cyan': '1;36',
+    'Light Red': '1;31',
+    'Light Purple': '1;35',
+    'Yellow': '1;33',
+    'White': '1;37',
 }
 
 HOST_COLORS = {
@@ -34,6 +34,8 @@ HOST_COLORS = {
 
 def shortest_name(path):
     path = path.replace(HOME, '~')
+    base = os.path.basename(path)
+    path = os.path.dirname(path)
     def make_sub(match):
         full_word = match.groups()[0]
         files = os.listdir(make_sub.p)
@@ -47,9 +49,8 @@ def shortest_name(path):
             n += 1
     make_sub.p = path.startswith('~/') and HOME + '/' or '/'
     
-    return re.sub(r'/([^/]+)', make_sub, path)
+    return os.path.join(re.sub(r'/([^/]+)', make_sub, path), base)
 
 color = COLORS[HOST_COLORS.get(HOSTNAME, 'Black')]
 path = shortest_name(os.getcwd())
-# path = os.path.basename(os.getcwd().replace(HOME, '~'))
 print '\\[\\033[%sm\\]%s \\[\\033[00m\\]%s' % (color, USER, path),
