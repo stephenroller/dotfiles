@@ -27,30 +27,11 @@ PATH=.:~/bin:$PATH
 export HISTCONTROL=ignoreboth
 
 # Colored shell depending on host
-case `hostname` in
-	faith.local)
-		color=31
-		;;
-	"neuace.tenniscores.com")
-		color=32
-		;;
-	godfather)
-		color=33
-		;;
-	alicia)
-		color=34
-		;;
-	"mshawking.asmallorange.com")
-		color=35
-		export PATH=~/.mz/bin:$PATH
-		;;
-	"cheddar")
-		color=31
-		;;
-	*)
-		color=30
-		;;
-esac
+# case `hostname` in
+# 	"mshawking.asmallorange.com")
+# 		export PATH=~/.mz/bin:$PATH
+# 		;;
+# esac
 
 # SSH servers
 alias ssh.ncsu="ssh -YC scroller@remote-linux.eos.ncsu.edu"
@@ -69,6 +50,7 @@ alias col1="awk '{print \$1}'"
 alias beep="echo -ne '\a'"
 alias beeploop="while [ 1 ]; do beep; sleep 2; done"
 alias sql+="sqlplus  system/oracle@172.16.155.130/XE"
+
 function proxyall ()
 {
 	sudo networksetup -setsocksfirewallproxystate Ethernet on &&
@@ -93,7 +75,9 @@ if [[ $- != *i* ]] ; then
         return
 fi
 
-export PS1="\[\033[00;${color}m\]\u \[\033[00m\]\W \$ ";
+export MAX_PATH_LENGTH=25
+# color="0;31"
+export PROMPT_COMMAND='PS1="`python ~/.shellprompt.py` \`if [[ \$? = "0" ]]; then echo -n "\\[\\033[32m\\]"; else echo -n "\\[\\033[31m\\]";  fi\`\$ \\[\\033[00m\\]"'
 
 # FORTUNE
 which fortune > /dev/null 2>&1
