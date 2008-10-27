@@ -11,8 +11,8 @@ case `uname` in
 		export PYTHONPATH=$PYTHONPATH:/opt/local/lib/python2.5/site-packages/
 		
 		# extra commands.
-		alias startmysql="sudo launchctl load -w \ 
-		    /opt/local/etc/LaunchDaemons/org.macports.mysql4/org.macports.mysql4.plist"
+		alias startmysql="sudo launchctl load -w \
+		    /Library/LaunchDaemons/org.macports.mysql5.plist"
 		;;
 	Linux)
 		eval `dircolors -b`
@@ -44,7 +44,7 @@ case `hostname` in
 		color=35
 		export PATH=~/.mz/bin:$PATH
 		;;
-	"cheddar.local")
+	"cheddar")
 		color=31
 		;;
 	*)
@@ -53,9 +53,9 @@ case `hostname` in
 esac
 
 # SSH servers
-alias ssh.ncsu="ssh -C scroller@remote-linux.eos.ncsu.edu"
+alias ssh.ncsu="ssh -YC scroller@remote-linux.eos.ncsu.edu"
 alias ssh.srdotcom="ssh -C stephenroller.com"
-alias ssh.courtside-ec2="ssh getcourtside.com"
+alias ssh.courtside-ec2="ssh -i ~/.ssh/courtside.pem root@dev.getcourtside.com"
 alias ssh.tenniscores="ssh tenniscores.com"
 
 alias ..="cd .."
@@ -68,6 +68,13 @@ alias pm="python manage.py"
 alias col1="awk '{print \$1}'"
 alias beep="echo -ne '\a'"
 alias beeploop="while [ 1 ]; do beep; sleep 2; done"
+alias sql+="sqlplus  system/oracle@172.16.155.130/XE"
+function proxyall ()
+{
+	sudo networksetup -setsocksfirewallproxystate Ethernet on &&
+	ssh tenniscores.com -D 9999 -L 2525:localhost:25;
+	sudo networksetup -setsocksfirewallproxystate Ethernet off
+}
 
 function courtside ()
 {
@@ -75,6 +82,7 @@ function courtside ()
 	export DJANGO_SETTINGS_MODULE=settings.development_stephen
 	alias pmr="pm runserver"
 	alias pms="pm shell"
+	alias clear_cache="echo 'delete from cache;' | pm dbshell"
 }
 
 # Test for an interactive shell.  There is no need to set anything
@@ -95,4 +103,3 @@ then
 	fortune
 	echo
 fi
-

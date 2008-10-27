@@ -7,7 +7,9 @@ alias =
 cdiff =
 children =
 fetch =
+rebase = 
+#graph2 =
 
 [alias]
-last = log --limit=5
+last = log -l
 servealt = serve -p 8080
