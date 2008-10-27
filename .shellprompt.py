@@ -3,7 +3,7 @@ import sys, re, os
 
 HOSTNAME = os.popen('hostname').read()[:-1]
 HOME = os.environ['HOME']
-USER = os.environ['USER']
+user = os.environ['USER']
 
 COLORS = {
     'Black': '0;30',
@@ -27,9 +27,8 @@ COLORS = {
 HOST_COLORS = {
     'faith.local': 'Light Red',
     'neuace.tenniscores.com': 'Green',
-    'alicia': 'Blue',
     'mshawking.asmallorange.com': 'Purple',
-    'cheddar': 'Red'
+    'cheddar': 'Brown'
 }
 
 def shortest_name(path):
@@ -51,6 +50,19 @@ def shortest_name(path):
     
     return os.path.join(re.sub(r'/([^/]+)', make_sub, path), base)
 
-color = COLORS[HOST_COLORS.get(HOSTNAME, 'Black')]
-path = shortest_name(os.getcwd())
-print '\\[\\033[%sm\\]%s \\[\\033[00m\\]%s' % (color, USER, path),
+if __name__ == '__main__':
+    shell = []
+
+    color = COLORS[HOST_COLORS.get(HOSTNAME, 'Black')]
+    if user == 'stephen': 
+        user = 'sr'
+    shell.append('\\[\\033[%sm\\]%s ' % (color, user))
+
+    shell.append('\\[\\033[00m\\]%s ' % shortest_name(os.getcwd()))
+    
+    exitcode = sys.argv[1]
+    prompt = (user == "root" and "#" or "$")
+    color = (exitcode == "0" and COLORS['Green'] or COLORS['Red'])
+    shell.append('\\[\\033[%sm\\]%s ' % (color, prompt))
+    shell.append('\\[\\033[00m\\]')
+    print "".join(shell),

@@ -77,7 +77,7 @@ fi
 
 export MAX_PATH_LENGTH=25
 # color="0;31"
-export PROMPT_COMMAND='PS1="`python ~/.shellprompt.py` \`if [[ \$? = "0" ]]; then echo -n "\\[\\033[32m\\]"; else echo -n "\\[\\033[31m\\]";  fi\`\$ \\[\\033[00m\\]"'
+export PROMPT_COMMAND='PS1="`python ~/.shellprompt.py $?`"'
 
 # FORTUNE
 which fortune > /dev/null 2>&1
