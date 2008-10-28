@@ -77,7 +77,7 @@ fi
 
 export MAX_PATH_LENGTH=25
 # color="0;31"
-export PROMPT_COMMAND='PS1="`python ~/.shellprompt.py $?`"'
+export PROMPT_COMMAND='PS1="`python ~/.shellprompt.py $? 2>/dev/null`"'
 
 # FORTUNE
 which fortune > /dev/null 2>&1

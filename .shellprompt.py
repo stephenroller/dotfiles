@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys, re, os
 
+MAXPWD = 18
 HOSTNAME = os.popen('hostname').read()[:-1]
 HOME = os.environ['HOME']
 user = os.environ['USER']
@@ -52,17 +53,30 @@ def shortest_name(path):
 
 if __name__ == '__main__':
     shell = []
-
+    
     color = COLORS[HOST_COLORS.get(HOSTNAME, 'Black')]
     if user == 'stephen': 
         user = 'sr'
     shell.append('\\[\\033[%sm\\]%s ' % (color, user))
-
-    shell.append('\\[\\033[00m\\]%s ' % shortest_name(os.getcwd()))
+    
+    try:
+        path = shortest_name(os.getcwd())
+    except:
+        try:
+            path = os.getcwd()
+        except:
+            path = '\\[\\033[0;31m\\]\W'
+    if len(path) > MAXPWD: 
+        base = os.path.basename(os.getcwd())
+        if len(base) > MAXPWD:
+            path = base[0:5] + '...' + base[-3:]
+        else:
+            path = base
+    shell.append('\\[\\033[00m\\]%s ' % path)
     
     exitcode = sys.argv[1]
     prompt = (user == "root" and "#" or "$")
-    color = (exitcode == "0" and COLORS['Green'] or COLORS['Red'])
+    color = (exitcode == "0" and COLORS['Light Green'] or COLORS['Light Red'])
     shell.append('\\[\\033[%sm\\]%s ' % (color, prompt))
     shell.append('\\[\\033[00m\\]')
     print "".join(shell),

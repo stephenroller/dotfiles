@@ -7,8 +7,8 @@ alias =
 cdiff =
 children =
 fetch =
-rebase = 
-#graph2 =
+#rebase = 
+#mq =
 
 [alias]
 last = log -l
