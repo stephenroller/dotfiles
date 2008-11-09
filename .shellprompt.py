@@ -7,6 +7,7 @@ HOME = os.environ['HOME']
 user = os.environ['USER']
 
 COLORS = {
+    'Default': '0;00',
     'Black': '0;30',
     'Blue': '0;34',
     'Green': '0;32',
@@ -54,7 +55,7 @@ def shortest_name(path):
 if __name__ == '__main__':
     shell = []
     
-    color = COLORS[HOST_COLORS.get(HOSTNAME, 'Black')]
+    color = COLORS[HOST_COLORS.get(HOSTNAME, 'Default')]
     if user == 'stephen': 
         user = 'sr'
     shell.append('\\[\\033[%sm\\]%s ' % (color, user))
