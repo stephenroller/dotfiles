@@ -58,7 +58,11 @@ if __name__ == '__main__':
     color = COLORS[HOST_COLORS.get(HOSTNAME, 'Default')]
     if user == 'stephen': 
         user = 'sr'
-    shell.append('\\[\\033[%sm\\]%s ' % (color, user))
+
+    if HOSTNAME in HOST_COLORS:
+        shell.append('\\[\\033[%sm\\]%s ' % (color, user))
+    else:
+        shell.append('\\[\\033[%sm\\]%s@%s ' % (color, user, HOSTNAME))
     
     try:
         path = shortest_name(os.getcwd())
