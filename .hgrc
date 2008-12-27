@@ -7,6 +7,8 @@ alias =
 cdiff =
 children =
 fetch =
+searchcommits =
+parentrevspec =
 
 [alias]
 last = log --limit=5
