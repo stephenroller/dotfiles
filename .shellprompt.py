@@ -30,7 +30,7 @@ HOST_COLORS = {
     'faith.local': 'Light Red',
     'neuace.tenniscores.com': 'Green',
     'mshawking.asmallorange.com': 'Purple',
-    'cheddar': 'Brown'
+    'cheddar': 'Yellow'
 }
 
 def shortest_name(path):

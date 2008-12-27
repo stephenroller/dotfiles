@@ -4,3 +4,6 @@
 "\e[5D": backward-word 
 "\e[3~": delete-char 
 set bell-style none
+set completion-ignore-case on
+set blink-matching-paren on
+tab: complete

@@ -2,7 +2,7 @@ nethack on
 # escape ``
 vbell off
 bind o other
-caption always "%H %= %-w%L>%{= BW}%n*%t%{-}%52<%+w %L="
+#caption always "%H %= %-w%L>%{= BW}%n*%t%{-}%52<%+w %L="
 startup_message off
 
 # Never, ever turn this off.
