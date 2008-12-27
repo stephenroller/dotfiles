@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for dotfile in .bashrc .hgrc .screenrc .vimrc
+for dotfile in .bashrc .hgrc .screenrc .vimrc .inputrc .shellprompt.py
 do
 	ln -fs "`pwd`/$dotfile" ~/$dotfile
 done

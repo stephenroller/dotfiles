@@ -28,35 +28,16 @@ PATH=.:~/bin:$PATH
 export HISTCONTROL=ignoreboth
 
 # Colored shell depending on host
-case `hostname` in
-	faith.local)
-		color=31
-		;;
-	"neuace.tenniscores.com")
-		color=32
-		;;
-	godfather)
-		color=33
-		;;
-	alicia)
-		color=34
-		;;
-	"mshawking.asmallorange.com")
-		color=35
-		export PATH=~/.mz/bin:$PATH
-		;;
-	"cheddar.local")
-		color=31
-		;;
-	*)
-		color=30
-		;;
-esac
+# case `hostname` in
+# 	"mshawking.asmallorange.com")
+# 		export PATH=~/.mz/bin:$PATH
+# 		;;
+# esac
 
 # SSH servers
-alias ssh.ncsu="ssh -C scroller@remote-linux.eos.ncsu.edu"
+alias ssh.ncsu="ssh -YC scroller@remote-linux.eos.ncsu.edu"
 alias ssh.srdotcom="ssh -C stephenroller.com"
-alias ssh.courtside-ec2="ssh ec2-75-101-218-196.compute-1.amazonaws.com"
+alias ssh.courtside-ec2="ssh -i ~/.ssh/courtside.pem root@dev.getcourtside.com"
 alias ssh.tenniscores="ssh tenniscores.com"
 
 alias ..="cd .."
@@ -69,11 +50,22 @@ alias pm="python manage.py"
 alias col1="awk '{print \$1}'"
 alias beep="echo -ne '\a'"
 alias beeploop="while [ 1 ]; do beep; sleep 2; done"
+alias sql+="sqlplus  system/oracle@172.16.155.130/XE"
+
+function proxyall ()
+{
+	sudo networksetup -setsocksfirewallproxystate Ethernet on &&
+	ssh tenniscores.com -D 9999 -L 2525:localhost:25;
+	sudo networksetup -setsocksfirewallproxystate Ethernet off
+}
 
 function courtside ()
 {
 	cd ~/Working/courtside
 	export DJANGO_SETTINGS_MODULE=settings.development_stephen
+	alias pmr="pm runserver"
+	alias pms="pm shell"
+	alias clear_cache="echo 'delete from cache;' | pm dbshell"
 }
 
 # Test for an interactive shell.  There is no need to set anything
@@ -84,7 +76,9 @@ if [[ $- != *i* ]] ; then
         return
 fi
 
-export PS1="\[\033[00;${color}m\]\u \[\033[00m\]\W \$ ";
+export MAX_PATH_LENGTH=25
+# color="0;31"
+export PROMPT_COMMAND='PS1="`python ~/.shellprompt.py $? 2>/dev/null`"'
 
 # FORTUNE
 which fortune > /dev/null 2>&1
@@ -94,4 +88,3 @@ then
 	fortune
 	echo
 fi
-

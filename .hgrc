@@ -11,5 +11,5 @@ searchcommits =
 parentrevspec =
 
 [alias]
-last = log --limit=5
-
+last = log -l
+servealt = serve -p 8080

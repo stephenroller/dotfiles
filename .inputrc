@@ -1,0 +1,6 @@
+"\e[1~": beginning-of-line
+"\e[4~": end-of-line 
+"\e[5C": forward-word
+"\e[5D": backward-word 
+"\e[3~": delete-char 
+set bell-style none
