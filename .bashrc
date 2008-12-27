@@ -32,6 +32,15 @@ case `uname` in
 			proxy off
 		}
 		
+		function courtside ()
+		{
+			cd ~/Working/courtside
+			export DJANGO_SETTINGS_MODULE=settings.development_stephen
+			alias pmr="pm runserver"
+			alias pms="pm shell"
+			alias clear_cache="echo 'delete from cache;' | pm dbshell"
+		}
+		
 		alias dockflat="defaults write com.apple.dock no-glass -boolean YES; killall Dock"
 		alias dock3d="defaults write com.apple.dock no-glass -boolean NO; killall Dock"
 		;;
