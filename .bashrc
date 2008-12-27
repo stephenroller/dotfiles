@@ -13,6 +13,7 @@ case `uname` in
 		# extra commands.
 		alias startmysql="sudo launchctl load -w \ 
 		    /opt/local/etc/LaunchDaemons/org.macports.mysql4/org.macports.mysql4.plist"
+		alias flushdns="dscacheutil -flushcache"
 		;;
 	Linux)
 		eval `dircolors -b`
