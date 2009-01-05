@@ -15,9 +15,6 @@ case `uname` in
 		export PYTHONPATH=$PYTHONPATH:/opt/local/lib/python2.5/site-packages/
 		
 		
-		# extra commands.
-		alias sql+="sqlplus system/oracle@172.16.155.130/XE"
-		
 		function proxy ()
 		{
 			sudo networksetup -setsocksfirewallproxystate Ethernet $1 &&
