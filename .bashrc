@@ -21,6 +21,7 @@ case `uname` in
 		;;
 esac
 
+export PYTHONSTARTUP="$HOME/.pythonrc.py"
 export PYTHONPATH=$PYTHONPATH:~/.hgext
 export PYTHONPATH=$PYTHONPATH:~/.pylibs
 PATH=.:~/bin:$PATH
