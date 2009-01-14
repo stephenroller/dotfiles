@@ -7,7 +7,6 @@ alias =
 cdiff =
 children =
 fetch =
-searchcommits =
 parentrevspec =
 
 [alias]
