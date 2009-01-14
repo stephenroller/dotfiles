@@ -1,0 +1,39 @@
+[color]
+	branch = auto
+	diff = auto
+	status = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "diff"]
+	meta = blue bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[color]
+	ui = true
+[core]
+	WHITESPACE=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+[github]
+	user = stephenroller
+	token = dd7abe231add6a341eccbd5c791a6bcc
+[user]
+	name = Stephen Roller
+	email = scroller@ncsu.edu
+[git-tmbundle "log"]
+	limit = 15
+[git-tmbundle]
+	show-diff-check = yes
+[alias]
+	ci = commit
+	co = checkout
+	branches = branch -a
+	serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
+	st = status
+	s = status
+	
