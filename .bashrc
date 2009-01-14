@@ -9,7 +9,7 @@ case `uname` in
 		export PATH=/usr/local/MzScheme/bin:$PATH
 		export GIT_PAGER="less"
 		export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
-		export EDITOR="mate -w"
+		export EDITOR="mate_wait"
 		export CLICOLOR=1
 		export MANPATH=$MANPATH:/opt/local/share/man
 		export PYTHONPATH=$PYTHONPATH:/opt/local/lib/python2.5/site-packages/
@@ -19,6 +19,7 @@ case `uname` in
 		alias sql+="sqlplus system/oracle@172.16.155.130/XE"
 		alias startmysql="sudo launchctl load -w \
 		    /Library/LaunchDaemons/org.macports.mysql5.plist"
+		alias mzscheme="rlwrap mzscheme"
 		
 		function proxy ()
 		{
@@ -70,6 +71,8 @@ alias ssh.srdotcom="ssh -C stephenroller.com"
 alias ssh.courtside-dev="ssh -i ~/.ssh/courtside.pem root@dev.getcourtside.com"
 alias ssh.courtside-live="ssh -i ~/.ssh/courtside.pem root@www.getcourtside.com"
 alias ssh.tenniscores="ssh tenniscores.com -L 2525:localhost:25"
+
+alias irc="ssh -t franky TERM=screen screen -t IRC -x -R -S irc irssi"
 
 alias ..="cd .."
 alias ...="cd ../.."
