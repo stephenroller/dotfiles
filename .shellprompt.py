@@ -54,6 +54,9 @@ def shortest_name(path):
 
 if __name__ == '__main__':
     shell = []
+
+    # show username@host in the top
+    shell.append('\\[\\e]2;\\u@\\H:\\w\\a')
     
     color = COLORS[HOST_COLORS.get(HOSTNAME, 'Default')]
     if user == 'stephen': 
