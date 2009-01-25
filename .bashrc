@@ -14,7 +14,6 @@ case `uname` in
 		export MANPATH=$MANPATH:/opt/local/share/man
 		export PYTHONPATH=$PYTHONPATH:/opt/local/lib/python2.5/site-packages/
 		
-		
 		function proxy ()
 		{
 			sudo networksetup -setsocksfirewallproxystate Ethernet $1 &&
@@ -40,6 +39,11 @@ case `uname` in
 		alias dockflat="defaults write com.apple.dock no-glass -boolean YES; killall Dock"
 		alias dock3d="defaults write com.apple.dock no-glass -boolean NO; killall Dock"
 		alias flushdns="dscacheutil -flushcache"
+		alias port="sudo port"
+		alias startmysql="sudo launchctl load -w \
+			/Library/LaunchDaemons/com.mysql.mysqld.plist"
+		alias stopmysql="sudo launchctl unload -w \
+			/Library/LaunchDaemons/com.mysql.mysqld.plist"
 		;;
 		
 		
