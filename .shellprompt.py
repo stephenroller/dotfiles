@@ -30,7 +30,8 @@ HOST_COLORS = {
     'faith.local': 'Light Red',
     'neuace.tenniscores.com': 'Green',
     'mshawking.asmallorange.com': 'Purple',
-    'cheddar': 'Yellow'
+    'cheddar': 'Yellow',
+    'frankystein.tweek.us': 'Light Blue',
 }
 
 def shortest_name(path):
@@ -40,7 +41,7 @@ def shortest_name(path):
     def make_sub(match):
         full_word = match.groups()[0]
         files = os.listdir(make_sub.p)
-        n = 1
+        n = 2
         while True:
             word = full_word[0:n]
             if len([s for s in files if s.startswith(word)]) == 1 or \
@@ -54,11 +55,12 @@ def shortest_name(path):
 
 if __name__ == '__main__':
     shell = []
+
     
     color = COLORS[HOST_COLORS.get(HOSTNAME, 'Default')]
     if user == 'stephen': 
         user = 'sr'
-
+    
     if HOSTNAME in HOST_COLORS:
         shell.append('\\[\\033[%sm\\]%s ' % (color, user))
     else:
@@ -78,6 +80,9 @@ if __name__ == '__main__':
         else:
             path = base
     shell.append('\\[\\033[00m\\]%s ' % path)
+
+    # show username@host in the top
+    shell.insert(0, '\\[\\e]2;%s@\\H %s\\a' % (user, path))
     
     exitcode = sys.argv[1]
     prompt = (user == "root" and "#" or "$")
