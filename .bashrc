@@ -50,6 +50,12 @@ case `uname` in
 		;;
 esac
 
+if [ `hostname` == 'cheddar' ]
+then
+	alias snapshottm="/System/Library/CoreServices/backupd.bundle/Contents/Resources/backupd-helper"
+fi
+
+
 export PYTHONSTARTUP="$HOME/.pythonrc.py"
 export PYTHONPATH=$PYTHONPATH:~/.hgext
 export PYTHONPATH=$PYTHONPATH:~/.pylibs
