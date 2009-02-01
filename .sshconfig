@@ -26,3 +26,10 @@ Host proxy tenniscores.com tennis
 	DynamicForward 9999
 	LocalForward 2525 localhost:25
 
+
+Host tomato iphone
+	User root
+
+Host samus
+	HostName 152.14.93.74
+	
