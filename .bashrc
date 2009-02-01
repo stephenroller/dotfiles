@@ -44,10 +44,12 @@ case `uname` in
 			/Library/LaunchDaemons/com.mysql.mysqld.plist"
 		alias stopmysql="sudo launchctl unload -w \
 			/Library/LaunchDaemons/com.mysql.mysqld.plist"
-		;;
-		
-		
 
+
+		if [ -f /opt/local/etc/bash_completion ]; then
+		    . /opt/local/etc/bash_completion
+		fi
+		;;
 	Linux)
 		eval `dircolors -b`
 		alias ls="ls --color"
