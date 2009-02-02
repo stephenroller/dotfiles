@@ -45,6 +45,8 @@ case `uname` in
 		alias stopmysql="sudo launchctl unload -w \
 			/Library/LaunchDaemons/com.mysql.mysqld.plist"
 
+		alias backupsms="cp iphone:/var/mobile/Library/SMS/sms.db /Users/stephen/Documents/"
+
 
 		if [ -f /opt/local/etc/bash_completion ]; then
 		    . /opt/local/etc/bash_completion
