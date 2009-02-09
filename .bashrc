@@ -84,6 +84,7 @@ alias ssh.courtside-live="ssh -i ~/.ssh/courtside.pem root@www.getcourtside.com"
 alias ssh.tenniscores="ssh tenniscores.com -L 2525:localhost:25"
 
 alias irc="ssh -t franky TERM=screen screen -t IRC -x -R -S irc irssi"
+alias rpg="ssh -t tennis TERM=screen screen -t RPG -x -R -S rpg /usr/games/bin/angband"
 
 alias ..="cd .."
 alias ...="cd ../.."
