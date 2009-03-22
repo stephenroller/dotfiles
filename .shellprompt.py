@@ -27,7 +27,7 @@ COLORS = {
 }
 
 HOST_COLORS = {
-    'faith.local': 'Light Red',
+    'faith': 'Light Red',
     'neuace.tenniscores.com': 'Green',
     'mshawking.asmallorange.com': 'Purple',
     'cheddar': 'Yellow',
