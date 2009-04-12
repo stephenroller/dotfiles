@@ -118,7 +118,7 @@ function prompt_command () {
 			COLOR="0;35";;
 		"cheddar" )
 			COLOR="1;33";;
-		"frankystein.twee.us" )
+		"frankystein.tweek.us" )
 			COLOR="1;34";;
 		*)
 			COLOR="";;
