@@ -106,7 +106,51 @@ if [[ $- != *i* ]] ; then
         return
 fi
 
-export PROMPT_COMMAND='PS1="`python ~/.shellprompt.py $? 2>/dev/null`"'
+function prompt_command () {
+	GOOD=$?
+	
+	case `hostname` in
+		"faith.local" )
+			COLOR="1;31";;
+		"neuace.tenniscores.com" )
+			COLOR="0;32";;
+		"mshawking.asmallorange.com" )
+			COLOR="0;35";;
+		"cheddar" )
+			COLOR="1;33";;
+		"frankystein.twee.us" )
+			COLOR="1;34";;
+		*)
+			COLOR="";;
+	esac
+	
+	export PS1="\\[\\033[${COLOR}m\\]\\u"
+	if [ "$COLOR" == "" ]; then
+		export PS1="${PS1}@\\h"
+	fi
+
+	WPATH=`echo $PWD | sed "s#$HOME#~#"`
+	WPATH2=""
+	while [ "$WPATH" != "$WPATH2" ]; do
+		WPATH2="$WPATH"
+		WPATH=`echo $WPATH | sed "s#/\(..\)[^/][^/]*/#/\\1/#"`
+	done
+	if [ `echo $WPATH | wc -c` -gt 20 ]; then
+		WPATH="\\W"
+	fi
+	
+	export PS1="${PS1} \\[\\033[00m\\]${WPATH} "
+
+	if [ $GOOD -eq 0 ]; then
+		export PS1="${PS1}\\[\\033[1;32m\\]"
+	else
+		export PS1="${PS1}\\[\\033[1;31m\\]"
+	fi
+	export PS1="${PS1}\\$\\[\\033[00m\\] "
+}
+
+export PROMPT_COMMAND=prompt_command
+
 
 # FORTUNE
 which fortune > /dev/null 2>&1
