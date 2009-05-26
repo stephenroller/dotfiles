@@ -80,4 +80,5 @@ au FileType php set complete+=k~/.vim/ac/php.dict isk+=.,(
 set tags+=$HOME/.vim/tags/python.ctags
 map <silent><C-Left> <C-T>
 map <silent><C-Right> <C-]>
-"
+
+set noswf " no swap file
