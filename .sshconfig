@@ -33,3 +33,8 @@ Host tomato iphone
 Host samus
 	HostName 152.14.93.74
 	
+Host andrew
+	HostName 72.14.185.29
+	Port 1022
+	User stephen
+
