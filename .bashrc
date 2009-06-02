@@ -113,6 +113,8 @@ function prompt_command () {
 			COLOR="1;33";;
 		"frankystein.tweek.us" )
 			COLOR="1;34";;
+		"li51-29")
+			COLOR="1;36";;
 		*)
 			COLOR="";;
 	esac
