@@ -92,6 +92,14 @@ alias col1="awk '{print \$1}'"
 alias beep="echo -ne '\a'"
 alias beeploop="while [ 1 ]; do beep; sleep 2; done"
 
+function tostorage () {
+	scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/uploaded/
+}
+
+function tolj () {
+	scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/lj/
+}
+
 
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
