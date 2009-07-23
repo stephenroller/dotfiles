@@ -27,9 +27,14 @@ Host proxy tenniscores.com tennis
 	LocalForward 2525 localhost:25
 
 
-Host tomato iphone
+Host tomato router
 	User root
 
 Host samus
 	HostName 152.14.93.74
 	
+Host andrew
+	HostName 72.14.185.29
+	Port 1022
+	User stephen
+

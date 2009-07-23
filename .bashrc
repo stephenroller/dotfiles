@@ -46,7 +46,9 @@ case `uname` in
 			/Library/LaunchDaemons/com.mysql.mysqld.plist"
 
 		alias backupsms="cp iphone:/var/mobile/Library/SMS/sms.db /Users/stephen/Documents/"
-
+		
+		# puts the mac to sleep
+		alias zzz="osascript -e 'tell application \"System Events\" to sleep'"
 
 		if [ -f /opt/local/etc/bash_completion ]; then
 		    . /opt/local/etc/bash_completion
@@ -76,13 +78,6 @@ PATH=.:~/bin:$PATH
 # 		;;
 # esac
 
-# SSH servers
-alias ssh.ncsu="ssh -YC scroller@remote-linux.eos.ncsu.edu"
-alias ssh.srdotcom="ssh -C stephenroller.com"
-alias ssh.courtside-dev="ssh -i ~/.ssh/courtside.pem root@dev.getcourtside.com"
-alias ssh.courtside-live="ssh -i ~/.ssh/courtside.pem root@www.getcourtside.com"
-alias ssh.tenniscores="ssh tenniscores.com -L 2525:localhost:25"
-
 alias irc="ssh -t franky TERM=screen screen -t IRC -x -R -S irc irssi"
 alias rpg="ssh -t tennis TERM=screen screen -t RPG -x -R -S rpg /usr/games/bin/angband"
 
@@ -97,6 +92,14 @@ alias col1="awk '{print \$1}'"
 alias beep="echo -ne '\a'"
 alias beeploop="while [ 1 ]; do beep; sleep 2; done"
 
+function tostorage () {
+	scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/uploaded/
+}
+
+function tolj () {
+	scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/lj/
+}
+
 
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
@@ -106,7 +109,53 @@ if [[ $- != *i* ]] ; then
         return
 fi
 
-export PROMPT_COMMAND='PS1="`python ~/.shellprompt.py $? 2>/dev/null`"'
+function prompt_command () {
+	GOOD=$?
+	
+	case `hostname` in
+		"faith.local" )
+			COLOR="1;31";;
+		"neuace.tenniscores.com" )
+			COLOR="0;32";;
+		"mshawking.asmallorange.com" )
+			COLOR="0;35";;
+		"cheddar" )
+			COLOR="1;33";;
+		"frankystein.tweek.us" )
+			COLOR="1;34";;
+		"li51-29")
+			COLOR="1;36";;
+		*)
+			COLOR="";;
+	esac
+	
+	export PS1="\\[\\033[${COLOR}m\\]\\u"
+	if [ "$COLOR" == "" ]; then
+		export PS1="${PS1}@\\h"
+	fi
+
+	WPATH=`echo $PWD | sed "s#$HOME#~#"`
+	WPATH2=""
+	while [ "$WPATH" != "$WPATH2" ]; do
+		WPATH2="$WPATH"
+		WPATH=`echo $WPATH | sed "s#/\(..\)[^/][^/]*/#/\\1/#"`
+	done
+	if [ `echo $WPATH | wc -c` -gt 20 ]; then
+		WPATH="\\W"
+	fi
+	
+	export PS1="${PS1} \\[\\033[00m\\]${WPATH} "
+
+	if [ $GOOD -eq 0 ]; then
+		export PS1="${PS1}\\[\\033[1;32m\\]"
+	else
+		export PS1="${PS1}\\[\\033[1;31m\\]"
+	fi
+	export PS1="${PS1}\\$\\[\\033[00m\\] "
+}
+
+export PROMPT_COMMAND=prompt_command
+
 
 # FORTUNE
 which fortune > /dev/null 2>&1
