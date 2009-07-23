@@ -113,7 +113,7 @@ function prompt_command () {
 	GOOD=$?
 	
 	case `hostname` in
-		"faith.local" )
+		"faith" )
 			COLOR="1;31";;
 		"neuace.tenniscores.com" )
 			COLOR="0;32";;
