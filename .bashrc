@@ -46,7 +46,9 @@ case `uname` in
 			/Library/LaunchDaemons/com.mysql.mysqld.plist"
 
 		alias backupsms="cp iphone:/var/mobile/Library/SMS/sms.db /Users/stephen/Documents/"
-
+		
+		# puts the mac to sleep
+		alias zzz="osascript -e 'tell application "System Events" to sleep'"
 
 		if [ -f /opt/local/etc/bash_completion ]; then
 		    . /opt/local/etc/bash_completion
