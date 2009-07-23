@@ -27,7 +27,7 @@ Host proxy tenniscores.com tennis
 	LocalForward 2525 localhost:25
 
 
-Host tomato iphone
+Host tomato router
 	User root
 
 Host samus
