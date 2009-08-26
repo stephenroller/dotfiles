@@ -117,14 +117,12 @@ function prompt_command () {
 			COLOR="1;31";;
 		"neuace.tenniscores.com" )
 			COLOR="0;32";;
-		"mshawking.asmallorange.com" )
-			COLOR="0;35";;
 		"cheddar" )
 			COLOR="1;33";;
 		"frankystein.tweek.us" )
 			COLOR="1;34";;
-		"li51-29")
-			COLOR="1;36";;
+		"samus.csc.ncsu.edu")
+			COLOR="1;30";;
 		*)
 			COLOR="";;
 	esac
