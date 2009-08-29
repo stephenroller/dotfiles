@@ -119,7 +119,7 @@ function prompt_command () {
 			COLOR="0;32";;
 		"mshawking.asmallorange.com" )
 			COLOR="0;35";;
-		"cheddar" )
+		"cheddar.sr.local" )
 			COLOR="1;33";;
 		"frankystein.tweek.us" )
 			COLOR="1;34";;
