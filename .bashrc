@@ -109,25 +109,23 @@ if [[ $- != *i* ]] ; then
         return
 fi
 
+case `hostname` in
+	"faith" )
+		COLOR="1;31";;
+	"neuace.tenniscores.com" )
+		COLOR="0;32";;
+	"cheddar" )
+		COLOR="1;33";;
+	"frankystein.tweek.us" )
+		COLOR="1;34";;
+	"samus.csc.ncsu.edu")
+		COLOR="1;30";;
+	*)
+		COLOR="";;
+esac
+
 function prompt_command () {
 	GOOD=$?
-	
-	case `hostname` in
-		"faith" )
-			COLOR="1;31";;
-		"neuace.tenniscores.com" )
-			COLOR="0;32";;
-		"mshawking.asmallorange.com" )
-			COLOR="0;35";;
-		"cheddar" )
-			COLOR="1;33";;
-		"frankystein.tweek.us" )
-			COLOR="1;34";;
-		"li51-29")
-			COLOR="1;36";;
-		*)
-			COLOR="";;
-	esac
 	
 	export PS1="\\[\\033[${COLOR}m\\]\\u"
 	if [ "$COLOR" == "" ]; then
