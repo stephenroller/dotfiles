@@ -17,6 +17,15 @@ Host *getcourtside.com
 	User root
 	IdentityFile ~/.ssh/courtside.pem
 
+Host faith
+	HostName faith
+	port 420
+
+Host packpulse notpackpulse.ath.cx
+	HostName notpackpulse.ath.cx
+	Port 420
+	LogLevel QUIET
+
 Host coldcoldwater.com ccw oldsr mshawking.asmallorange.net
 	HostName mshawking.asmallorange.net
 	
@@ -30,8 +39,8 @@ Host proxy tenniscores.com tennis
 Host tomato router
 	User root
 
-Host samus
-	HostName 152.14.93.74
+Host samus samus.csc.ncsu.edu lab
+	HostName samus.csc.ncsu.edu
 	
 Host andrew
 	HostName 72.14.185.29

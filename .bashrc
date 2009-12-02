@@ -71,13 +71,6 @@ export PYTHONPATH=$PYTHONPATH:~/.hgext
 export PYTHONPATH=$PYTHONPATH:~/.pylibs
 PATH=.:~/bin:$PATH
 
-# Colored shell depending on host
-# case `hostname` in
-# 	"mshawking.asmallorange.com")
-# 		export PATH=~/.mz/bin:$PATH
-# 		;;
-# esac
-
 alias irc="ssh -t franky TERM=screen screen -t IRC -x -R -S irc irssi"
 alias rpg="ssh -t tennis TERM=screen screen -t RPG -x -R -S rpg /usr/games/bin/angband"
 
@@ -92,12 +85,22 @@ alias col1="awk '{print \$1}'"
 alias beep="echo -ne '\a'"
 alias beeploop="while [ 1 ]; do beep; sleep 2; done"
 
+function trash () {
+	mv $@ ~/.Trash/
+}
+
+function calc () {
+	echo "$@" | bc -l -q -i
+}
+
 function tostorage () {
 	scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/uploaded/
+	echo "http://stephenroller.com/storage/uploaded/$1"
 }
 
 function tolj () {
 	scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/lj/
+	echo "http://stephenroller.com/storage/lj/$1"
 }
 
 
@@ -124,10 +127,17 @@ case `hostname` in
 		COLOR="";;
 esac
 
+
+if [ $USER == "stephen" ]; then
+	nice_username="sr"
+else
+	nice_username="$USER"
+fi
+
 function prompt_command () {
 	GOOD=$?
 	
-	export PS1="\\[\\033[${COLOR}m\\]\\u"
+	export PS1="\\[\\033[${COLOR}m\\]$nice_username"
 	if [ "$COLOR" == "" ]; then
 		export PS1="${PS1}@\\h"
 	fi
