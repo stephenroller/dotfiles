@@ -41,9 +41,9 @@ case `uname` in
 		alias flushdns="dscacheutil -flushcache"
 		alias port="sudo port"
 		alias startmysql="sudo launchctl load -w \
-			/Library/LaunchDaemons/com.mysql.mysqld.plist"
+			/Library/LaunchDaemons/org.macports.mysql5.plist"
 		alias stopmysql="sudo launchctl unload -w \
-			/Library/LaunchDaemons/com.mysql.mysqld.plist"
+			/Library/LaunchDaemons/org.macports.mysql5.plist"
 
 		alias backupsms="cp iphone:/var/mobile/Library/SMS/sms.db /Users/stephen/Documents/"
 		
