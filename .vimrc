@@ -70,11 +70,13 @@ cab utf :set encoding=utf-8
 cab csmake :make<CR><CR>
 
 " stuff I mistype all the time
-cab Wq :wq
-cab WQ :wq
-cab W :w
-cab Q :q
-cab E :e
+cab Wq wq
+cab WQ wq
+cab W w
+cab Q q
+cab Q! q!
+cab E e
+cab E! e!
 
 " language specific stuff
 au FileType python set et sts=4 complete+=k~/.vim/ac/python.dict isk+=.,(
@@ -94,7 +96,7 @@ map <S-Space> <PageUp>
 map K <PageUp>
 
 
-nmap <silent> <Leader>p <Plug>ToggleProject
+nmap <silent> <Leader>p :NERDTreeToggle <CR>
 
 
 " GUI stuff
@@ -159,3 +161,5 @@ inoremap <expr> <Esc>      pumvisible() ? "\<C-e>\<Esc>" : "\<Esc>"
 
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 
+" spell checking is a must
+set spell
