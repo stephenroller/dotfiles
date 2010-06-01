@@ -91,9 +91,9 @@ helptags ~/.vim/doc
 
 " convenient mappings for paging through text
 map <Space> <PageDown>
-map J <PageDown>
+map J 10j
 map <S-Space> <PageUp>
-map K <PageUp>
+map K 10k
 
 
 nmap <silent> <Leader>p :NERDTreeToggle <CR>
@@ -135,6 +135,8 @@ map b :FufBuffer <CR>
 map <D-t> :FufFile <CR>
 map <C-f> :FufFile <CR>
 
+let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|swp|pyc|DS_Store)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+
 highlight Pmenu ctermbg=Black gui=bold ctermfg=Blue
 highlight PmenuSel ctermbg=Blue gui=bold ctermfg=White
 
@@ -163,3 +165,5 @@ inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 
 " spell checking is a must
 set spell
+
+au FileType git-log set nospell
