@@ -9,7 +9,7 @@ case `uname` in
 		export PATH=/usr/local/MzScheme/bin:$PATH
 		export GIT_PAGER="less"
 		export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
-		export EDITOR="mate_wait"
+		export EDITOR="mvim -f"
 		export CLICOLOR=1
 		export MANPATH=$MANPATH:/opt/local/share/man
 		export PYTHONPATH=$PYTHONPATH:/opt/local/lib/python2.5/site-packages/
