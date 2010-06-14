@@ -327,6 +327,9 @@ function! s:OpenGitBuffer(content)
     keepjumps 0d
     setlocal nomodifiable
 
+    wincmd =
+    resize +5
+
     let b:is_git_msg_buffer = 1
 endfunction
 
