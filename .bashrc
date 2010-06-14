@@ -75,7 +75,7 @@ export PYTHONPATH=$PYTHONPATH:~/.pylibs
 export PYTHONPATH=$PYTHONPATH:~/Working/transloc_modules
 PATH=.:~/bin:$PATH
 
-alias irc="ssh -t franky TERM=screen screen -t IRC -x -R -S irc irssi"
+alias irc="ssh -t gumby TERM=screen screen -t IRC -x -R -S irc irssi"
 alias rpg="ssh -t tennis TERM=screen screen -t RPG -x -R -S rpg /usr/games/bin/angband"
 
 alias ..="cd .."
@@ -123,7 +123,7 @@ case `hostname` in
 		COLOR="0;32";;
 	"cheddar" )
 		COLOR="1;33";;
-	"frankystein.tweek.us" )
+	"gumby.tweek.us" )
 		COLOR="1;34";;
 	"samus.csc.ncsu.edu")
 		COLOR="1;30";;
