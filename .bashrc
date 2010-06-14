@@ -9,10 +9,11 @@ case `uname` in
 		export PATH=/usr/local/MzScheme/bin:$PATH
 		export GIT_PAGER="less"
 		export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
-		export EDITOR="mvim -f"
+		export EDITOR="mate_wait"
 		export CLICOLOR=1
 		export MANPATH=$MANPATH:/opt/local/share/man
 		export PYTHONPATH=$PYTHONPATH:/opt/local/lib/python2.5/site-packages/
+        export FALLBACK_DYLD_LIBRARY_PATH=/opt/local/lib:/opt/local/lib/postgresql83
 		
 		function proxy ()
 		{
@@ -45,7 +46,8 @@ case `uname` in
 		alias stopmysql="sudo launchctl unload -w \
 			/Library/LaunchDaemons/org.macports.mysql5.plist"
 
-		alias backupsms="cp iphone:/var/mobile/Library/SMS/sms.db /Users/stephen/Documents/"
+		alias backupsms="scp iphone:/var/mobile/Library/SMS/sms.db /Users/stephen/Documents/"
+        alias psql=psql83
 		
 		# puts the mac to sleep
 		alias zzz="osascript -e 'tell application \"System Events\" to sleep'"
@@ -53,6 +55,7 @@ case `uname` in
 		if [ -f /opt/local/etc/bash_completion ]; then
 		    . /opt/local/etc/bash_completion
 		fi
+
 		;;
 	Linux)
 		eval `dircolors -b`
@@ -69,6 +72,7 @@ fi
 export PYTHONSTARTUP="$HOME/.pythonrc.py"
 export PYTHONPATH=$PYTHONPATH:~/.hgext
 export PYTHONPATH=$PYTHONPATH:~/.pylibs
+export PYTHONPATH=$PYTHONPATH:~/Working/transloc_modules
 PATH=.:~/bin:$PATH
 
 alias irc="ssh -t franky TERM=screen screen -t IRC -x -R -S irc irssi"
@@ -107,7 +111,7 @@ function tolj () {
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
-if [[ $- != *i* ]] ; then
+if [[ $TERM == "dumb" || $- != *i* ]] ; then
         # Shell is non-interactive.  Be done now!
         return
 fi

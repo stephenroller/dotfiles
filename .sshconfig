@@ -2,8 +2,8 @@ Compression no
 ServerAliveInterval 300
 ServerAlivecountMax 3
 
-Host dackz.net stephenroller.com srdotcom sr franky
-	HostName frankystein.tweek.us
+Host dackz.net stephenroller.com srdotcom sr gumby
+	HostName gumby.tweek.us
 	Port 420
 	LogLevel QUIET
 
@@ -46,4 +46,7 @@ Host andrew
 	HostName 72.14.185.29
 	Port 1022
 	User stephen
+
+Host vm
+    Hostname 172.16.41.130
 
