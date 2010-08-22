@@ -19,16 +19,6 @@ Host *getcourtside.com
 
 Host faith
 	HostName faith
-	port 420
-
-Host packpulse notpackpulse.ath.cx
-	HostName notpackpulse.ath.cx
-	Port 420
-	LogLevel QUIET
-
-Host coldcoldwater.com ccw oldsr mshawking.asmallorange.net
-	HostName mshawking.asmallorange.net
-	
 
 Host proxy tenniscores.com tennis
 	HostName tenniscores.com
@@ -41,12 +31,7 @@ Host tomato router
 
 Host samus samus.csc.ncsu.edu lab
 	HostName samus.csc.ncsu.edu
+
+Host *.cs.utexas.edu
+    User roller
 	
-Host andrew
-	HostName 72.14.185.29
-	Port 1022
-	User stephen
-
-Host vm
-    Hostname 172.16.41.130
-
