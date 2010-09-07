@@ -107,6 +107,10 @@ function tolj () {
 	echo "http://stephenroller.com/storage/lj/$1"
 }
 
+function utsh () {
+    ssh $1.cs.utexas.edu
+}
+
 
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from

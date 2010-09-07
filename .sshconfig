@@ -34,4 +34,5 @@ Host samus samus.csc.ncsu.edu lab
 
 Host *.cs.utexas.edu
     User roller
+	LogLevel QUIET
 	
