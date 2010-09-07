@@ -24,7 +24,7 @@
 	token = dd7abe231add6a341eccbd5c791a6bcc
 [user]
 	name = Stephen Roller
-	email = me@stephenroller.com
+	email = roller@cs.utexas.edu
 [git-tmbundle "log"]
 	limit = 15
 [git-tmbundle]
