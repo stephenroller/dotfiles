@@ -126,11 +126,13 @@ case `hostname` in
 	"neuace.tenniscores.com" )
 		COLOR="0;32";;
 	"cheddar" )
-		COLOR="1;33";;
+		COLOR="1;35";;
 	"gumby.tweek.us" )
 		COLOR="1;34";;
-	"samus.csc.ncsu.edu")
+	"chu-totoro")
 		COLOR="1;30";;
+    "provolone")
+        COLOR="1;33";;
 	*)
 		COLOR="";;
 esac
