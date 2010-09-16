@@ -1,5 +1,5 @@
 nethack on
-# escape ``
+escape ``
 vbell off
 bind o other
 
