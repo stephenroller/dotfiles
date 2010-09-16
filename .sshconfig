@@ -29,10 +29,12 @@ Host proxy tenniscores.com tennis
 Host tomato router
 	User root
 
-Host samus samus.csc.ncsu.edu lab
-	HostName samus.csc.ncsu.edu
+Host lab chu-totro totoro
+    HostName chu-totoro.cs.utexas.edu
+    User roller
+    LogLevel QUIET
 
 Host *.cs.utexas.edu
     User roller
 	LogLevel QUIET
-	
+
