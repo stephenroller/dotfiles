@@ -78,6 +78,9 @@ cab Q! q!
 cab E e
 cab E! e!
 
+" remap ; to :. it's just one less keystroke, but all the time
+nnoremap ; :
+
 " language specific stuff
 au FileType python set et sts=4 complete+=k~/.vim/ac/python.dict isk+=.,(
 au FileType php set complete+=k~/.vim/ac/php.dict isk+=.,(
@@ -131,7 +134,7 @@ map <silent> <D-/> :call Comment() <CR>
 imap <silent> <D-/> <Esc> :call Comment() <CR> +
 
 " convenient mappings for FUF
-map b :FufBuffer <CR>
+map <Leader>b :FufBuffer <CR>
 map <D-t> :FufFile <CR>
 map <C-f> :FufFile <CR>
 
@@ -167,3 +170,33 @@ inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 set spell
 
 au FileType git-log set nospell
+
+function! MakeScratch()
+    setlocal buftype=nofile
+    setlocal bufhidden=hide
+    setlocal noswapfile
+    setlocal buflisted
+endfunction
+
+function! NewScratchBuffer()
+    :botright new
+    call MakeScratch()
+endfunction
+
+map <Leader>s :call NewScratchBuffer()<CR>
+map <Leader>v :so ~/.vimrc <CR> :echo "~/.vimrc loaded..." <CR>
+
+" Make it easier to run commands
+map <Leader>r :Shell 
+map !! :Shell <C-Up><CR>
+
+function! CloseAndQuit()
+    if winbufnr(2) == -1
+        :quit
+    else
+        :close
+    endif
+endfunction
+
+" close a window
+nmap <Leader>q :call CloseAndQuit() <CR>
