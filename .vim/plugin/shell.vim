@@ -32,9 +32,12 @@ function! s:RunShellCommand(cmdline)
     normal dG
   endif
 
-  call append(line("$"), a:cmdline. ': ')
-  call append(line("$"), "")
+  " call append(line("$"), a:cmdline. ': ')
+  " call append(line("$"), "")
   " call append(line("$"), "============================")
   silent execute '$read !'. expanded_cmdline
-  call append(line("$"), "")
+  " call append(line("$"), "")
+  normal gg
+  normal dd
+  normal G
 endfunction
