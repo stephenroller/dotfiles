@@ -171,18 +171,6 @@ set spell
 
 au FileType git-log set nospell
 
-function! MakeScratch()
-    setlocal buftype=nofile
-    setlocal bufhidden=hide
-    setlocal noswapfile
-    setlocal buflisted
-endfunction
-
-function! NewScratchBuffer()
-    :botright new
-    call MakeScratch()
-endfunction
-
 map <Leader>s :call NewScratchBuffer()<CR>
 map <Leader>v :so ~/.vimrc <CR> :echo "~/.vimrc loaded..." <CR>
 
@@ -190,13 +178,5 @@ map <Leader>v :so ~/.vimrc <CR> :echo "~/.vimrc loaded..." <CR>
 map <Leader>r :Shell 
 map !! :Shell <C-Up><CR>
 
-function! CloseAndQuit()
-    if winbufnr(2) == -1
-        :quit
-    else
-        :close
-    endif
-endfunction
-
 " close a window
-nmap <Leader>q :call CloseAndQuit() <CR>
+nmap <Leader>q :close <Cr>
