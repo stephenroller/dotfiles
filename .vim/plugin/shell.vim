@@ -3,7 +3,7 @@ let g:bufname = "*shell*"
 command! -complete=shellcmd -nargs=+ Shell call s:RunShellCommand(<q-args>)
 function! s:RunShellCommand(cmdline)
   let isfirst = 1
-  let words = []
+  let words = ['bash', '-c', '"']
   
   for word in split(a:cmdline)
     if isfirst
@@ -16,6 +16,7 @@ function! s:RunShellCommand(cmdline)
     endif
     call add(words, word)
   endfor
+  call add(words, '"')
   let expanded_cmdline = join(words)
 
   if bufnr(g:bufname) == -1
@@ -31,7 +32,7 @@ function! s:RunShellCommand(cmdline)
     normal dG
   endif
 
-  call append(line("$"), expanded_cmdline . ': ')
+  call append(line("$"), a:cmdline. ': ')
   call append(line("$"), "")
   " call append(line("$"), "============================")
   silent execute '$read !'. expanded_cmdline
