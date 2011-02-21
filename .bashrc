@@ -177,9 +177,11 @@ export PROMPT_COMMAND=prompt_command
 
 # FORTUNE
 which fortune > /dev/null 2>&1
-if [ "$?" == "0" ]
+if [ "$?" == "0" ] && [ "$CONQUE" != "1" ]
 then
 	echo
 	fortune
 	echo
 fi
+
+alias plsed="perl -i -p -e"

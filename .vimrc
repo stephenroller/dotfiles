@@ -167,7 +167,7 @@ inoremap <expr> <Esc>      pumvisible() ? "\<C-e>\<Esc>" : "\<Esc>"
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 
 " spell checking is a must
-set spell
+" set spell
 
 au FileType git-log set nospell
 
@@ -175,8 +175,21 @@ map <Leader>s :call NewScratchBuffer()<CR>
 map <Leader>v :so ~/.vimrc <CR> :echo "~/.vimrc loaded..." <CR>
 
 " Make it easier to run commands
-map <Leader>r :Shell 
-map !! :Shell <C-Up><CR>
+map <Leader>r :ConqueTermSplit 
+map !! :ConqueTermSplit <C-Up><CR>
+
+" terminal!
+" and some settings
+let g:ConqueTerm_TERM = 'xterm'
+let g:ConqueTerm_CloseOnEnd = 1
+let g:ConqueTerm_InsertOnEnter = 1
+let g:ConqueTerm_CWInsert = 1
+let g:ConqueTerm_ReadUnfocused = 1
+map <Leader>t :ConqueTermSplit bash<CR>
+
+nmap Zs :w<CR>
+
+
 
 " close a window
 nmap <Leader>q :close <Cr>
