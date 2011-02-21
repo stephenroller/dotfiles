@@ -88,6 +88,8 @@ alias pm="python manage.py"
 alias col1="awk '{print \$1}'"
 alias beep="echo -ne '\a'"
 alias beeploop="while [ 1 ]; do beep; sleep 2; done"
+alias plsed="perl -i -p -e"
+alias prowl="cprowl -a `cat ~/.prowlkey` -n `hostname` -d"
 
 function trash () {
 	mv $@ ~/.Trash/
@@ -184,4 +186,3 @@ then
 	echo
 fi
 
-alias plsed="perl -i -p -e"

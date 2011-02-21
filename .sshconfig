@@ -3,15 +3,10 @@ ServerAliveInterval 300
 ServerAlivecountMax 3
 
 Host dackz.net stephenroller.com srdotcom sr gumby
+    User stephen
 	HostName gumby.tweek.us
 	Port 420
 	LogLevel QUIET
-
-Host remote-linux.eos.ncsu.edu ncsu
-	HostName remote-linux.eos.ncsu.edu
-	Compression yes
-	ForwardX11Trusted yes
-	User scroller
 
 Host *getcourtside.com
 	User root
@@ -21,6 +16,7 @@ Host faith
 	HostName faith
 
 Host proxy tenniscores.com tennis
+    User stephen
 	HostName tenniscores.com
 	DynamicForward 9999
 	LocalForward 2525 localhost:25

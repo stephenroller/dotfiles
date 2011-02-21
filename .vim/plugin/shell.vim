@@ -12,7 +12,7 @@ function! s:RunShellCommand(cmdline)
       if word[0] =~ '\v[%#<]'
         let word = expand(word)
       endif
-      let word = shellescape(word, 1)
+      " let word = shellescape(word, 1)
     endif
     call add(words, word)
   endfor
@@ -33,6 +33,7 @@ function! s:RunShellCommand(cmdline)
   endif
 
   " call append(line("$"), a:cmdline. ': ')
+  call append(line("$"), expanded_cmdline. ': ')
   " call append(line("$"), "")
   " call append(line("$"), "============================")
   silent execute '$read !'. expanded_cmdline
