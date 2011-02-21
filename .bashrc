@@ -77,6 +77,7 @@ PATH=.:~/bin:$PATH
 
 alias irc="ssh -t gumby TERM=screen screen -t IRC -x -R -S irc irssi"
 alias rpg="ssh -t tennis TERM=screen screen -t RPG -x -R -S rpg /usr/games/bin/angband"
+alias prowl="cprowl -a `cat ~/.prowlkey` -n `hostname` -d"
 
 alias ..="cd .."
 alias ...="cd ../.."
@@ -183,3 +184,4 @@ then
 	fortune
 	echo
 fi
+

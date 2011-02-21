@@ -167,7 +167,7 @@ inoremap <expr> <Esc>      pumvisible() ? "\<C-e>\<Esc>" : "\<Esc>"
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 
 " spell checking is a must
-set spell
+" set spell
 
 au FileType git-log set nospell
 
