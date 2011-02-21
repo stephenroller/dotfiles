@@ -89,7 +89,10 @@ alias col1="awk '{print \$1}'"
 alias beep="echo -ne '\a'"
 alias beeploop="while [ 1 ]; do beep; sleep 2; done"
 alias plsed="perl -i -p -e"
-alias prowl="cprowl -a `cat ~/.prowlkey` -n `hostname` -d"
+
+function prowl () {
+    cprowl -e '' -a `cat ~/.prowlkey` -n `hostname` -d "$1" > /dev/null
+}
 
 function trash () {
 	mv $@ ~/.Trash/
