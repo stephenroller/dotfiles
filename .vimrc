@@ -193,3 +193,4 @@ nmap Zs :w<CR>
 
 " close a window
 nmap <Leader>q :close <Cr>
+
