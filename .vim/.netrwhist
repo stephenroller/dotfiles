@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/v/filer4b/v20q001/roller/schoolwork/2011-spring/nlp/project/prepro-corpus'
-let g:netrw_dirhist_2='/v/filer4b/v20q001/roller/schoolwork/2011-spring/nlp/project/corpus'
-let g:netrw_dirhist_3='/v/filer4b/v20q001/roller/software/source/vim-latex-1.8.23-20110214.1049-git089726a'
-let g:netrw_dirhist_4='/v/filer4b/v20q001/roller/working/dotfiles/.vim/plugin'
