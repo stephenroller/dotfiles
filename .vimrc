@@ -106,7 +106,7 @@ nmap <silent> <Leader>p :NERDTreeToggle <CR>
 set gfn=Inconsolata:h15.00
 set anti
 set guioptions=emgrtL
-colorscheme desert
+colorscheme default
 		
 " ghetto indenting
 nmap <silent> <D-]> :s?^?\t? <CR>
@@ -192,5 +192,5 @@ nmap Zs :w<CR>
 
 
 " close a window
-nmap <Leader>q :close <Cr>
+nmap <Leader>q :q <Cr>
 
