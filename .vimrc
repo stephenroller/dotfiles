@@ -27,6 +27,7 @@ set incsearch		" do incremental searching
 " 'cindent' is on in C files, etc.
 " Also load indent files, to automatically do language-dependent indenting.
 filetype plugin indent on
+filetype plugin on
 
 " Put these in an autocmd group, so that we can delete them easily.
 augroup vimrcEx
@@ -79,7 +80,7 @@ cab E e
 cab E! e!
 
 " remap ; to :. it's just one less keystroke, but all the time
-nnoremap ; :
+" nnoremap ; :
 
 " language specific stuff
 au FileType python set et sts=4 complete+=k~/.vim/ac/python.dict isk+=.,(
@@ -174,6 +175,8 @@ au FileType git-log set nospell
 map <Leader>s :call NewScratchBuffer()<CR>
 map <Leader>v :so ~/.vimrc <CR> :echo "~/.vimrc loaded..." <CR>
 
+map <Leader>l :echo @%<CR>
+
 " Make it easier to run commands
 map <Leader>r :ConqueTermSplit 
 map !! :ConqueTermSplit <C-Up><CR>
@@ -193,3 +196,7 @@ nmap Zs :w<CR>
 
 " close a window
 nmap <Leader>q :close <Cr>
+
+" options for latex-suite
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
