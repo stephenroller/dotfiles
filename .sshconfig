@@ -34,3 +34,14 @@ Host *.cs.utexas.edu
     User roller
 	LogLevel QUIET
 
+Host med medallion.hyperpublic.com
+    HostName medallion.hyperpublic.com
+    User sroller
+    LogLevel QUIET
+
+Host *.compute-1.amazonaws.com
+    User ubuntu
+    LogLevel QUIET
+    CheckHostIP no
+    StrictHostKeyChecking no
+
