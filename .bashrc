@@ -7,9 +7,12 @@ case `uname` in
 	Darwin)
 		export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
 		export PATH=/usr/local/MzScheme/bin:$PATH
+        export PATH=/Library/PostgreSQL/9.0/bin:$PATH
+        export PATH=/usr/local/share/mongo:$PATH
 		export GIT_PAGER="less"
 		export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
-		export EDITOR="mate_wait"
+		#export EDITOR="mate_wait"
+		export EDITOR="vim -f"
 		export CLICOLOR=1
 		export MANPATH=$MANPATH:/opt/local/share/man
 		export PYTHONPATH=$PYTHONPATH:/opt/local/lib/python2.5/site-packages/
@@ -47,7 +50,6 @@ case `uname` in
 			/Library/LaunchDaemons/org.macports.mysql5.plist"
 
 		alias backupsms="scp iphone:/var/mobile/Library/SMS/sms.db /Users/stephen/Documents/"
-        alias psql=psql83
 		
 		# puts the mac to sleep
 		alias zzz="osascript -e 'tell application \"System Events\" to sleep'"
@@ -55,6 +57,14 @@ case `uname` in
 		if [ -f /opt/local/etc/bash_completion ]; then
 		    . /opt/local/etc/bash_completion
 		fi
+
+        if [ -f `brew --prefix`/etc/bash_completion ]; then
+            . `brew --prefix`/etc/bash_completion
+        fi
+
+        if [ -f ~/.bashrc_private ]; then
+            source ~/.bashrc_private
+        fi
 
 		;;
 	Linux)
@@ -91,7 +101,7 @@ alias beeploop="while [ 1 ]; do beep; sleep 2; done"
 alias plsed="perl -i -p -e"
 
 function prowl () {
-    cprowl -e '' -a `cat ~/.prowlkey` -n `hostname` -d "$1" > /dev/null
+    curl -f 'https://api.prowlapp.com/publicapi/add' -d "apikey=`cat ~/.prowlkey | head -c 40`" --data-urlencode "description=$1" -d "application=`hostname`" > /dev/null 2>&1
 }
 
 function trash () {
@@ -114,6 +124,10 @@ function tolj () {
 
 function utsh () {
     ssh $1.cs.utexas.edu
+}
+
+function freq() {
+    sort $* | uniq -c | sort -rn;
 }
 
 
