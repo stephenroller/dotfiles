@@ -139,23 +139,48 @@ if [[ $TERM == "dumb" || $- != *i* ]] ; then
         return
 fi
 
+# colors stolen from http://www.logilab.org/blogentry/20255
+NO_COLOR="\[\033[0m\]"
+LIGHT_WHITE="\[\033[1;37m\]"
+WHITE="\[\033[0;37m\]"
+GRAY="\[\033[1;30m\]"
+BLACK="\[\033[0;30m\]"
+RED="\[\033[0;31m\]"
+LIGHT_RED="\[\033[1;31m\]"
+GREEN="\[\033[0;32m\]"
+LIGHT_GREEN="\[\033[1;32m\]"
+YELLOW="\[\033[0;33m\]"
+LIGHT_YELLOW="\[\033[1;33m\]"
+BLUE="\[\033[0;34m\]"
+LIGHT_BLUE="\[\033[1;34m\]"
+MAGENTA="\[\033[0;35m\]"
+LIGHT_MAGENTA="\[\033[1;35m\]"
+CYAN="\[\033[0;36m\]"
+LIGHT_CYAN="\[\033[1;36m\]"
+function EXT_COLOR () { echo -ne "\[\033[38;5;$1m\]"; }
+
+NICE_HOSTNAME=""
 case `hostname` in
-	"faith" )
-		COLOR="1;31";;
 	"neuace.tenniscores.com" )
-		COLOR="0;32";;
+		COLOR="$GREEN";;
 	"cheddar" )
-		COLOR="1;35";;
+		COLOR="$LIGHT_MAGENTA";;
 	"gumby.tweek.us" )
-		COLOR="1;34";;
+		COLOR="$LIGHT_BLUE";;
 	"chu-totoro")
-		COLOR="1;30";;
+		COLOR="$GRAY";;
     "provolone")
-        COLOR="1;33";;
+        COLOR="$LIGHT_YELLOW";;
 	*)
+        NICE_HOSTNAME="`hostname`"
 		COLOR="";;
 esac
 
+if [ -f /usr/bin/ec2metadata ]; then
+    HASH=$[ `hostname | md5sum | sed 's/[^0-9]//g' | head -c 6` % 180 + 13 ]
+    COLOR="`EXT_COLOR $HASH`"
+    NICE_HOSTNAME="`ec2metadata | grep public-hostname | awk '{print $2}' | sed 's/\..*$//' | sed 's/-/./g' | sed 's/\./-/'`"
+fi
 
 if [ $USER == "stephen" ]; then
 	nice_username="sr"
@@ -166,9 +191,9 @@ fi
 function prompt_command () {
 	GOOD=$?
 	
-	export PS1="\\[\\033[${COLOR}m\\]$nice_username"
-	if [ "$COLOR" == "" ]; then
-		export PS1="${PS1}@\\h"
+	export PS1="${COLOR}${nice_username}"
+	if [ "$NICE_HOSTNAME" != "" ]; then
+		export PS1="${PS1}@$NICE_HOSTNAME"
 	fi
 
 	WPATH=`echo $PWD | sed "s#$HOME#~#"`
@@ -181,14 +206,14 @@ function prompt_command () {
 		WPATH="\\W"
 	fi
 	
-	export PS1="${PS1} \\[\\033[00m\\]${WPATH} "
+	export PS1="${PS1} ${NO_COLOR}${WPATH} "
 
 	if [ $GOOD -eq 0 ]; then
-		export PS1="${PS1}\\[\\033[1;32m\\]"
+		export PS1="${PS1}${LIGHT_GREEN}"
 	else
-		export PS1="${PS1}\\[\\033[1;31m\\]"
+		export PS1="${PS1}${LIGHT_RED}"
 	fi
-	export PS1="${PS1}\\$\\[\\033[00m\\] "
+	export PS1="${PS1}\$${NO_COLOR} "
 }
 
 export PROMPT_COMMAND=prompt_command
