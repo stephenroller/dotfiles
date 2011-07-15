@@ -20,3 +20,4 @@ defnonblock on
 # Clear screen after fullscreen apps - top, vim. 
 altscreen on
 
+term xterm-256color
