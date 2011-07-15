@@ -107,7 +107,7 @@ nmap <silent> <Leader>p :NERDTreeToggle <CR>
 set gfn=Inconsolata:h15.00
 set anti
 set guioptions=emgrtL
-colorscheme default
+colorscheme stephen
 		
 " ghetto indenting
 nmap <silent> <D-]> :s?^?\t? <CR>
