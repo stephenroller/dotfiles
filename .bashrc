@@ -2,6 +2,7 @@
 
 export HISTCONTROL=ignoreboth
 export PAGER="less"
+export HISTSIZE=5000
 
 case `uname` in
 	Darwin)
