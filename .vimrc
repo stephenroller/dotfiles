@@ -83,7 +83,8 @@ cab E! e!
 " nnoremap ; :
 
 " language specific stuff
-au FileType python set et sts=4 complete+=k~/.vim/ac/python.dict isk+=.,(
+au FileType python set et sts=4 "complete+=k~/.vim/ac/python.dict isk+=.,(
+au FileType ruby set et sts=2
 au FileType php set complete+=k~/.vim/ac/php.dict isk+=.,(
 
 "set tags+=$HOME/.vim/tags/python.ctags
