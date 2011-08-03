@@ -3,6 +3,7 @@
 export HISTCONTROL=ignoreboth
 export PAGER="less"
 export HISTSIZE=5000
+export EDITOR="vim -f"
 
 case `uname` in
 	Darwin)
@@ -13,7 +14,6 @@ case `uname` in
 		export GIT_PAGER="less"
 		export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
 		#export EDITOR="mate_wait"
-		export EDITOR="vim -f"
 		export CLICOLOR=1
 		export MANPATH=$MANPATH:/opt/local/share/man
 		export PYTHONPATH=$PYTHONPATH:/opt/local/lib/python2.5/site-packages/
@@ -158,7 +158,8 @@ MAGENTA="\[\033[0;35m\]"
 LIGHT_MAGENTA="\[\033[1;35m\]"
 CYAN="\[\033[0;36m\]"
 LIGHT_CYAN="\[\033[1;36m\]"
-function EXT_COLOR () { echo -ne "\[\033[38;5;$1m\]"; }
+#function EXT_COLOR () { echo -ne "\[\033[38;5;$1m\]"; }
+function EXT_COLOR () { echo -ne "\033[38;5;$1m"; }
 
 NICE_HOSTNAME=""
 case `hostname` in
@@ -178,7 +179,7 @@ case `hostname` in
 esac
 
 if [ -f /usr/bin/ec2metadata ]; then
-    HASH=$[ `hostname | md5sum | sed 's/[^0-9]//g' | head -c 6` % 180 + 13 ]
+    HASH=$[ `ec2metadata | grep instance-id | md5sum | sed 's/[^0-9]//g' | head -c 6` % 180 + 13 ]
     COLOR="`EXT_COLOR $HASH`"
     NICE_HOSTNAME="`ec2metadata | grep public-hostname | awk '{print $2}' | sed 's/\..*$//' | sed 's/-/./g' | sed 's/\./-/'`"
 fi

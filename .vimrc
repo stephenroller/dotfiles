@@ -62,7 +62,8 @@ set nowrap
 
 set whichwrap=h,l,~,[,]
 
-set mouse=a
+"set mouse=a
+
 " always show line numbers
 set nu
 
@@ -202,3 +203,7 @@ nmap <Leader>q :q <Cr>
 set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 
+" show a line at 80 characters
+set cc=80
+" trailing whitespace
+set list listchars=tab:\ \ ,trail:·
