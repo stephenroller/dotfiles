@@ -51,6 +51,8 @@ case `uname` in
 			/Library/LaunchDaemons/org.macports.mysql5.plist"
 
 		alias backupsms="scp iphone:/var/mobile/Library/SMS/sms.db /Users/stephen/Documents/"
+
+        alias screensaverbg="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background"
 		
 		# puts the mac to sleep
 		alias zzz="osascript -e 'tell application \"System Events\" to sleep'"
@@ -115,7 +117,7 @@ function calc () {
 
 function tostorage () {
 	scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/uploaded/
-	echo "http://stephenroller.com/storage/uploaded/$1"
+	echo "http://stephenroller.com/storage/uploaded/`basename $1`"
 }
 
 function tolj () {

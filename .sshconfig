@@ -25,8 +25,8 @@ Host proxy tenniscores.com tennis
 Host tomato router
 	User root
 
-Host lab chu-totro totoro
-    HostName chu-totoro.cs.utexas.edu
+Host lab mak
+    HostName makurokurosuke.cs.utexas.edu
     User roller
     LogLevel QUIET
 
