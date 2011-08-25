@@ -205,6 +205,9 @@ set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 
 " show a line at 80 characters
-set cc=80
+if version >= 703
+    set cc=80
+endif
+
 " trailing whitespace
 set list listchars=tab:\ \ ,trail:·
