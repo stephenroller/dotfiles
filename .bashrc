@@ -65,10 +65,6 @@ case `uname` in
             . `brew --prefix`/etc/bash_completion
         fi
 
-        if [ -f ~/.bashrc_private ]; then
-            source ~/.bashrc_private
-        fi
-
 		;;
 	Linux)
 		eval `dircolors -b`
@@ -76,11 +72,15 @@ case `uname` in
 		;;
 esac
 
-if [ `hostname` == 'cheddar' ]
-then
-	alias snapshottm="/System/Library/CoreServices/backupd.bundle/Contents/Resources/backupd-helper"
+
+if [ -f ~/.bashrc_private ]; then
+    source ~/.bashrc_private
 fi
 
+if [ `hostname` == 'cheddar' ]
+then
+alias snapshottm="/System/Library/CoreServices/backupd.bundle/Contents/Resources/backupd-helper"
+fi
 
 export PYTHONSTARTUP="$HOME/.pythonrc.py"
 export PYTHONPATH=$PYTHONPATH:~/.hgext
@@ -169,9 +169,9 @@ case `hostname` in
 		COLOR="$GREEN";;
 	"cheddar" )
 		COLOR="$LIGHT_MAGENTA";;
-	"gumby.tweek.us" )
+	"sven.sf.io" )
 		COLOR="$LIGHT_BLUE";;
-	"chu-totoro")
+	"makurokurosuke")
 		COLOR="$GRAY";;
     "provolone")
         COLOR="$LIGHT_YELLOW";;
