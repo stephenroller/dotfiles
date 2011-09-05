@@ -79,7 +79,7 @@ fi
 
 if [ `hostname` == 'cheddar' ]
 then
-alias snapshottm="/System/Library/CoreServices/backupd.bundle/Contents/Resources/backupd-helper"
+    alias snapshottm="/System/Library/CoreServices/backupd.bundle/Contents/Resources/backupd-helper"
 fi
 
 export PYTHONSTARTUP="$HOME/.pythonrc.py"
@@ -88,6 +88,7 @@ export PYTHONPATH=$PYTHONPATH:~/.pylibs
 export PYTHONPATH=$PYTHONPATH:~/Working/transloc_modules
 PATH=.:~/bin:$PATH
 
+alias hdfs="hadoop fs"
 alias irc="ssh -t gumby TERM=screen screen -t IRC -x -R -S irc irssi"
 alias rpg="ssh -t tennis TERM=screen screen -t RPG -x -R -S rpg /usr/games/bin/angband"
 
