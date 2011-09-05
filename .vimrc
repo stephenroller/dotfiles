@@ -139,8 +139,8 @@ imap <silent> <D-/> <Esc> :call Comment() <CR> +
 
 " convenient mappings for FUF
 map <Leader>b :FufBuffer <CR>
-map <D-t> :FufFile <CR>
-map <C-f> :FufFile <CR>
+map <Leader>f :CommandT <CR>
+set wildignore+=*.o,*.obj,.git,*.pyc
 
 let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|swp|pyc|DS_Store)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
 
