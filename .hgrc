@@ -1,10 +1,7 @@
 [ui] 
-username = Stephen Roller <scroller@ncsu.edu>
+username = Stephen Roller <roller@cs.utexas.edu>
 
 [extensions]
-loc =
-alias =
-cdiff =
 children =
 fetch =
 parentrevspec =
