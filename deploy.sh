@@ -1,9 +1,13 @@
 #!/usr/bin/env bash
 
-for dotfile in .bashrc .hgrc .screenrc .vimrc .inputrc .pythonrc.py .gitconfig .vim
+for dotfile in .bashrc .hgrc .screenrc .vimrc .inputrc .pythonrc.py .gitconfig .nethackrc
 do
 	ln -fs "`pwd`/$dotfile" ~/$dotfile
 done
+
+if [ ! -s ~/.vim]; then
+    ln -s "`pwd`/.vim" ~/.vim
+fi
 
 # handle ssh config
 if [ ! -d ~/.ssh ]; then
