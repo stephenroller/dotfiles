@@ -15,7 +15,8 @@ Host sr sven
 	LogLevel QUIET
 
 Host longhorn
-    User dicta18
+    #User dicta18
+    User roller
     HostName longhorn.tacc.utexas.edu
     LogLevel QUIET
 

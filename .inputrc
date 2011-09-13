@@ -7,3 +7,5 @@ set bell-style none
 set completion-ignore-case on
 set blink-matching-paren on
 tab: complete
+set completion-prefix-display-length 2
+
