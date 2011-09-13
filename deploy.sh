@@ -5,7 +5,7 @@ do
 	ln -fs "`pwd`/$dotfile" ~/$dotfile
 done
 
-if [ ! -s ~/.vim]; then
+if [ ! -s ~/.vim ]; then
     ln -s "`pwd`/.vim" ~/.vim
 fi
 
