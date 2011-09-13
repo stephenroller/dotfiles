@@ -210,4 +210,7 @@ if version >= 703
 endif
 
 " trailing whitespace
-set list listchars=tab:\ \ ,trail:·
+if version >= 702
+    set list listchars=tab:\ \ ,trail:·
+endif
+

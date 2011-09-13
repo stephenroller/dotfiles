@@ -105,7 +105,7 @@ alias beeploop="while [ 1 ]; do beep; sleep 2; done"
 alias plsed="perl -i -p -e"
 
 function prowl () {
-    curl -f 'https://api.prowlapp.com/publicapi/add' -d "apikey=`cat ~/.prowlkey | head -c 40`" --data-urlencode "description=$1" -d "application=`hostname`" > /dev/null 2>&1
+    curl -f 'https://api.prowlapp.com/publicapi/add' -d "apikey=`cat ~/.prowlkey | head -c 40`" --data-binary "description=$1" -d "application=`hostname`" > /dev/null 2>&1
 }
 
 function trash () {
