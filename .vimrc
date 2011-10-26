@@ -147,8 +147,10 @@ let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|swp|pyc|DS_Store)$|(^|[/\\])\.(
 highlight Pmenu ctermbg=Black gui=bold ctermfg=Blue
 highlight PmenuSel ctermbg=Blue gui=bold ctermfg=White
 
-let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
-let g:SuperTabDefaultCompletionType = "context"
+"let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
+"let g:SuperTabDefaultCompletionType = "context"
+
+
 
 " ctrl-A and ctrl-E mapped everywhere
 inoremap <C-a> <Home>
@@ -166,7 +168,6 @@ set nofoldenable
 
 " the default keybindings for omnicompletion are awful
 inoremap <expr> <Esc>      pumvisible() ? "\<C-e>\<Esc>" : "\<Esc>"
-
 
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 
