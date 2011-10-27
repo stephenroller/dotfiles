@@ -2,7 +2,7 @@
 
 export HISTCONTROL=ignoreboth
 export PAGER="less"
-export HISTSIZE=5000
+export HISTSIZE=20000
 export EDITOR="vim -f"
 
 case `uname` in
