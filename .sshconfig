@@ -46,6 +46,13 @@ Host *.cs.utexas.edu
     User roller
 	LogLevel QUIET
 
+Host *.ling.utexas.edu
+    User roller
+    LogLevel QUIET
+
+Host quiche
+    HostName quiche.ling.utexas.edu
+
 Host med medallion.hyperpublic.com
     HostName medallion.hyperpublic.com
     User sroller
