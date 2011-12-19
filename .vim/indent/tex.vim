@@ -44,9 +44,9 @@
 " }}} 
 
 " Delete the next line to avoid the special indention of items
-if !exists("g:tex_indent_items")
-  let g:tex_indent_items = 1
-endif
+"if !exists("g:tex_indent_items")
+"  let g:tex_indent_items = 1
+"endif
 
 if exists("b:did_indent") | finish
 endif

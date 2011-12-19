@@ -8,11 +8,16 @@ Host gumby
 	Port 420
 	LogLevel QUIET
 
-Host sr sven
+Host sr sven stephenroller.com
     User stephen
 	HostName sven.sf.io
 	Port 420
 	LogLevel QUIET
+
+Host dlonghorn
+    User dicta18
+    HostName longhorn.tacc.utexas.edu
+    LogLevel QUIET
 
 Host longhorn
     #User dicta18

@@ -67,6 +67,9 @@ set whichwrap=h,l,~,[,]
 " always show line numbers
 set nu
 
+" i love spaces
+set et
+
 cab utf :set encoding=utf-8
 
 cab csmake :make<CR><CR>
@@ -88,6 +91,9 @@ set ai
 au FileType python set et sts=4 "complete+=k~/.vim/ac/python.dict isk+=.,(
 au FileType ruby set et sts=2 sw=4 ts=4
 au FileType php set complete+=k~/.vim/ac/php.dict isk+=.,(
+au FileType tex set sts=2 ts=2 sw=2 et iskeyword+=:
+au FileType tex let g:line_comment='% ' 
+au FileType scala set sts=2 ts=2 sw=2 et
 
 "set tags+=$HOME/.vim/tags/python.ctags
 
@@ -134,13 +140,13 @@ au FileType vim let g:line_comment='" '
 au FileType c let g:line_comment='// '
 au FileType java let g:line_comment='// '
 
-map <silent> <D-/> :call Comment() <CR>
-imap <silent> <D-/> <Esc> :call Comment() <CR> +
+map <silent> <leader>c :call Comment() <CR>
+" imap <silent> <leader>c <Esc> :call Comment() <CR> +
 
 " convenient mappings for FUF
 map <Leader>b :FufBuffer <CR>
 map <Leader>f :CommandT <CR>
-set wildignore+=*.o,*.obj,.git,*.pyc
+set wildignore+=*.o,*.obj,.git,*.pyc,*.class,*.jar
 
 let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|swp|pyc|DS_Store)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
 
@@ -153,7 +159,7 @@ let g:SuperTabDefaultCompletionType = "context"
 " ctrl-A and ctrl-E mapped everywhere
 inoremap <C-a> <Home>
 cnoremap <C-a> <Home>
-noremap <C-a> <Home>
+"noremap <C-a> <Home>
 inoremap <C-e> <End>
 cnoremap <C-e> <End>
 noremap <C-e> <End>
@@ -178,7 +184,8 @@ au FileType git-log set nospell
 map <Leader>s :call NewScratchBuffer()<CR>
 map <Leader>v :so ~/.vimrc <CR> :echo "~/.vimrc loaded..." <CR>
 
-map <Leader>l :echo @%<CR>
+set modeline
+set ls=2
 
 " Make it easier to run commands
 map <Leader>r :ConqueTermSplit 
@@ -200,17 +207,38 @@ nmap Zs :w<CR>
 " close a window
 nmap <Leader>q :q <Cr>
 
-" options for latex-suite
-set grepprg=grep\ -nH\ $*
-let g:tex_flavor='latex'
-
 " show a line at 80 characters
 if version >= 703
     set cc=80
 endif
 
 " trailing whitespace
-if version >= 702
-    set list listchars=tab:\ \ ,trail:·
+set list
+if version <= 702
+    set listchars=tab:>\ ,trail:-
+else
+    set listchars=tab:▸·,trail:·
 endif
 
+" test of white space: 	      	asdfasdf    
+
+" options for latex-suite
+set grepprg=grep\ -nH\ $*
+let g:tex_flavor='latex'
+
+" and vim-latex
+let g:Tex_MultipleCompileFormats="dvi,pdf"
+let g:Tex_DefaultTargetFormat="pdf"
+let g:Tex_CompileRule_pdf='pdflatex -synctex=1 --interaction=nonstopmode $*'
+let g:Tex_GotoError=0
+
+let g:Tex_IgnoreLevel=5
+let g:Tex_IgnoredWarnings ='
+      \"Underfull\n".
+      \"Overfull\n".
+      \"specifier changed to\n".
+      \"You have requested\n".
+      \"Missing number, treated as zero.\n".
+      \"There were undefined references\n".
+      \"Citation %.%# undefined\n".
+      \"\oval, \circle, or \line size unavailable\n"' 

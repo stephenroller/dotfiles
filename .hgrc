@@ -1,5 +1,6 @@
 [ui] 
 username = Stephen Roller <roller@cs.utexas.edu>
+merge = internal:merge
 
 [extensions]
 children =
