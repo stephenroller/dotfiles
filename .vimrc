@@ -215,7 +215,7 @@ endif
 " trailing whitespace
 set list
 if version <= 702
-    set listchars=tab:>\ ,trail:-
+    set listchars=tab:>-,trail:-
 else
     set listchars=tab:▸·,trail:·
 endif
