@@ -143,9 +143,7 @@ au FileType java let g:line_comment='// '
 map <silent> <leader>c :call Comment() <CR>
 " imap <silent> <leader>c <Esc> :call Comment() <CR> +
 
-" convenient mappings for FUF
-map <Leader>b :FufBuffer <CR>
-map <Leader>f :CommandT <CR>
+" map <Leader>f :CommandT <CR>
 set wildignore+=*.o,*.obj,.git,*.pyc,*.class,*.jar
 
 let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|swp|pyc|DS_Store)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
