@@ -143,10 +143,18 @@ au FileType java let g:line_comment='// '
 map <silent> <leader>c :call Comment() <CR>
 " imap <silent> <leader>c <Esc> :call Comment() <CR> +
 
-" map <Leader>f :CommandT <CR>
-set wildignore+=*.o,*.obj,.git,*.pyc,*.class,*.jar
+" Don't show these files in project and ctrlp, etc
+set wildignore+=*.o,*.obj,.git,*.pyc,*.class,*.jar,.DS_Store,*.bak,.hg
 
-let g:fuf_file_exclude = '\v\~$|\.(o|exe|dll|bak|swp|pyc|DS_Store)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])'
+" Bindings and settings for CtrlP
+" text mate style matching
+let g:ctrlp_by_filename = 1
+" key bindings
+map <silent> <leader>b :CtrlPBuffer <CR>
+let g:ctrlp_map = '<leader>f'
+
+
+
 
 highlight Pmenu ctermbg=Black gui=bold ctermfg=Blue
 highlight PmenuSel ctermbg=Blue gui=bold ctermfg=White
