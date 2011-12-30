@@ -488,9 +488,11 @@ function! conque_term#set_buffer_settings(command, pre_hooks) "{{{
     setlocal foldmethod=manual " don't fold on {{{}}} and stuff
     setlocal bufhidden=hide    " when buffer is no longer displayed, don't wipe it out
     setlocal noreadonly        " this is not actually a readonly buffer
+    setlocal nolist            " hide whitespace
     if v:version >= 703
         setlocal conceallevel=3
         setlocal concealcursor=nic
+        setlocal cc=           " no column bar
     endif
     setfiletype conque_term    " useful
     sil exe "setlocal syntax=" . g:ConqueTerm_Syntax
