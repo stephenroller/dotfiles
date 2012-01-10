@@ -57,6 +57,10 @@
 'snippets'	snipMate.txt	/*'snippets'*
 .snippet	snipMate.txt	/*.snippet*
 .snippets	snipMate.txt	/*.snippets*
+:Ack	ack.txt	/*:Ack*
+:AckAdd	ack.txt	/*:AckAdd*
+:AckFile	ack.txt	/*:AckFile*
+:AckFromSearch	ack.txt	/*:AckFromSearch*
 :CVSEdit	vcscommand.txt	/*:CVSEdit*
 :CVSEditors	vcscommand.txt	/*:CVSEditors*
 :CVSUnedit	vcscommand.txt	/*:CVSUnedit*
@@ -77,6 +81,8 @@
 :CtrlPQuickfix	ctrlp.txt	/*:CtrlPQuickfix*
 :CtrlPRoot	ctrlp.txt	/*:CtrlPRoot*
 :CtrlPTag	ctrlp.txt	/*:CtrlPTag*
+:LAck	ack.txt	/*:LAck*
+:LAckAdd	ack.txt	/*:LAckAdd*
 :NERDTree	NERD_tree.txt	/*:NERDTree*
 :NERDTreeClose	NERD_tree.txt	/*:NERDTreeClose*
 :NERDTreeFind	NERD_tree.txt	/*:NERDTreeFind*
@@ -511,6 +517,10 @@ VCSCommandVCSTypeOverride	vcscommand.txt	/*VCSCommandVCSTypeOverride*
 \vline	latexhelp.txt	/*\\vline*
 \vspace	latexhelp.txt	/*\\vspace*
 \width	latexhelp.txt	/*\\width*
+ack	ack.txt	/*ack*
+ack-author	ack.txt	/*ack-author*
+ack-mappings	ack.txt	/*ack-mappings*
+ack.txt	ack.txt	/*ack.txt*
 adding-bib-options	latex-suite.txt	/*adding-bib-options*
 akka	akka_info.txt	/*akka*
 akka-actor-!	akka_info.txt	/*akka-actor-!*
