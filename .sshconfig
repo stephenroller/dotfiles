@@ -14,13 +14,7 @@ Host sr sven stephenroller.com
 	Port 420
 	LogLevel QUIET
 
-Host dlonghorn
-    User dicta18
-    HostName longhorn.tacc.utexas.edu
-    LogLevel QUIET
-
-Host longhorn
-    #User dicta18
+Host longhorn lh
     User roller
     HostName longhorn.tacc.utexas.edu
     LogLevel QUIET
