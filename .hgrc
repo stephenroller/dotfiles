@@ -6,6 +6,8 @@ merge = internal:merge
 children =
 fetch =
 parentrevspec =
+graphlog =
+color =
 
 [alias]
 last = log -l

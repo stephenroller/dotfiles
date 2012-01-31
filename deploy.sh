@@ -17,8 +17,3 @@ if [ ! -d ~/.ssh ]; then
 fi
 ln -fs "`pwd`/.sshconfig" ~/.ssh/config
 
-# and handle special mercurial extensions
-rmdir ~/.hgext 2>/dev/null
-rm ~/.hgext 2>/dev/null
-ln -s `pwd`/.hgext ~/
-

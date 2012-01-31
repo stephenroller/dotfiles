@@ -18,6 +18,7 @@ set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set showcmd		" display incomplete commands
 set incsearch		" do incremental searching
+set hidden        " buffers can exist in background without a window
 
 " Don't use Ex mode, use Q for formatting
 "map Q gq
@@ -70,7 +71,8 @@ set nu
 " i love spaces
 set et
 
-cab utf :set encoding=utf-8
+" always use utf-8
+set encoding=utf-8
 
 cab csmake :make<CR><CR>
 
@@ -220,11 +222,7 @@ endif
 
 " trailing whitespace
 set list
-if version <= 702
-    set listchars=tab:>-,trail:-
-else
-    set listchars=tab:▸·,trail:·
-endif
+set listchars=tab:▸·,trail:·
 
 " test of white space: 	      	asdfasdf    
 
