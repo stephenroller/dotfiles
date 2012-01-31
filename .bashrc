@@ -68,7 +68,7 @@ case `uname` in
 		;;
 	Linux)
 		eval `dircolors -b`
-		alias ls="ls --color"
+		alias ls="ls --color=auto"
 		;;
 esac
 
