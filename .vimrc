@@ -91,7 +91,7 @@ cab E! e!
 " language specific stuff
 set ai
 au FileType python set et sts=4 "complete+=k~/.vim/ac/python.dict isk+=.,(
-au FileType ruby set et sts=2 sw=4 ts=4
+au FileType ruby set et sts=2 sw=2 ts=2
 au FileType php set complete+=k~/.vim/ac/php.dict isk+=.,(
 au FileType tex set sts=2 ts=2 sw=2 et iskeyword+=:
 au FileType tex let g:line_comment='% ' 
@@ -216,13 +216,13 @@ nmap Zs :w<CR>
 nmap <Leader>q :q <Cr>
 
 " show a line at 80 characters
-if version >= 703
-    set cc=80
-endif
+" if version >= 703
+"     set cc=80
+" endif
 
 " trailing whitespace
 set list
-set listchars=tab:▸·,trail:·
+set listchars=tab:▸·,trail:· ",eol:¬
 
 " test of white space: 	      	asdfasdf    
 
