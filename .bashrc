@@ -1,10 +1,17 @@
 # Stephen Roller's .bashrc.
 
+# ignore duplicate history items
 export HISTCONTROL=ignoreboth
-export PAGER="less"
+# big ass history
 export HISTSIZE=20000
-export EDITOR="vim -f"
+# and constantly edit the history file
+shopt -s histappend
 
+# choice editor, pager
+export PAGER="less"
+export EDITOR="vim"
+
+# some OS-specific stuff
 case `uname` in
 	Darwin)
 		export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
