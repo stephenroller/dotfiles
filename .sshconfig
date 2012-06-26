@@ -1,5 +1,5 @@
 Compression no
-ServerAliveInterval 300
+ServerAliveInterval 15
 ServerAlivecountMax 3
 
 Host gumby
@@ -62,4 +62,9 @@ Host *.compute-1.amazonaws.com
     LogLevel QUIET
     CheckHostIP no
     StrictHostKeyChecking no
+
+Host ims
+    HostName mohrenmeise.ims.uni-stuttgart.de
+    LogLevel QUIET
+    User roller
 

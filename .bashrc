@@ -29,7 +29,7 @@ case `uname` in
 		function proxy ()
 		{
 			sudo networksetup -setsocksfirewallproxystate Ethernet $1 &&
-			sudo networksetup -setsocksfirewallproxystate Airport $1
+			sudo networksetup -setsocksfirewallproxystate "Wi-Fi" $1
 		}
 		function proxyall ()
 		{
@@ -82,11 +82,6 @@ esac
 
 if [ -f ~/.bashrc_private ]; then
     source ~/.bashrc_private
-fi
-
-if [ `hostname` == 'cheddar' ]
-then
-    alias snapshottm="/System/Library/CoreServices/backupd.bundle/Contents/Resources/backupd-helper"
 fi
 
 export PYTHONSTARTUP="$HOME/.pythonrc.py"
@@ -175,7 +170,7 @@ NICE_HOSTNAME=""
 case `hostname` in
 	"neuace.tenniscores.com" )
 		COLOR="$GREEN";;
-	"cheddar" )
+	"cheddar.local" )
 		COLOR="$LIGHT_MAGENTA";;
 	"sven.sf.io" )
 		COLOR="$LIGHT_BLUE";;

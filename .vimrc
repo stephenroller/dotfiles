@@ -118,8 +118,8 @@ nmap <silent> <Leader>p :NERDTreeToggle <CR>
 set gfn=Inconsolata:h15.00
 set anti
 set guioptions=emgrtL
-colorscheme stephen
-		
+colorscheme stephen-xoria
+
 " ghetto indenting
 nmap <silent> <D-]> :s?^?\t? <CR>
 nmap <silent> <D-[> :s?^\t?? <CR>
@@ -137,6 +137,8 @@ endif
 function! Comment()
 	call CommentLineToEnd(g:line_comment)
 endfunction
+
+set pastetoggle=<leader>P
 
 au FileType vim let g:line_comment='" '
 au FileType c let g:line_comment='// '
@@ -245,4 +247,5 @@ let g:Tex_IgnoredWarnings ='
       \"Missing number, treated as zero.\n".
       \"There were undefined references\n".
       \"Citation %.%# undefined\n".
-      \"\oval, \circle, or \line size unavailable\n"' 
+      \"\oval, \circle, or \line size unavailable\n"'
+
