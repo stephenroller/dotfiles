@@ -96,6 +96,9 @@ au FileType php set complete+=k~/.vim/ac/php.dict isk+=.,(
 au FileType tex set sts=2 ts=2 sw=2 et iskeyword+=:
 au FileType tex let g:line_comment='% ' 
 au FileType scala set sts=2 ts=2 sw=2 et
+au FileType html set sts=2 ts=2 sw=2 et
+au FileType javascript set sts=2 ts=2 sw=2 et
+au FileType css set sts=2 ts=2 sw=2 et
 
 "set tags+=$HOME/.vim/tags/python.ctags
 
@@ -149,6 +152,7 @@ map <silent> <leader>c :call Comment() <CR>
 
 " Don't show these files in project and ctrlp, etc
 set wildignore+=*.o,*.obj,.git,*.pyc,*.class,*.jar,.DS_Store,*.bak,.hg
+set wildignore+=*.aux,*.bbl,*.blg,*.log,*.synctex.gz
 
 " Bindings and settings for CtrlP
 " text mate style matching
@@ -248,4 +252,10 @@ let g:Tex_IgnoredWarnings ='
       \"There were undefined references\n".
       \"Citation %.%# undefined\n".
       \"\oval, \circle, or \line size unavailable\n"'
+
+let g:vimclojure#ParenRainbow = 1
+
+
+au FileType tex nmap <Leader>B :split<CR><C-W>W:e bib.bib<CR>G
+nmap <Leader>P :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 
