@@ -13,55 +13,55 @@ export EDITOR="vim"
 
 # some OS-specific stuff
 case `uname` in
-	Darwin)
-		export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
-		export GIT_PAGER="less"
-		export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
-		#export EDITOR="mate_wait"
-		export CLICOLOR=1
-		export MANPATH=$MANPATH:/opt/local/share/man
-		export PYTHONPATH=$PYTHONPATH:/opt/local/lib/python2.5/site-packages/
+    Darwin)
+        export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
+        export GIT_PAGER="less"
+        export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
+        #export EDITOR="mate_wait"
+        export CLICOLOR=1
+        export MANPATH=$MANPATH:/opt/local/share/man
+        export PYTHONPATH=$PYTHONPATH:/opt/local/lib/python2.5/site-packages/
         export FALLBACK_DYLD_LIBRARY_PATH=/opt/local/lib:/opt/local/lib/postgresql83
-		
-		function proxy ()
-		{
-			sudo networksetup -setsocksfirewallproxystate Ethernet $1 &&
-			sudo networksetup -setsocksfirewallproxystate "Wi-Fi" $1
-		}
-		function proxyall ()
-		{
-			proxy on &&
-			ssh lab -D 9999;
-			proxy off
-		}
-		
-		function courtside ()
-		{
-			cd ~/Working/courtside
-			export DJANGO_SETTINGS_MODULE=settings.development_stephen
-			alias pmr="pm runserver"
-			alias pms="pm shell"
-			alias clear_cache="echo 'delete from cache;' | pm dbshell"
-		}
-		
-		alias dockflat="defaults write com.apple.dock no-glass -boolean YES; killall Dock"
-		alias dock3d="defaults write com.apple.dock no-glass -boolean NO; killall Dock"
-		alias flushdns="dscacheutil -flushcache"
+
+        function proxy ()
+        {
+            sudo networksetup -setsocksfirewallproxystate Ethernet $1 &&
+            sudo networksetup -setsocksfirewallproxystate "Wi-Fi" $1
+        }
+        function proxyall ()
+        {
+            proxy on &&
+            ssh lab -D 9999;
+            proxy off
+        }
+
+        function courtside ()
+        {
+            cd ~/Working/courtside
+            export DJANGO_SETTINGS_MODULE=settings.development_stephen
+            alias pmr="pm runserver"
+            alias pms="pm shell"
+            alias clear_cache="echo 'delete from cache;' | pm dbshell"
+        }
+
+        alias dockflat="defaults write com.apple.dock no-glass -boolean YES; killall Dock"
+        alias dock3d="defaults write com.apple.dock no-glass -boolean NO; killall Dock"
+        alias flushdns="dscacheutil -flushcache"
         alias screensaverbg="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background"
 
-		if [ -f /opt/local/etc/bash_completion ]; then
-		    . /opt/local/etc/bash_completion
-		fi
+        if [ -f /opt/local/etc/bash_completion ]; then
+            . /opt/local/etc/bash_completion
+        fi
 
         if [ -f `brew --prefix`/etc/bash_completion ]; then
             . `brew --prefix`/etc/bash_completion
         fi
 
-		;;
-	Linux)
-		eval `dircolors -b`
-		alias ls="ls --color=auto"
-		;;
+        ;;
+    Linux)
+        eval `dircolors -b`
+        alias ls="ls --color=auto"
+        ;;
 esac
 
 
@@ -88,13 +88,13 @@ function prowl () {
 }
 
 function tostorage () {
-	scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/uploaded/
-	echo "http://stephenroller.com/storage/uploaded/`basename $1`"
+    scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/uploaded/
+    echo "http://stephenroller.com/storage/uploaded/`basename $1`"
 }
 
 function torandom () {
-	scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/random/
-	echo "http://stephenroller.com/storage/random/`basename $1`"
+    scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/random/
+    echo "http://stephenroller.com/storage/random/`basename $1`"
 }
 
 function freq() {
@@ -133,19 +133,19 @@ function EXT_COLOR () { echo -ne "\033[38;5;$1m"; }
 
 NICE_HOSTNAME=""
 case `hostname` in
-	"neuace.tenniscores.com" )
-		COLOR="$GREEN";;
-	"cheddar.local" )
-		COLOR="$LIGHT_MAGENTA";;
-	"sven.sf.io" )
-		COLOR="$LIGHT_BLUE";;
-	"makurokurosuke")
-		COLOR="$GRAY";;
+    "neuace.tenniscores.com" )
+        COLOR="$GREEN";;
+    "cheddar.local" )
+        COLOR="$LIGHT_MAGENTA";;
+    "sven.sf.io" )
+        COLOR="$LIGHT_BLUE";;
+    "makurokurosuke")
+        COLOR="$GRAY";;
     "provolone")
         COLOR="$LIGHT_YELLOW";;
-	*)
+    *)
         NICE_HOSTNAME="`hostname`"
-		COLOR="";;
+        COLOR="";;
 esac
 
 if [ -f /usr/bin/ec2metadata ]; then
@@ -155,37 +155,37 @@ if [ -f /usr/bin/ec2metadata ]; then
 fi
 
 if [ $USER == "stephen" ]; then
-	nice_username="sr"
+    nice_username="sr"
 else
-	nice_username="$USER"
+    nice_username="$USER"
 fi
 
 function prompt_command () {
-	GOOD=$?
-	
-	export PS1="${COLOR}${nice_username}"
-	if [ "$NICE_HOSTNAME" != "" ]; then
-		export PS1="${PS1}@$NICE_HOSTNAME"
-	fi
+    GOOD=$?
 
-	WPATH=`echo $PWD | sed "s#$HOME#~#"`
-	WPATH2=""
-	while [ "$WPATH" != "$WPATH2" ]; do
-		WPATH2="$WPATH"
-		WPATH=`echo $WPATH | sed "s#/\(..\)[^/][^/]*/#/\\1/#"`
-	done
-	if [ `echo $WPATH | wc -c` -gt 20 ]; then
-		WPATH="\\W"
-	fi
-	
-	export PS1="${PS1} ${NO_COLOR}${WPATH} "
+    export PS1="${COLOR}${nice_username}"
+    if [ "$NICE_HOSTNAME" != "" ]; then
+        export PS1="${PS1}@$NICE_HOSTNAME"
+    fi
 
-	if [ $GOOD -eq 0 ]; then
-		export PS1="${PS1}${LIGHT_GREEN}"
-	else
-		export PS1="${PS1}${LIGHT_RED}"
-	fi
-	export PS1="${PS1}\$${NO_COLOR} "
+    WPATH=`echo $PWD | sed "s#$HOME#~#"`
+    WPATH2=""
+    while [ "$WPATH" != "$WPATH2" ]; do
+        WPATH2="$WPATH"
+        WPATH=`echo $WPATH | sed "s#/\(..\)[^/][^/]*/#/\\1/#"`
+    done
+    if [ `echo $WPATH | wc -c` -gt 20 ]; then
+        WPATH="\\W"
+    fi
+
+    export PS1="${PS1} ${NO_COLOR}${WPATH} "
+
+    if [ $GOOD -eq 0 ]; then
+        export PS1="${PS1}${LIGHT_GREEN}"
+    else
+        export PS1="${PS1}${LIGHT_RED}"
+    fi
+    export PS1="${PS1}\$${NO_COLOR} "
 }
 
 export PROMPT_COMMAND=prompt_command
@@ -195,8 +195,8 @@ export PROMPT_COMMAND=prompt_command
 which fortune > /dev/null 2>&1
 if [ "$?" == "0" ] && [ "$CONQUE" != "1" ]
 then
-	echo
-	fortune
-	echo
+    echo
+    fortune
+    echo
 fi
 
