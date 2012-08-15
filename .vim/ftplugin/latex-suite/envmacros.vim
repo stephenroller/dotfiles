@@ -202,71 +202,71 @@ call s:Tex_SpecialMacros('', 'EnvCommands.&Slides.', '&settime', '\settime', 0)
 call s:Tex_SpecialMacros('', 'EnvCommands.&Slides.', '&addtime', '\addtime', 0)
 call s:Tex_SpecialMacros('', '', '-sepenv0-', ' :', 0)
 " }}}
-" Lists {{{
-call s:Tex_SpecialMacros('ELI', '&Lists.',  'list', s:list)
-call s:Tex_SpecialMacros('EDE', '&Lists.',  'description', s:description)
-call s:Tex_EnvMacros('EEN', '&Lists.', 'enumerate')
-call s:Tex_EnvMacros('EIT', '&Lists.', 'itemize')
-call s:Tex_EnvMacros('ETI', '&Lists.', 'theindex')
-call s:Tex_EnvMacros('ETL', '&Lists.', 'trivlist')
-" }}}
-" Tables {{{
-call s:Tex_SpecialMacros('ETE', '&Tables.', 'table', s:table)
-call s:Tex_EnvMacros('ETG', '&Tables.', 'tabbing')
-call s:Tex_EnvMacros('',    '&Tables.', 'table*')
-call s:Tex_EnvMacros('',    '&Tables.', 'table2')
-call s:Tex_SpecialMacros('ETR', '&Tables.', 'tabular', s:tabular)
-call s:Tex_SpecialMacros('', '&Tables.', 'tabular*', s:tabular_star)
-" }}}
-" Math {{{
-call s:Tex_EnvMacros('EAR', '&Math.', 'array')
-call s:Tex_EnvMacros('EDM', '&Math.', 'displaymath')
-call s:Tex_EnvMacros('EEA', '&Math.', 'eqnarray')
-call s:Tex_EnvMacros('',    '&Math.', 'eqnarray*')
-call s:Tex_EnvMacros('EEQ', '&Math.', 'equation')
-call s:Tex_EnvMacros('EMA', '&Math.', 'math')
-" }}}
-" Structure {{{
-call s:Tex_SpecialMacros('EAR', 'Math.', 'array', s:array)
-call s:Tex_EnvMacros('EAB', '&Structure.', 'abstract')
-call s:Tex_EnvMacros('EAP', '&Structure.', 'appendix')
-call s:Tex_EnvMacros('ECE', '&Structure.', 'center')
-call s:Tex_EnvMacros('EDO', '&Structure.', 'document')
-call s:Tex_EnvMacros('EFC', '&Structure.', 'filecontents')
-call s:Tex_EnvMacros('',    '&Structure.', 'filecontents*')
-call s:Tex_EnvMacros('EFL', '&Structure.', 'flushleft')
-call s:Tex_EnvMacros('EFR', '&Structure.', 'flushright')
-call s:Tex_EnvMacros('EQN', '&Structure.', 'quotation')
-call s:Tex_EnvMacros('EQE', '&Structure.', 'quote')
-call s:Tex_EnvMacros('ESP', '&Structure.', 'sloppypar')
-call s:Tex_EnvMacros('ETI', '&Structure.', 'theindex')
-call s:Tex_EnvMacros('ETP', '&Structure.', 'titlepage')
-call s:Tex_EnvMacros('EVM', '&Structure.', 'verbatim')
-call s:Tex_EnvMacros('',    '&Structure.', 'verbatim*')
-call s:Tex_EnvMacros('EVE', '&Structure.', 'verse')
-call s:Tex_EnvMacros('ETB', '&Structure.', 'thebibliography')
-call s:Tex_SpecialMacros('', '&Structure.', '-sepstruct0-', ':', 0)
-call s:Tex_EnvMacros('ENO', '&Structure.', 'note')
-call s:Tex_EnvMacros('EOV', '&Structure.', 'overlay')
-call s:Tex_EnvMacros('ESL', '&Structure.', 'slide')
-" }}}
-" Sections {{{
-call s:Tex_SectionMacros('SPA', 'part')
-call s:Tex_SectionMacros('SCH', 'chapter')
-call s:Tex_SectionMacros('SSE', 'section')
-call s:Tex_SectionMacros('SSS', 'subsection')
-call s:Tex_SectionMacros('SS2', 'subsubsection')
-call s:Tex_SectionMacros('SPG', 'paragraph')
-call s:Tex_SectionMacros('SSP', 'subparagraph')
-" }}}
-" Miscellaneous {{{
-call s:Tex_SpecialMacros('', '', '-sepenv1-', ' :', 0)
-call s:Tex_SpecialMacros('EFI', '', 'figure', "\<C-r>=Tex_PutEnvironment('figure')\<CR>")
-call s:Tex_EnvMacros('', '', 'figure*')
-call s:Tex_EnvMacros('ELR', '', 'lrbox')
-call s:Tex_SpecialMacros('EMP', '', 'minipage', s:minipage)
-call s:Tex_SpecialMacros('EPI', '', 'picture', s:picture)
-" }}}
+" " Lists {{{
+" call s:Tex_SpecialMacros('ELI', '&Lists.',  'list', s:list)
+" call s:Tex_SpecialMacros('EDE', '&Lists.',  'description', s:description)
+" call s:Tex_EnvMacros('EEN', '&Lists.', 'enumerate')
+" call s:Tex_EnvMacros('EIT', '&Lists.', 'itemize')
+" call s:Tex_EnvMacros('ETI', '&Lists.', 'theindex')
+" call s:Tex_EnvMacros('ETL', '&Lists.', 'trivlist')
+" " }}}
+" " Tables {{{
+" call s:Tex_SpecialMacros('ETE', '&Tables.', 'table', s:table)
+" call s:Tex_EnvMacros('ETG', '&Tables.', 'tabbing')
+" call s:Tex_EnvMacros('',    '&Tables.', 'table*')
+" call s:Tex_EnvMacros('',    '&Tables.', 'table2')
+" call s:Tex_SpecialMacros('ETR', '&Tables.', 'tabular', s:tabular)
+" call s:Tex_SpecialMacros('', '&Tables.', 'tabular*', s:tabular_star)
+" " }}}
+" " Math {{{
+" call s:Tex_EnvMacros('EAR', '&Math.', 'array')
+" call s:Tex_EnvMacros('EDM', '&Math.', 'displaymath')
+" call s:Tex_EnvMacros('EEA', '&Math.', 'eqnarray')
+" call s:Tex_EnvMacros('',    '&Math.', 'eqnarray*')
+" call s:Tex_EnvMacros('EEQ', '&Math.', 'equation')
+" call s:Tex_EnvMacros('EMA', '&Math.', 'math')
+" " }}}
+" " Structure {{{
+" call s:Tex_SpecialMacros('EAR', 'Math.', 'array', s:array)
+" call s:Tex_EnvMacros('EAB', '&Structure.', 'abstract')
+" call s:Tex_EnvMacros('EAP', '&Structure.', 'appendix')
+" call s:Tex_EnvMacros('ECE', '&Structure.', 'center')
+" call s:Tex_EnvMacros('EDO', '&Structure.', 'document')
+" call s:Tex_EnvMacros('EFC', '&Structure.', 'filecontents')
+" call s:Tex_EnvMacros('',    '&Structure.', 'filecontents*')
+" call s:Tex_EnvMacros('EFL', '&Structure.', 'flushleft')
+" call s:Tex_EnvMacros('EFR', '&Structure.', 'flushright')
+" call s:Tex_EnvMacros('EQN', '&Structure.', 'quotation')
+" call s:Tex_EnvMacros('EQE', '&Structure.', 'quote')
+" call s:Tex_EnvMacros('ESP', '&Structure.', 'sloppypar')
+" call s:Tex_EnvMacros('ETI', '&Structure.', 'theindex')
+" call s:Tex_EnvMacros('ETP', '&Structure.', 'titlepage')
+" call s:Tex_EnvMacros('EVM', '&Structure.', 'verbatim')
+" call s:Tex_EnvMacros('',    '&Structure.', 'verbatim*')
+" call s:Tex_EnvMacros('EVE', '&Structure.', 'verse')
+" call s:Tex_EnvMacros('ETB', '&Structure.', 'thebibliography')
+" call s:Tex_SpecialMacros('', '&Structure.', '-sepstruct0-', ':', 0)
+" call s:Tex_EnvMacros('ENO', '&Structure.', 'note')
+" call s:Tex_EnvMacros('EOV', '&Structure.', 'overlay')
+" call s:Tex_EnvMacros('ESL', '&Structure.', 'slide')
+" " }}}
+" " Sections {{{
+" call s:Tex_SectionMacros('SPA', 'part')
+" call s:Tex_SectionMacros('SCH', 'chapter')
+" call s:Tex_SectionMacros('SSE', 'section')
+" call s:Tex_SectionMacros('SSS', 'subsection')
+" call s:Tex_SectionMacros('SS2', 'subsubsection')
+" call s:Tex_SectionMacros('SPG', 'paragraph')
+" call s:Tex_SectionMacros('SSP', 'subparagraph')
+" " }}}
+" " Miscellaneous {{{
+" call s:Tex_SpecialMacros('', '', '-sepenv1-', ' :', 0)
+" call s:Tex_SpecialMacros('EFI', '', 'figure', "\<C-r>=Tex_PutEnvironment('figure')\<CR>")
+" call s:Tex_EnvMacros('', '', 'figure*')
+" call s:Tex_EnvMacros('ELR', '', 'lrbox')
+" call s:Tex_SpecialMacros('EMP', '', 'minipage', s:minipage)
+" call s:Tex_SpecialMacros('EPI', '', 'picture', s:picture)
+" " }}}
 
 if g:Tex_CatchVisMapErrors
 	exe 'vnoremap '.g:Tex_Leader2."   :\<C-u>call ExecMap('".g:Tex_Leader2."', 'v')\<CR>"
