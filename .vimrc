@@ -8,7 +8,8 @@ map! [H 0i
 map [F $
 map! [F $a
 
-set sm
+" do you want regex magic?
+" set sm
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -141,11 +142,11 @@ vmap <silent> <D-[> :s?^\t?? <CR> gv
 
 " map command-/ to magic comment toggle like TextMate
 if !exists("g:line_comment")
-	let g:line_comment='# '
+    let g:line_comment='# '
 endif
 
 function! Comment()
-	call CommentLineToEnd(g:line_comment)
+     CommentLineToEnd(g:line_comment)
 endfunction
 
 set pastetoggle=<leader>P
@@ -237,7 +238,7 @@ nmap <Leader>q :q <Cr>
 set list
 set listchars=tab:▸·,trail:· ",eol:¬
 
-" test of white space: 	      	asdfasdf    
+" test of white space 	  	asdfasdf    
 
 " options for latex-suite
 set grepprg=grep\ -nH\ $*
