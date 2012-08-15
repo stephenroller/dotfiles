@@ -14,11 +14,18 @@ set sm
 set backspace=indent,eol,start
 
 set nobackup
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
-set hidden        " buffers can exist in background without a window
+" keep 500 lines of command line history
+set history=500
+" show the cursor position all the time
+set ruler
+" display incomplete commands
+set showcmd
+" do incremental searching
+set incsearch
+" highlight search results
+set hlsearch
+" buffers can exist in background without a window
+set hidden
 
 " Don't use Ex mode, use Q for formatting
 "map Q gq
