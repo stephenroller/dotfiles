@@ -63,6 +63,10 @@ Host *.compute-1.amazonaws.com
     CheckHostIP no
     StrictHostKeyChecking no
 
+Host *.ims.uni-stuttgart.de falke1 falke2 falke3 falke4 habicht1 habicht2 habicht3 habicht4 habicht5
+    LogLevel QUIET
+    User roller
+
 Host ims
     HostName mohrenmeise.ims.uni-stuttgart.de
     LogLevel QUIET

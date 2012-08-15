@@ -34,7 +34,7 @@ case `uname` in
 		function proxyall ()
 		{
 			proxy on &&
-			ssh tenniscores.com -D 9999 -L 2525:localhost:25;
+			ssh lab -D 9999;
 			proxy off
 		}
 		
@@ -122,6 +122,12 @@ function tostorage () {
 	scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/uploaded/
 	echo "http://stephenroller.com/storage/uploaded/`basename $1`"
 }
+
+function torandom () {
+	scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/random/
+	echo "http://stephenroller.com/storage/random/$1"
+}
+
 
 function tolj () {
 	scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/lj/
