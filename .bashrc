@@ -175,8 +175,8 @@ NICE_HOSTNAME=""
 case `hostname` in
 	"neuace.tenniscores.com" )
 		COLOR="$GREEN";;
-	"cheddar" )
-		COLOR="$LIGHT_MAGENTA";;
+	"mohrenmeise.ims.uni-stuttgart.de" )
+		COLOR="$MAGENTA";;
 	"sven.sf.io" )
 		COLOR="$LIGHT_BLUE";;
 	"makurokurosuke")
