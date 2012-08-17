@@ -8,17 +8,25 @@ map! [H 0i
 map [F $
 map! [F $a
 
-set sm
+" do you want regex magic?
+" set sm
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
 set nobackup
-set history=50		" keep 50 lines of command line history
-set ruler		" show the cursor position all the time
-set showcmd		" display incomplete commands
-set incsearch		" do incremental searching
-set hidden        " buffers can exist in background without a window
+" keep 500 lines of command line history
+set history=500
+" show the cursor position all the time
+set ruler
+" display incomplete commands
+set showcmd
+" do incremental searching
+set incsearch
+" highlight search results
+set hlsearch
+" buffers can exist in background without a window
+set hidden
 
 " Don't use Ex mode, use Q for formatting
 "map Q gq
@@ -96,6 +104,9 @@ au FileType php set complete+=k~/.vim/ac/php.dict isk+=.,(
 au FileType tex set sts=2 ts=2 sw=2 et iskeyword+=:
 au FileType tex let g:line_comment='% ' 
 au FileType scala set sts=2 ts=2 sw=2 et
+au FileType html set sts=2 ts=2 sw=2 et
+au FileType javascript set sts=2 ts=2 sw=2 et
+au FileType css set sts=2 ts=2 sw=2 et
 
 "set tags+=$HOME/.vim/tags/python.ctags
 
@@ -118,8 +129,8 @@ nmap <silent> <Leader>p :NERDTreeToggle <CR>
 set gfn=Inconsolata:h15.00
 set anti
 set guioptions=emgrtL
-colorscheme stephen
-		
+colorscheme stephen-xoria
+
 " ghetto indenting
 nmap <silent> <D-]> :s?^?\t? <CR>
 nmap <silent> <D-[> :s?^\t?? <CR>
@@ -131,12 +142,14 @@ vmap <silent> <D-[> :s?^\t?? <CR> gv
 
 " map command-/ to magic comment toggle like TextMate
 if !exists("g:line_comment")
-	let g:line_comment='# '
+    let g:line_comment='# '
 endif
 
 function! Comment()
-	call CommentLineToEnd(g:line_comment)
+     CommentLineToEnd(g:line_comment)
 endfunction
+
+set pastetoggle=<leader>P
 
 au FileType vim let g:line_comment='" '
 au FileType c let g:line_comment='// '
@@ -147,6 +160,7 @@ map <silent> <leader>c :call Comment() <CR>
 
 " Don't show these files in project and ctrlp, etc
 set wildignore+=*.o,*.obj,.git,*.pyc,*.class,*.jar,.DS_Store,*.bak,.hg
+set wildignore+=*.aux,*.bbl,*.blg,*.log,*.synctex.gz
 
 " Bindings and settings for CtrlP
 " text mate style matching
@@ -224,7 +238,7 @@ nmap <Leader>q :q <Cr>
 set list
 set listchars=tab:▸·,trail:· ",eol:¬
 
-" test of white space: 	      	asdfasdf    
+" test of white space 	  	asdfasdf    
 
 " options for latex-suite
 set grepprg=grep\ -nH\ $*
@@ -245,4 +259,11 @@ let g:Tex_IgnoredWarnings ='
       \"Missing number, treated as zero.\n".
       \"There were undefined references\n".
       \"Citation %.%# undefined\n".
-      \"\oval, \circle, or \line size unavailable\n"' 
+      \"\oval, \circle, or \line size unavailable\n"'
+
+let g:vimclojure#ParenRainbow = 1
+
+
+au FileType tex nmap <Leader>B :split<CR><C-W>W:e bib.bib<CR>G
+nmap <Leader>P :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+

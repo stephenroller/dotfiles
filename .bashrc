@@ -13,70 +13,55 @@ export EDITOR="vim"
 
 # some OS-specific stuff
 case `uname` in
-	Darwin)
-		export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
-		export PATH=/usr/local/MzScheme/bin:$PATH
-        export PATH=/Library/PostgreSQL/9.0/bin:$PATH
-        export PATH=/usr/local/share/mongo:$PATH
-		export GIT_PAGER="less"
-		export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
-		#export EDITOR="mate_wait"
-		export CLICOLOR=1
-		export MANPATH=$MANPATH:/opt/local/share/man
-		export PYTHONPATH=$PYTHONPATH:/opt/local/lib/python2.5/site-packages/
+    Darwin)
+        export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
+        export GIT_PAGER="less"
+        export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
+        #export EDITOR="mate_wait"
+        export CLICOLOR=1
+        export MANPATH=$MANPATH:/opt/local/share/man
+        export PYTHONPATH=$PYTHONPATH:/opt/local/lib/python2.5/site-packages/
         export FALLBACK_DYLD_LIBRARY_PATH=/opt/local/lib:/opt/local/lib/postgresql83
-		
-		function proxy ()
-		{
-			sudo networksetup -setsocksfirewallproxystate Ethernet $1 &&
-			sudo networksetup -setsocksfirewallproxystate Airport $1
-		}
-		function proxyall ()
-		{
-			proxy on &&
-			ssh tenniscores.com -D 9999 -L 2525:localhost:25;
-			proxy off
-		}
-		
-		function courtside ()
-		{
-			cd ~/Working/courtside
-			export DJANGO_SETTINGS_MODULE=settings.development_stephen
-			alias pmr="pm runserver"
-			alias pms="pm shell"
-			alias clear_cache="echo 'delete from cache;' | pm dbshell"
-		}
-		
-		alias mzscheme="rlwrap mzscheme"
-		alias dockflat="defaults write com.apple.dock no-glass -boolean YES; killall Dock"
-		alias dock3d="defaults write com.apple.dock no-glass -boolean NO; killall Dock"
-		alias flushdns="dscacheutil -flushcache"
-		alias port="sudo port"
-		alias startmysql="sudo launchctl load -w \
-			/Library/LaunchDaemons/org.macports.mysql5.plist"
-		alias stopmysql="sudo launchctl unload -w \
-			/Library/LaunchDaemons/org.macports.mysql5.plist"
 
-		alias backupsms="scp iphone:/var/mobile/Library/SMS/sms.db /Users/stephen/Documents/"
+        function proxy ()
+        {
+            sudo networksetup -setsocksfirewallproxystate Ethernet $1 &&
+            sudo networksetup -setsocksfirewallproxystate "Wi-Fi" $1
+        }
+        function proxyall ()
+        {
+            proxy on &&
+            ssh lab -D 9999;
+            proxy off
+        }
 
+        function courtside ()
+        {
+            cd ~/Working/courtside
+            export DJANGO_SETTINGS_MODULE=settings.development_stephen
+            alias pmr="pm runserver"
+            alias pms="pm shell"
+            alias clear_cache="echo 'delete from cache;' | pm dbshell"
+        }
+
+        alias dockflat="defaults write com.apple.dock no-glass -boolean YES; killall Dock"
+        alias dock3d="defaults write com.apple.dock no-glass -boolean NO; killall Dock"
+        alias flushdns="dscacheutil -flushcache"
         alias screensaverbg="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background"
-		
-		# puts the mac to sleep
-		alias zzz="osascript -e 'tell application \"System Events\" to sleep'"
 
-		if [ -f /opt/local/etc/bash_completion ]; then
-		    . /opt/local/etc/bash_completion
-		fi
+        if [ -f /opt/local/etc/bash_completion ]; then
+            . /opt/local/etc/bash_completion
+        fi
 
         if [ -f `brew --prefix`/etc/bash_completion ]; then
             . `brew --prefix`/etc/bash_completion
         fi
 
-		;;
-	Linux)
-		eval `dircolors -b`
-		alias ls="ls --color=auto"
-		;;
+        ;;
+    Linux)
+        eval `dircolors -b`
+        alias ls="ls --color=auto"
+        ;;
 esac
 
 
@@ -84,57 +69,32 @@ if [ -f ~/.bashrc_private ]; then
     source ~/.bashrc_private
 fi
 
-if [ `hostname` == 'cheddar' ]
-then
-    alias snapshottm="/System/Library/CoreServices/backupd.bundle/Contents/Resources/backupd-helper"
-fi
-
 export PYTHONSTARTUP="$HOME/.pythonrc.py"
-export PYTHONPATH=$PYTHONPATH:~/.hgext
 export PYTHONPATH=$PYTHONPATH:~/.pylibs
-export PYTHONPATH=$PYTHONPATH:~/Working/transloc_modules
 PATH=.:~/bin:$PATH
 
 alias hdfs="hadoop fs"
-alias irc="ssh -t gumby TERM=screen screen -t IRC -x -R -S irc irssi"
-alias rpg="ssh -t tennis TERM=screen screen -t RPG -x -R -S rpg /usr/games/bin/angband"
-
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias screen="screen -q"
-alias clisp="clisp -q"
 alias delete_orig="find ./ -name '*.orig' -exec rm {} ';'"
 alias pm="python manage.py"
-alias col1="awk '{print \$1}'"
 alias beep="echo -ne '\a'"
 alias beeploop="while [ 1 ]; do beep; sleep 2; done"
-alias plsed="perl -i -p -e"
 
 function prowl () {
     curl -f 'https://api.prowlapp.com/publicapi/add' -d "apikey=`cat ~/.prowlkey | head -c 40`" --data-binary "description=$1" -d "application=`hostname`" > /dev/null 2>&1
 }
 
-function trash () {
-	mv $@ ~/.Trash/
-}
-
-function calc () {
-	echo "$@" | bc -l -q -i
-}
-
 function tostorage () {
-	scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/uploaded/
-	echo "http://stephenroller.com/storage/uploaded/`basename $1`"
+    scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/uploaded/
+    echo "http://stephenroller.com/storage/uploaded/`basename $1`"
 }
 
-function tolj () {
-	scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/lj/
-	echo "http://stephenroller.com/storage/lj/$1"
-}
-
-function utsh () {
-    ssh $1.cs.utexas.edu
+function torandom () {
+    scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/random/
+    echo "http://stephenroller.com/storage/random/`basename $1`"
 }
 
 function freq() {
@@ -146,8 +106,8 @@ function freq() {
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
 if [[ $TERM == "dumb" || $- != *i* ]] ; then
-        # Shell is non-interactive.  Be done now!
-        return
+    # Shell is non-interactive.  Be done now!
+    return
 fi
 
 # colors stolen from http://www.logilab.org/blogentry/20255
@@ -173,19 +133,19 @@ function EXT_COLOR () { echo -ne "\033[38;5;$1m"; }
 
 NICE_HOSTNAME=""
 case `hostname` in
-	"neuace.tenniscores.com" )
-		COLOR="$GREEN";;
-	"mohrenmeise.ims.uni-stuttgart.de" )
-		COLOR="$MAGENTA";;
-	"sven.sf.io" )
-		COLOR="$LIGHT_BLUE";;
-	"makurokurosuke")
-		COLOR="$GRAY";;
+    "neuace.tenniscores.com" )
+        COLOR="$GREEN";;
+    "mohrenmeise.ims.uni-stuttgart.de" )
+        COLOR="$MAGENTA";;
+    "sven.sf.io" )
+        COLOR="$LIGHT_BLUE";;
+    "makurokurosuke")
+        COLOR="$GRAY";;
     "provolone")
         COLOR="$LIGHT_YELLOW";;
-	*)
+    *)
         NICE_HOSTNAME="`hostname`"
-		COLOR="";;
+        COLOR="";;
 esac
 
 if [ -f /usr/bin/ec2metadata ]; then
@@ -195,37 +155,37 @@ if [ -f /usr/bin/ec2metadata ]; then
 fi
 
 if [ $USER == "stephen" ]; then
-	nice_username="sr"
+    nice_username="sr"
 else
-	nice_username="$USER"
+    nice_username="$USER"
 fi
 
 function prompt_command () {
-	GOOD=$?
-	
-	export PS1="${COLOR}${nice_username}"
-	if [ "$NICE_HOSTNAME" != "" ]; then
-		export PS1="${PS1}@$NICE_HOSTNAME"
-	fi
+    GOOD=$?
 
-	WPATH=`echo $PWD | sed "s#$HOME#~#"`
-	WPATH2=""
-	while [ "$WPATH" != "$WPATH2" ]; do
-		WPATH2="$WPATH"
-		WPATH=`echo $WPATH | sed "s#/\(..\)[^/][^/]*/#/\\1/#"`
-	done
-	if [ `echo $WPATH | wc -c` -gt 20 ]; then
-		WPATH="\\W"
-	fi
-	
-	export PS1="${PS1} ${NO_COLOR}${WPATH} "
+    export PS1="${COLOR}${nice_username}"
+    if [ "$NICE_HOSTNAME" != "" ]; then
+        export PS1="${PS1}@$NICE_HOSTNAME"
+    fi
 
-	if [ $GOOD -eq 0 ]; then
-		export PS1="${PS1}${LIGHT_GREEN}"
-	else
-		export PS1="${PS1}${LIGHT_RED}"
-	fi
-	export PS1="${PS1}\$${NO_COLOR} "
+    WPATH=`echo $PWD | sed "s#$HOME#~#"`
+    WPATH2=""
+    while [ "$WPATH" != "$WPATH2" ]; do
+        WPATH2="$WPATH"
+        WPATH=`echo $WPATH | sed "s#/\(..\)[^/][^/]*/#/\\1/#"`
+    done
+    if [ `echo $WPATH | wc -c` -gt 20 ]; then
+        WPATH="\\W"
+    fi
+
+    export PS1="${PS1} ${NO_COLOR}${WPATH} "
+
+    if [ $GOOD -eq 0 ]; then
+        export PS1="${PS1}${LIGHT_GREEN}"
+    else
+        export PS1="${PS1}${LIGHT_RED}"
+    fi
+    export PS1="${PS1}\$${NO_COLOR} "
 }
 
 export PROMPT_COMMAND=prompt_command
@@ -235,8 +195,8 @@ export PROMPT_COMMAND=prompt_command
 which fortune > /dev/null 2>&1
 if [ "$?" == "0" ] && [ "$CONQUE" != "1" ]
 then
-	echo
-	fortune
-	echo
+    echo
+    fortune
+    echo
 fi
 
