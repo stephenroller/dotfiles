@@ -8,7 +8,7 @@ export HISTSIZE=20000
 shopt -s histappend
 
 # choice editor, pager
-export PAGER="less"
+export PAGER="less -R"
 export EDITOR="vim"
 
 # some OS-specific stuff
@@ -25,8 +25,8 @@ case `uname` in
 
         function proxy ()
         {
-            sudo networksetup -setsocksfirewallproxystate Ethernet $1 &&
-            sudo networksetup -setsocksfirewallproxystate "Wi-Fi" $1
+            sudo /usr/sbin/networksetup -setsocksfirewallproxystate Ethernet $1 &&
+            sudo /usr/sbin/networksetup -setsocksfirewallproxystate "Wi-Fi" $1
         }
         function proxyall ()
         {
@@ -99,6 +99,10 @@ function torandom () {
 
 function freq() {
     sort $* | uniq -c | sort -rn;
+}
+
+function sample() {
+    awk 'BEGIN { srand() } {print rand() "|" $0}' | sort -gn | head -n $1 | sed 's/^[0-9.]*|//'
 }
 
 

@@ -204,14 +204,14 @@ inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 au FileType git-log set nospell
 
 map <Leader>s :call NewScratchBuffer()<CR>
-map <Leader>v :so ~/.vimrc <CR> :echo "~/.vimrc loaded..." <CR>
+map <Leader>V :so ~/.vimrc <CR> :echo "~/.vimrc loaded..." <CR>
 
 set modeline
 set ls=2
 
 " Make it easier to run commands
-map <Leader>r :ConqueTermSplit 
-map !! :ConqueTermSplit <C-Up><CR>
+map <Leader>r :VimuxPromptCommand <CR>
+map !! :ViMuxRunLastCommand<CR>
 
 " terminal!
 " and some settings
