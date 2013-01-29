@@ -82,6 +82,7 @@ alias delete_orig="find ./ -name '*.orig' -exec rm {} ';'"
 alias pm="python manage.py"
 alias beep="echo -ne '\a'"
 alias beeploop="while [ 1 ]; do beep; sleep 2; done"
+alias ipython="ipython --no-confirm-exit --no-banner"
 
 function prowl () {
     curl -f 'https://api.prowlapp.com/publicapi/add' -d "apikey=`cat ~/.prowlkey | head -c 40`" --data-binary "description=$1" -d "application=`hostname`" > /dev/null 2>&1
