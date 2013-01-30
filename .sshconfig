@@ -68,7 +68,7 @@ Host *.ims.uni-stuttgart.de falke1 falke2 falke3 falke4 habicht1 habicht2 habich
     User roller
 
 Host ims
-    HostName mohrenmeise.ims.uni-stuttgart.de
+    HostName trauerseeschwalbe.ims.uni-stuttgart.de
     LogLevel QUIET
     User roller
 
