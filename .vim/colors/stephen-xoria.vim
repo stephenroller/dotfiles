@@ -52,7 +52,7 @@ hi PmenuSbar                              ctermbg=243 guibg=#767676
 hi PmenuSel     ctermfg=0   guifg=#000000 ctermbg=243 guibg=#767676
 hi PmenuThumb                             ctermbg=252 guibg=#d0d0d0
 hi Search       ctermfg=0   guifg=#000000 ctermbg=149 guibg=#afdf5f
-hi SignColumn   ctermfg=248 guifg=#a8a8a8
+hi SignColumn   ctermfg=248 guifg=#a8a8a8 ctermbg=bg guibg=bg
 hi SpecialKey   ctermfg=77  guifg=#5fdf5f
 hi StatusLine                             ctermbg=239 guibg=#4e4e4e cterm=bold gui=bold
 hi StatusLineNC                           ctermbg=237 guibg=#3a3a3a cterm=none gui=none

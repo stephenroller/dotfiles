@@ -1,5 +1,3 @@
-" Use Vim settings, rather then Vi settings (much better!).
-" This must be first, because it changes other options as a side effect.
 set nocompatible
 set nohls
 
@@ -7,6 +5,9 @@ map [H 0
 map! [H 0i
 map [F $
 map! [F $a
+
+" load modules early
+execute pathogen#infect()
 
 " do you want regex magic?
 " set sm
@@ -107,13 +108,15 @@ au FileType scala set sts=2 ts=2 sw=2 et
 au FileType html set sts=2 ts=2 sw=2 et
 au FileType javascript set sts=2 ts=2 sw=2 et
 au FileType css set sts=2 ts=2 sw=2 et
+au FileType c set et sts=2 sw=2 ts=2
+au FileType cpp set et sts=2 sw=2 ts=2
 
 "set tags+=$HOME/.vim/tags/python.ctags
 
 set noswf " no swap file
 
 " so you don't have to remember to reload your docs
-helptags ~/.vim/doc
+" #helptags ~/.vim/doc
 
 " convenient mappings for paging through text
 map <Space> <PageDown>
@@ -161,6 +164,10 @@ map <silent> <leader>c :call Comment() <CR>
 " Don't show these files in project and ctrlp, etc
 set wildignore+=*.o,*.obj,.git,*.pyc,*.class,*.jar,.DS_Store,*.bak,.hg
 set wildignore+=*.aux,*.bbl,*.blg,*.log,*.synctex.gz
+" scala stuff
+set wildignore+=target
+" and hadoop stuff
+set wildignore+=.*.crc
 
 " Bindings and settings for CtrlP
 " text mate style matching
