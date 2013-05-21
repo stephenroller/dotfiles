@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-for dotfile in .bashrc .hgrc .screenrc .vimrc .inputrc .pythonrc.py .gitconfig .nethackrc .tmux.conf .ipython
+for dotfile in .bashrc .vimrc .inputrc .pythonrc.py .gitconfig .nethackrc .tmux.conf .ipython .zshrc .profile.d
 do
 	ln -fs "`pwd`/$dotfile" ~/$dotfile
 done
