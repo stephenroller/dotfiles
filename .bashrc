@@ -7,104 +7,22 @@ export HISTSIZE=20000
 # and constantly edit the history file
 shopt -s histappend
 
-# choice editor, pager
-export PAGER="less -R"
-export EDITOR="vim"
+# load everything else
+source "$HOME/.profile.d/aliases"
+source "$HOME/.profile.d/functions"
+source "$HOME/.profile.d/vars"
 
-# some OS-specific stuff
-case `uname` in
-    Darwin)
-        export PATH=/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH
-        export GIT_PAGER="less"
-        export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
-        #export EDITOR="mate_wait"
-        export CLICOLOR=1
-        export MANPATH=$MANPATH:/opt/local/share/man
-        export PYTHONPATH=$PYTHONPATH:/opt/local/lib/python2.5/site-packages/
-        export FALLBACK_DYLD_LIBRARY_PATH=/opt/local/lib:/opt/local/lib/postgresql83
-
-        function proxy ()
-        {
-            sudo /usr/sbin/networksetup -setsocksfirewallproxystate Ethernet $1 &&
-            sudo /usr/sbin/networksetup -setsocksfirewallproxystate "Wi-Fi" $1
-        }
-        function proxyall ()
-        {
-            proxy on &&
-            ssh lab -D 9999;
-            proxy off
-        }
-
-        function courtside ()
-        {
-            cd ~/Working/courtside
-            export DJANGO_SETTINGS_MODULE=settings.development_stephen
-            alias pmr="pm runserver"
-            alias pms="pm shell"
-            alias clear_cache="echo 'delete from cache;' | pm dbshell"
-        }
-
-        alias dockflat="defaults write com.apple.dock no-glass -boolean YES; killall Dock"
-        alias dock3d="defaults write com.apple.dock no-glass -boolean NO; killall Dock"
-        alias flushdns="dscacheutil -flushcache"
-        alias screensaverbg="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background"
-
-        if [ -f /opt/local/etc/bash_completion ]; then
-            . /opt/local/etc/bash_completion
-        fi
-
-        if [ -f `brew --prefix`/etc/bash_completion ]; then
-            . `brew --prefix`/etc/bash_completion
-        fi
-
-        ;;
-    Linux)
-        eval `dircolors -b`
-        alias ls="ls --color=auto"
-        ;;
-esac
-
-
-if [ -f ~/.bashrc_private ]; then
-    source ~/.bashrc_private
+if [ -f "$HOME/.profile.d/uname/`uname`" ]; then
+    source "$HOME/.profile.d/uname/`uname`"
 fi
 
-export PYTHONSTARTUP="$HOME/.pythonrc.py"
-export PYTHONPATH=$PYTHONPATH:~/.pylibs
-PATH=.:~/bin:$PATH
+if [ -f $HOME/.profile.private ]; then
+    source $HOME/.profile.private
+fi
 
-alias hdfs="hadoop fs"
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias screen="screen -q"
-alias delete_orig="find ./ -name '*.orig' -exec rm {} ';'"
-alias pm="python manage.py"
-alias beep="echo -ne '\a'"
-alias beeploop="while [ 1 ]; do beep; sleep 2; done"
-alias ipython="ipython --no-confirm-exit --no-banner"
-
-function prowl () {
-    curl -f 'https://api.prowlapp.com/publicapi/add' -d "apikey=`cat ~/.prowlkey | head -c 40`" --data-binary "description=$1" -d "application=`hostname`" > /dev/null 2>&1
-}
-
-function tostorage () {
-    scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/uploaded/
-    echo "http://stephenroller.com/storage/uploaded/`basename $1`"
-}
-
-function torandom () {
-    scp -r "$1" stephenroller.com:~/www/stephenroller.com/storage/random/
-    echo "http://stephenroller.com/storage/random/`basename $1`"
-}
-
-function freq() {
-    sort $* | uniq -c | sort -rn;
-}
-
-function sample() {
-    awk 'BEGIN { srand() } {print rand() "|" $0}' | sort -gn | head -n $1 | sed 's/^[0-9.]*|//'
-}
+if [ -f $HOME/.bashrc_private ]; then
+    source $HOME/.bashrc_private
+fi
 
 
 # Test for an interactive shell.  There is no need to set anything
@@ -114,6 +32,9 @@ if [[ $TERM == "dumb" || $- != *i* ]] ; then
     # Shell is non-interactive.  Be done now!
     return
 fi
+
+source "$HOME/.profile.d/interactive"
+
 
 # colors stolen from http://www.logilab.org/blogentry/20255
 NO_COLOR="\[\033[0m\]"
@@ -153,20 +74,14 @@ case `hostname` in
         COLOR="";;
 esac
 
-if [ -f /usr/bin/ec2metadata ]; then
-    HASH=$[ `ec2metadata | grep instance-id | md5sum | sed 's/[^0-9]//g' | head -c 6` % 180 + 13 ]
-    COLOR="`EXT_COLOR $HASH`"
-    NICE_HOSTNAME="`ec2metadata | grep public-hostname | awk '{print $2}' | sed 's/\..*$//' | sed 's/-/./g' | sed 's/\./-/'`"
-fi
-
-if [ $USER == "stephen" ]; then
-    nice_username="sr"
-else
-    nice_username="$USER"
-fi
-
 function prompt_command () {
     GOOD=$?
+
+    if [ $USER == "stephen" ]; then
+        nice_username="sr"
+    else
+        nice_username="$USER"
+    fi
 
     export PS1="${COLOR}${nice_username}"
     if [ "$NICE_HOSTNAME" != "" ]; then
@@ -195,13 +110,4 @@ function prompt_command () {
 
 export PROMPT_COMMAND=prompt_command
 
-
-# FORTUNE
-which fortune > /dev/null 2>&1
-if [ "$?" == "0" ] && [ "$CONQUE" != "1" ]
-then
-    echo
-    fortune
-    echo
-fi
 

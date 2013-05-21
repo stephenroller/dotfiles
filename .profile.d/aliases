@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# cd aliases
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# beeps
+alias beep="echo -ne '\a'"
+alias beeploop="while [ 1 ]; do beep; sleep 2; done"
+
+# hadoop
+alias hdfs="hadoop fs"
+
+# python
+alias ipython="ipython --no-confirm-exit --no-banner"
+

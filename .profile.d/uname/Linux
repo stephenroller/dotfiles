@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# i like colors
+eval `dircolors -b`
+alias ls="ls --color=auto"
+

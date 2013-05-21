@@ -1,0 +1,23 @@
+#!/bin/bash
+
+export PATH="/usr/local/bin:/opt/local/bin:/opt/local/sbin:$PATH"
+export LSCOLORS="ExGxFxdxCxDxDxhbadExEx"
+export CLICOLOR=1
+export MANPATH="$MANPATH:/opt/local/share/man"
+
+function proxy ()
+{
+    sudo /usr/sbin/networksetup -setsocksfirewallproxystate Ethernet $1 &&
+    sudo /usr/sbin/networksetup -setsocksfirewallproxystate "Wi-Fi" $1
+}
+function proxyall ()
+{
+    proxy on &&
+    ssh lab -D 9999;
+    proxy off
+}
+
+alias dockflat="defaults write com.apple.dock no-glass -boolean YES; killall Dock"
+alias dock3d="defaults write com.apple.dock no-glass -boolean NO; killall Dock"
+alias flushdns="dscacheutil -flushcache"
+
