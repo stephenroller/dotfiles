@@ -99,7 +99,7 @@ cab E! e!
 
 " language specific stuff
 set ai
-au FileType python set et sts=4 "complete+=k~/.vim/ac/python.dict isk+=.,(
+au FileType python set et sts=4 sw=4 ts=4 "complete+=k~/.vim/ac/python.dict isk+=.,(
 au FileType ruby set et sts=2 sw=2 ts=2
 au FileType php set complete+=k~/.vim/ac/php.dict isk+=.,(
 au FileType tex set sts=2 ts=2 sw=2 et iskeyword+=:
