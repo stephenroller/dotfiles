@@ -1,16 +1,23 @@
 #!/bin/zsh
 
 # history stuff
-export HISTFILE=~/.zsh_history
-export SAVEHIST=50000
+HISTFILE=~/.zsh_history
+SAVEHIST=50000
+HISTSIZE=50000
 setopt SHARE_HISTORY
 
 # emacs keybindings for the shell (gimme that ctrl-a and ctrl-e)
 bindkey -e
+# make delte key work
+bindkey    "^[[3~"          delete-char
+bindkey    "^[3;5~"         delete-char
 
 # enable support for using # to ignore the line, since I use that
 # to compose commands a lot.
 set -k
+
+# i like autocomplete updating often
+zstyle ":completion:*:commands" rehash 1
 
 # load everything else
 source "$HOME/.profile.d/aliases"
@@ -95,7 +102,8 @@ function precmd() {
 
     PROMPT="%{${HOSTCOLOR}%}${_DISP_USER} %F{reset%}${NICEPATH} %F{$promptcolor%}$promptchar %F{reset%}"
     if [[ "$LAST_CMD_TIME" != "" ]]; then
-        PROMPT="%F{magenta%}$LAST_CMD_TIME%F{reset%}
+        FINISH_DATE="$( date )"
+        PROMPT="%F{magenta%}$LAST_CMD_TIME%F{reset%} @ %F{yellow%}$FINISH_DATE%F{RESET%}
 $PROMPT"
     fi
     #RPROMPT="$LAST_CMD_TIME"
