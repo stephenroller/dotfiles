@@ -19,6 +19,11 @@ Host longhorn lh
     HostName longhorn.tacc.utexas.edu
     LogLevel QUIET
 
+Host maverick mr
+    User roller
+    HostName maverick.tacc.utexas.edu
+    LogLevel QUIET
+
 Host *getcourtside.com
 	User root
 	IdentityFile ~/.ssh/courtside.pem

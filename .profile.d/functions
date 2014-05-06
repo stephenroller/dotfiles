@@ -19,7 +19,7 @@ function freq() {
 }
 
 function sample() {
-    awk 'BEGIN { srand() } {print rand() "|" $0}' | sort -gn | head -n $1 | sed 's/^[0-9.]*|//'
+    awk 'BEGIN { srand() } {print int(rand() * 100000) "|" $0}' | sort -n | head -n $1 | sed 's/^[0-9]*|//'
 }
 
 

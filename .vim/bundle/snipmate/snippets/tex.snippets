@@ -144,3 +144,32 @@ snippet imageframe
 		\includegraphics[width=${2:0.5}\textwidth]{${3:filename}}
 	\end{center}
 	\end{frame}
+snippet template
+	\documentclass[letterpaper]{article}
+	
+	\title{${1}}
+	\author{Stephen Roller\\
+	roller@cs.utexas.edu}
+	
+	\date{\today}
+	
+	\begin{document}
+	\maketitle
+	
+	\begin{abstract}
+	  Abstract goes here.
+	\end{abstract}
+	
+	
+	%\bibliographystyle{plain}
+	%\bibliography{bib}
+	
+	\end{document}
+snippet al
+	\begin{align}
+		$1
+	\end{align}
+snippet al*
+	\begin{align*}
+		$1
+	\end{align*}
