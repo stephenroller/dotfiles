@@ -256,6 +256,8 @@ let g:Tex_MultipleCompileFormats="dvi,pdf"
 let g:Tex_DefaultTargetFormat="pdf"
 let g:Tex_CompileRule_pdf='pdflatex -synctex=1 --interaction=nonstopmode $*'
 let g:Tex_GotoError=1
+" i hate those damn placeholders
+let g:Imap_UsePlaceHolders = 0
 
 let g:Tex_IgnoreLevel=4
 let g:Tex_IgnoredWarnings ='
@@ -272,5 +274,17 @@ let g:vimclojure#ParenRainbow = 1
 
 
 au FileType tex nmap <Leader>B :split<CR><C-W>W:e bib.bib<CR>G
-nmap <Leader>P :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
+au FileType tex nmap <Leader>/ I% <Esc>
+au FileType tex vmap <Leader>/ I% <Esc>
+nmap <Leader>v :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 
+" let g:Tex_MainFileExpression = 'MainFile(modifier)'
+" function! MainFile(fmod)
+"     if glob('main.tex') != ''
+"         return fnamemodify(glob('main.tex'), a:fmod)
+"     else
+"         return ''
+"     endif
+" endfunction
+
+set synmaxcol=240

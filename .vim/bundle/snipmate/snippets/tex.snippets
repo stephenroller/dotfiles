@@ -138,3 +138,9 @@ snippet center
 	\end{center}
 snippet image
 	\includegraphics[width=${1:0.5}\textwidth]{${2:filename}}
+snippet imageframe
+	\begin{frame}{${1:title}}
+	\begin{center}
+		\includegraphics[width=${2:0.5}\textwidth]{${3:filename}}
+	\end{center}
+	\end{frame}

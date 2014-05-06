@@ -36,8 +36,8 @@ Host proxy tenniscores.com tennis
 Host tomato router
 	User root
 
-Host lab mak
-    HostName makurokurosuke.cs.utexas.edu
+Host lab pro
+    HostName proteus.cs.utexas.edu
     User roller
     LogLevel QUIET
 

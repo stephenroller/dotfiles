@@ -98,7 +98,7 @@ function precmd() {
     else
         local _DISP_USER="$USER"
     fi
-    NICEPATH="`pwd | sed -e s#$HOME#~# | perl -p -e 's/(\w\w)\w+\//\$1\//g'`"
+    NICEPATH="`pwd | sed -e \"s#$HOME#~#\" | perl -p -e 's/(\w\w)\w+\//\$1\//g'`"
 
     PROMPT="%{${HOSTCOLOR}%}${_DISP_USER} %F{reset%}${NICEPATH} %F{$promptcolor%}$promptchar %F{reset%}"
     if [[ "$LAST_CMD_TIME" != "" ]]; then
@@ -113,5 +113,6 @@ $PROMPT"
 function preexec() {
     export _CMD_START_TIME=`date +%s`
 }
+
 
 
