@@ -278,13 +278,16 @@ au FileType tex nmap <Leader>/ I% <Esc>
 au FileType tex vmap <Leader>/ I% <Esc>
 nmap <Leader>v :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 
-" let g:Tex_MainFileExpression = 'MainFile(modifier)'
-" function! MainFile(fmod)
-"     if glob('main.tex') != ''
-"         return fnamemodify(glob('main.tex'), a:fmod)
-"     else
-"         return ''
-"     endif
-" endfunction
+"let g:Tex_MainFileExpression = 'MainFile(modifier)'
+"function! MainFile(fmod)
+"    if glob('specialissue.tex') != ''
+"        return fnamemodify(glob('specialissue.tex'), a:fmod)
+"    elseif glob('main.tex') != ''
+"        return fnamemodify(glob('main.tex'), a:fmod)
+"    else
+"        return ''
+"    endif
+"endfunction
 
-set synmaxcol=240
+set synmaxcol=300
+
