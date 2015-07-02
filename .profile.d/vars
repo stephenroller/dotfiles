@@ -10,6 +10,6 @@ export GIT_PAGER="less -R"
 
 # python stuff
 export PYTHONSTARTUP="$HOME/.pythonrc.py"
-export PYTHONPATH=$PYTHONPATH:~/.pylibs
+export PYTHONIOENCODING="utf-8"
 
 

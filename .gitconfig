@@ -32,6 +32,7 @@
 [git-tmbundle]
 	show-diff-check = yes
 [alias]
+    glog = log --graph --abbrev-commit --decorate
 	ci = commit
 	co = checkout
 	branches = branch -a

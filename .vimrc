@@ -222,15 +222,15 @@ nmap Zs :w<CR>
 nmap <Leader>q :q <Cr>
 
 " show a line at 80 characters
-" if version >= 703
-"     set cc=80
-" endif
+if version >= 703
+    set cc=80
+endif
 
 " trailing whitespace
 set list
-set listchars=tab:▸·,trail:· ",eol:¬
+set listchars=tab:»·,trail:· ",eol:¬
 
-" test of white space 	  	asdfasdf    
+" test of white space 	  	asdf	asdf    
 
 " options for latex-suite
 set grepprg=grep\ -nH\ $*
@@ -285,3 +285,10 @@ au FileType go nmap <leader>1 <Plug>(go-build)
 au FileType go nmap <Leader>d <Plug>(go-doc-vertical)
 au FileType go nmap <Leader>w <Plug>(go-doc-browser)
 
+" Persistent undo
+let undodir = expand('~/.vim/undo')
+if !isdirectory(undodir)
+  call mkdir(undodir)
+endif
+set undodir=~/.vim/undo
+set undofile " Create FILE.un~ files for persistent undo
