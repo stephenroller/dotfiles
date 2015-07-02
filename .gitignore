@@ -2,3 +2,4 @@
 .vim/.netrwhist
 *.pyc
 history.sqlite
+.vim/undo
