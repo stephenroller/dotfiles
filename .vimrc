@@ -216,22 +216,7 @@ map <Leader>V :so ~/.vimrc <CR> :echo "~/.vimrc loaded..." <CR>
 set modeline
 set ls=2
 
-" Make it easier to run commands
-map <Leader>r :VimuxPromptCommand <CR>
-map !! :ViMuxRunLastCommand<CR>
-
-" terminal!
-" and some settings
-let g:ConqueTerm_TERM = 'xterm'
-let g:ConqueTerm_CloseOnEnd = 1
-let g:ConqueTerm_InsertOnEnter = 1
-let g:ConqueTerm_CWInsert = 1
-let g:ConqueTerm_ReadUnfocused = 1
-map <Leader>t :ConqueTermSplit bash<CR>
-
 nmap Zs :w<CR>
-
-
 
 " close a window
 nmap <Leader>q :q <Cr>
@@ -290,4 +275,13 @@ nmap <Leader>v :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 "endfunction
 
 set synmaxcol=300
+
+let g:go_doc_keywordprg_enabled=0
+let g:go_def_mapping_enabled=0
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>1 <Plug>(go-build)
+" au FileType go nmap <leader>t <Plug>(go-test)
+" au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <Leader>d <Plug>(go-doc-vertical)
+au FileType go nmap <Leader>w <Plug>(go-doc-browser)
 
