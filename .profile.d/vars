@@ -9,7 +9,6 @@ export EDITOR="vim"
 export GIT_PAGER="less -R"
 
 # python stuff
-export PYTHONSTARTUP="$HOME/.pythonrc.py"
 export PYTHONIOENCODING="utf-8"
 
 
