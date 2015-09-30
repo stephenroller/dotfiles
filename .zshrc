@@ -62,10 +62,15 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
     'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 # prompts
+# if a command took more than 30s, show runtime statistics
+export REPORTTIME=30
+
+# not all machines have md5sum -_-
 if (( $+commands[md5] )); then
     alias md5sum=md5
 fi
-HOSTHASH=`hostname | md5sum | sed "s/[^0-9]//g" | cut -c1-10`
+HOSTHASH=`hostname -f | sed 's/^[^.]*\.//' | md5sum | sed "s/[^0-9]//g" | cut -c1-10`
+
 (( HOSTHASH = ($HOSTHASH % 128) + 1 ))
 HOSTCOLOR="`tput setaf $HOSTHASH`"
 
@@ -81,34 +86,9 @@ function precmd() {
     else
         promptchar="»"
     fi
-    if (( $_CMD_START_TIME )); then
-        CUR_TIME=`date +%s`
-        (( LAST_CMD_FULLTIME = ($CUR_TIME - $_CMD_START_TIME) ))
-        if (( $LAST_CMD_FULLTIME > 3 )); then
-            (( LAST_CMD_MIN = $LAST_CMD_FULLTIME / 60 ))
-            (( LAST_CMD_SEC = $LAST_CMD_FULLTIME % 60 ))
-            local LAST_CMD_TIME="${LAST_CMD_MIN}m${LAST_CMD_SEC}s "
-        else
-            local LAST_CMD_TIME=""
-        fi
-        export _CMD_START_TIME=""
-    else
-        local LAST_CMD_TIME=""
-    fi
-    if [[ $USER == "stephen" ]]; then
-        local _DISP_USER="sr"
-    else
-        local _DISP_USER="$USER"
-    fi
     NICEPATH="`pwd | sed -e \"s#$HOME#~#\" | perl -p -e 's/(\w\w)\w+\//\$1\//g'`"
 
-    PROMPT="%{${HOSTCOLOR}%}${_DISP_USER} %F{reset%}${NICEPATH} %F{$promptcolor%}$promptchar %F{reset%}"
-    if [[ "$LAST_CMD_TIME" != "" ]]; then
-        FINISH_DATE="$( date )"
-        PROMPT="%F{magenta%}$LAST_CMD_TIME%F{reset%} @ %F{yellow%}$FINISH_DATE%F{RESET%}
-$PROMPT"
-    fi
-    #RPROMPT="$LAST_CMD_TIME"
+    PROMPT="%{${HOSTCOLOR}%}%m %F{reset%}${NICEPATH} %F{$promptcolor%}$promptchar %F{reset%}"
     RPROMPT=""
 }
 
