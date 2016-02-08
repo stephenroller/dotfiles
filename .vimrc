@@ -113,7 +113,6 @@ au FileType cpp set et sts=2 sw=2 ts=2
 au FileType go set ts=2 sts=2 noet nolist
 au FileType c set ts=2 sts=2 noet
 
-
 "set tags+=$HOME/.vim/tags/python.ctags
 
 set noswf " no swap file
@@ -258,8 +257,6 @@ let g:Tex_IgnoredWarnings ='
       \"Citation %.%# undefined\n".
       \"\oval, \circle, or \line size unavailable\n"'
 
-let g:vimclojure#ParenRainbow = 1
-
 
 au FileType tex nmap <Leader>B :split<CR><C-W>W:e bib.bib<CR>G
 au FileType tex nmap <Leader>/ I% <Esc>
@@ -268,9 +265,7 @@ nmap <Leader>v :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 
 "let g:Tex_MainFileExpression = 'MainFile(modifier)'
 "function! MainFile(fmod)
-"    if glob('specialissue.tex') != ''
-"        return fnamemodify(glob('specialissue.tex'), a:fmod)
-"    elseif glob('main.tex') != ''
+"    if glob('main.tex') != ''
 "        return fnamemodify(glob('main.tex'), a:fmod)
 "    else
 "        return ''
@@ -295,3 +290,4 @@ if !isdirectory(undodir)
 endif
 set undodir=~/.vim/undo
 set undofile " Create FILE.un~ files for persistent undo
+

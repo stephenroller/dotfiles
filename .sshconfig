@@ -45,6 +45,7 @@ Host lab pro
     HostName proteus.cs.utexas.edu
     User roller
     LogLevel QUIET
+    ServerAliveInterval 60
 
 Host *.cs.utexas.edu
     User roller
