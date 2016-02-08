@@ -9,12 +9,7 @@ alias ....="cd ../../.."
 alias beep="echo -ne '\a'"
 alias beeploop="while [ 1 ]; do beep; sleep 2; done"
 
-# hadoop
-alias hdfs="hadoop fs"
-
 # python
-alias ipython="ipython --no-confirm-exit --no-banner"
-
 alias poptron="curl http://sfstream1.somafm.com:2200 | mpg321 -"
 
 alias chromewget="wget --user-agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/28.0.1500.71 Chrome/28.0.1500.71 Safari/537.36'"

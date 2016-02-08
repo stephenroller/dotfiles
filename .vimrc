@@ -110,6 +110,9 @@ au FileType javascript set sts=2 ts=2 sw=2 et
 au FileType css set sts=2 ts=2 sw=2 et
 au FileType c set et sts=2 sw=2 ts=2
 au FileType cpp set et sts=2 sw=2 ts=2
+au FileType go set ts=2 sts=2 noet nolist
+au FileType c set ts=2 sts=2 noet
+
 
 "set tags+=$HOME/.vim/tags/python.ctags
 
