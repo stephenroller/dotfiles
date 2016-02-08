@@ -1,1 +1,3 @@
 OPTIONS=color
+OPTIONS=!autopickup
+OPTIONS=hilite_pet
