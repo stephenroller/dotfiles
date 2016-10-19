@@ -1,3 +1,6 @@
 OPTIONS=color
 OPTIONS=!autopickup
 OPTIONS=hilite_pet
+OPTIONS=showscore
+OPTIONS=showexp
+OPTIONS=time
