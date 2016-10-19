@@ -241,6 +241,7 @@ au FileType go nmap <leader>1 <Plug>(go-build)
 " au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>d <Plug>(go-doc-vertical)
 au FileType go nmap <Leader>w <Plug>(go-doc-browser)
+au filetype crontab setlocal nobackup nowritebackup
 
 " Persistent undo
 let undodir = expand('~/.vim/undo')

@@ -46,6 +46,7 @@ Host lab pro
     User roller
     LogLevel QUIET
     ServerAliveInterval 60
+	LocalForward 6006 localhost:6006
 
 Host *.cs.utexas.edu
     User roller
