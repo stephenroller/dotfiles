@@ -99,26 +99,20 @@ cab E! e!
 
 " language specific stuff
 set ai
-au FileType python set et sts=4 sw=4 ts=4 "complete+=k~/.vim/ac/python.dict isk+=.,(
+au FileType python set et sts=4 sw=4 ts=4
 au FileType ruby set et sts=2 sw=2 ts=2
-au FileType php set complete+=k~/.vim/ac/php.dict isk+=.,(
 au FileType tex set sts=2 ts=2 sw=2 et iskeyword+=:
 au FileType tex let g:line_comment='% ' 
 au FileType scala set sts=2 ts=2 sw=2 et
 au FileType html set sts=2 ts=2 sw=2 et
 au FileType javascript set sts=2 ts=2 sw=2 et
 au FileType css set sts=2 ts=2 sw=2 et
-au FileType c set et sts=2 sw=2 ts=2
-au FileType cpp set et sts=2 sw=2 ts=2
+au FileType c set noet sts=2 sw=2 ts=2 nolist
+au FileType cpp set noet sts=2 sw=2 ts=2 nolist
 au FileType go set ts=2 sts=2 noet nolist
-au FileType c set ts=2 sts=2 noet
-
-"set tags+=$HOME/.vim/tags/python.ctags
+au FileType c set ts=2 sts=2 noet nolist
 
 set noswf " no swap file
-
-" so you don't have to remember to reload your docs
-" #helptags ~/.vim/doc
 
 " convenient mappings for paging through text
 map <Space> <PageDown>
@@ -127,41 +121,11 @@ map <S-Space> <PageUp>
 map K 10k
 
 
-nmap <silent> <Leader>p :NERDTreeToggle <CR>
-
-
 " GUI stuff
 set gfn=Inconsolata:h15.00
 set anti
 set guioptions=emgrtL
 colorscheme stephen-xoria
-
-" ghetto indenting
-nmap <silent> <D-]> :s?^?\t? <CR>
-nmap <silent> <D-[> :s?^\t?? <CR>
-imap <silent> <D-]> <Esc> :s?^?\t? <CR> a
-imap <silent> <D-[> <Esc> :1s?^\t?? <CR> a
-vmap <silent> <D-]> :s?^?\t? <CR> gv
-vmap <silent> <D-[> :s?^\t?? <CR> gv
-
-
-" map command-/ to magic comment toggle like TextMate
-if !exists("g:line_comment")
-    let g:line_comment='# '
-endif
-
-function! Comment()
-     CommentLineToEnd(g:line_comment)
-endfunction
-
-set pastetoggle=<leader>P
-
-au FileType vim let g:line_comment='" '
-au FileType c let g:line_comment='// '
-au FileType java let g:line_comment='// '
-
-map <silent> <leader>c :call Comment() <CR>
-" imap <silent> <leader>c <Esc> :call Comment() <CR> +
 
 " Don't show these files in project and ctrlp, etc
 set wildignore+=*.o,*.obj,.git,*.pyc,*.class,*.jar,.DS_Store,*.bak,.hg
@@ -190,7 +154,7 @@ let g:SuperTabDefaultCompletionType = "context"
 " ctrl-A and ctrl-E mapped everywhere
 inoremap <C-a> <Home>
 cnoremap <C-a> <Home>
-"noremap <C-a> <Home>
+noremap <C-a> <Home>
 inoremap <C-e> <End>
 cnoremap <C-e> <End>
 noremap <C-e> <End>
@@ -203,8 +167,6 @@ set nofoldenable
 
 " the default keybindings for omnicompletion are awful
 inoremap <expr> <Esc>      pumvisible() ? "\<C-e>\<Esc>" : "\<Esc>"
-
-
 inoremap <expr> <CR>       pumvisible() ? "\<C-y>" : "\<CR>"
 
 " spell checking is a must
@@ -218,8 +180,6 @@ map <Leader>V :so ~/.vimrc <CR> :echo "~/.vimrc loaded..." <CR>
 set modeline
 set ls=2
 
-nmap Zs :w<CR>
-
 " close a window
 nmap <Leader>q :q <Cr>
 
@@ -231,7 +191,6 @@ endif
 " trailing whitespace
 set list
 set listchars=tab:»·,trail:· ",eol:¬
-
 " test of white space 	  	asdf	asdf    
 
 " options for latex-suite
@@ -290,4 +249,11 @@ if !isdirectory(undodir)
 endif
 set undodir=~/.vim/undo
 set undofile " Create FILE.un~ files for persistent undo
+
+
+" python's jedi-vim autocomplete options
+let g:jedi#popup_select_first = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#documentation_command = "<leader>k"
+au Filetype python setlocal completeopt-=preview
 

@@ -12,4 +12,9 @@ if !exists('s:initLatexSuite')
 	silent! do LatexSuite User LatexSuiteInitPost
 endif
 
+function! Tex_ForwardSearchLaTeX()
+  let cmd = 'devince ' . fnamemodify(Tex_GetMainFileName(), ":p:r") .  '.pdf --page-label=' . a:page
+  let output = system(cmd)
+endfunction
+
 silent! do LatexSuite User LatexSuiteFileType

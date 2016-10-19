@@ -74,6 +74,8 @@ HOSTHASH=`hostname -f | sed 's/^[^.]*\.//' | md5sum | sed "s/[^0-9]//g" | cut -c
 (( HOSTHASH = ($HOSTHASH % 128) + 1 ))
 HOSTCOLOR="`tput setaf $HOSTHASH`"
 
+mkdir -p ~/.logs/zsh/
+
 function precmd() {
     last_return=$?
     if (( $last_return == 0 )); then
@@ -86,10 +88,9 @@ function precmd() {
     else
         promptchar="»"
     fi
-    NICEPATH="`pwd | sed -e \"s#$HOME#~#\" | perl -p -e 's/(\w\w)\w+\//\$1\//g'`"
+    PROMPT="%{${HOSTCOLOR}%}%m %F{reset%}%c %F{$promptcolor%}$promptchar %F{reset%}"
 
-    PROMPT="%{${HOSTCOLOR}%}%m %F{reset%}${NICEPATH} %F{$promptcolor%}$promptchar %F{reset%}"
-    RPROMPT=""
+    echo "$(date "+%Y-%m-%d\t%H:%M:%S")\t${HOST}\t$(pwd)\t${last_return}\t$(fc -lI -1 | sed 's#^[0-9][0-9]*  *##')" >> ~/.logs/zsh/history_$(date "+%Y%m").log
 }
 
 function preexec() {
