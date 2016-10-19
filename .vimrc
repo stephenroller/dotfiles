@@ -253,7 +253,6 @@ set undofile " Create FILE.un~ files for persistent undo
 
 
 " python's jedi-vim autocomplete options
-let g:jedi#popup_select_first = 0
 let g:jedi#popup_on_dot = 0
 let g:jedi#documentation_command = "<leader>k"
 au Filetype python setlocal completeopt-=preview
