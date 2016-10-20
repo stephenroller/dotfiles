@@ -4,15 +4,15 @@ ServerAlivecountMax 3
 
 Host gumby
     User stephen
-	HostName gumby.tweek.us
-	Port 420
-	LogLevel QUIET
+    HostName gumby.tweek.us
+    Port 420
+    LogLevel QUIET
 
 Host sr sven stephenroller.com
     User stephen
-	HostName sven.sf.io
-	Port 420
-	LogLevel QUIET
+    HostName sven.sf.io
+    Port 420
+    LogLevel QUIET
 
 Host longhorn lh
     User roller
@@ -25,32 +25,32 @@ Host maverick mr
     LogLevel QUIET
 
 Host *getcourtside.com
-	User root
-	IdentityFile ~/.ssh/courtside.pem
+    User root
+    IdentityFile ~/.ssh/courtside.pem
 
 Host faith
-	HostName faith
+    HostName faith
 
 Host proxy tenniscores.com tennis
     User stephen
-	HostName tenniscores.com
-	DynamicForward 9999
-	LocalForward 2525 localhost:25
+    HostName tenniscores.com
+    DynamicForward 9999
+    LocalForward 2525 localhost:25
 
 
 Host tomato router
-	User root
+    User root
 
 Host lab pro
     HostName proteus.cs.utexas.edu
     User roller
     LogLevel QUIET
     ServerAliveInterval 60
-	LocalForward 6006 localhost:6006
+    LocalForward 6006 localhost:6006
 
 Host *.cs.utexas.edu
     User roller
-	LogLevel QUIET
+    LogLevel QUIET
 
 Host *.ling.utexas.edu
     User roller
@@ -79,3 +79,8 @@ Host ims
     LogLevel QUIET
     User roller
 
+Host pi
+    HostName pi
+    LogLevel QUIET
+    User roller
+    Port 2242
