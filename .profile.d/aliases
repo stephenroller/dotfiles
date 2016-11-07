@@ -19,3 +19,5 @@ alias ta="tmux attach"
 # a bunch of tsv type stuff i use all the time
 alias tawk='mawk -F'\''\t'\'''
 alias append1='tawk '\''{print $0 "\t1"}'\'''
+
+alias ack=ag

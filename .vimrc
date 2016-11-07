@@ -257,3 +257,6 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#documentation_command = "<leader>k"
 au Filetype python setlocal completeopt-=preview
 
+" ag is better and works on more of my computers
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
