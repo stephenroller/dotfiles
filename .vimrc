@@ -110,7 +110,8 @@ au FileType css set sts=2 ts=2 sw=2 et
 au FileType c set noet sts=2 sw=2 ts=2 nolist
 au FileType cpp set noet sts=2 sw=2 ts=2 nolist
 au FileType go set ts=2 sts=2 noet nolist
-au FileType c set ts=2 sts=2 noet nolist
+au FileType c set ts=2 sts=2 noet nolist sw=2
+au FileType sh set ts=4 noet nolist noet
 
 set noswf " no swap file
 
@@ -255,6 +256,7 @@ set undofile " Create FILE.un~ files for persistent undo
 " python's jedi-vim autocomplete options
 let g:jedi#popup_on_dot = 0
 let g:jedi#documentation_command = "<leader>k"
+let g:jedi#popup_select_first = 0
 au Filetype python setlocal completeopt-=preview
 
 " ag is better and works on more of my computers
