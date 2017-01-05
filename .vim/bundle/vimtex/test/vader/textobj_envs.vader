@@ -1,0 +1,24 @@
+Given tex (Define complex environment):
+  \begin{complexenvironment}[option1,
+    option2]{first extra argument}
+    {second extra
+    argument}
+    Hello world!
+  \end{complexenvironment}
+
+Do (Delete environment (excluding)):
+  die
+
+Expect tex (Verify):
+  \begin{complexenvironment}[option1,
+    option2]{first extra argument}
+    {second extra
+    argument}
+  \end{complexenvironment}
+
+Do (Delete environment (including)):
+  dae
+
+Expect tex (Verify):
+  
+
