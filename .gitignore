@@ -3,3 +3,4 @@
 *.pyc
 history.sqlite
 .vim/undo
+.ipython/profile_default/db

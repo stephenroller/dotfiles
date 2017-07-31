@@ -8,6 +8,7 @@ alias ....="cd ../../.."
 # beeps
 alias beep="echo -ne '\a'"
 alias beeploop="while [ 1 ]; do beep; sleep 2; done"
+alias beep3="for i in 1 2 3; do beep; sleep 0.25; done"
 
 # python
 alias poptron="curl http://sfstream1.somafm.com:2200 | mpg321 -"

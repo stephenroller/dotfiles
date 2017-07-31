@@ -1,6 +1,7 @@
 Compression no
 ServerAliveInterval 15
 ServerAlivecountMax 3
+ForwardX11 no
 
 Host gumby
     User stephen

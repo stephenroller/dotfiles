@@ -221,6 +221,7 @@ let g:Tex_IgnoredWarnings ='
 au FileType tex nmap <Leader>B :split<CR><C-W>W:e bib.bib<CR>G
 au FileType tex nmap <Leader>/ I% <Esc>
 au FileType tex vmap <Leader>/ I% <Esc>
+au FileType tex let b:autoformat_autoindent=0 " no auto format for latex
 nmap <Leader>v :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 
 "let g:Tex_MainFileExpression = 'MainFile(modifier)'
@@ -258,6 +259,9 @@ let g:jedi#popup_on_dot = 0
 let g:jedi#documentation_command = "<leader>k"
 let g:jedi#popup_select_first = 0
 au Filetype python setlocal completeopt-=preview
+" Also use yapf/pep8 to format my python code
+let g:formatter_yapf_style = 'pep8'
+
 
 " ag is better and works on more of my computers
 let g:ackprg = 'ag --nogroup --nocolor --column'
