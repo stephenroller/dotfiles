@@ -9,8 +9,8 @@ setopt SHARE_HISTORY
 # emacs keybindings for the shell (gimme that ctrl-a and ctrl-e)
 bindkey -e
 # make delete key work
-#bindkey    "^[[3~"          delete-char
-#bindkey    "^[3;5~"         delete-char
+bindkey    "^[[3~"          delete-char
+bindkey    "^[3;5~"         delete-char
 
 # enable support for using # to ignore the line, since I use that
 # to compose commands a lot.
