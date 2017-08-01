@@ -69,7 +69,7 @@ if (( $+commands[md5] )); then
 fi
 HOSTHASH=`hostname -f | sed 's/^[^.]*\.//' | md5sum | sed "s/[^0-9]//g" | cut -c1-10`
 
-(( HOSTHASH = ($HOSTHASH % 128) + 1 ))
+(( HOSTHASH = ($HOSTHASH % 64) + 65 ))
 HOSTCOLOR="`tput setaf $HOSTHASH`"
 
 mkdir -p ~/.logs/zsh/
