@@ -1,3 +1,9 @@
+try
+    source $LOCAL_ADMIN_SCRIPTS/master.vimrc
+catch
+    " do nothing
+endtry
+
 set nocompatible
 set nohls
 
@@ -43,8 +49,8 @@ filetype plugin on
 augroup vimrcEx
 au!
 
-" For all text files set 'textwidth' to 78 characters.
-autocmd FileType text setlocal textwidth=78
+" For all text files set 'textwidth' to 80 characters.
+autocmd FileType text setlocal textwidth=80
 
 autocmd filetype plugin indent on
 
@@ -99,19 +105,19 @@ cab E! e!
 
 " language specific stuff
 set ai
-au FileType python set et sts=4 sw=4 ts=4
-au FileType ruby set et sts=2 sw=2 ts=2
-au FileType tex set sts=2 ts=2 sw=2 et iskeyword+=:
-au FileType tex let g:line_comment='% ' 
-au FileType scala set sts=2 ts=2 sw=2 et
-au FileType html set sts=2 ts=2 sw=2 et
-au FileType javascript set sts=2 ts=2 sw=2 et
-au FileType css set sts=2 ts=2 sw=2 et
-au FileType c set noet sts=2 sw=2 ts=2 nolist
-au FileType cpp set noet sts=2 sw=2 ts=2 nolist
-au FileType go set ts=2 sts=2 noet nolist
-au FileType c set ts=2 sts=2 noet nolist sw=2
-au FileType sh set ts=4 noet nolist noet
+" au FileType python set et sts=4 sw=4 ts=4
+" au FileType ruby set et sts=2 sw=2 ts=2
+" au FileType tex set sts=2 ts=2 sw=2 et iskeyword+=:
+" au FileType tex let g:line_comment='% ' 
+" au FileType scala set sts=2 ts=2 sw=2 et
+" au FileType html set sts=2 ts=2 sw=2 et
+" au FileType javascript set sts=2 ts=2 sw=2 et
+" au FileType css set sts=2 ts=2 sw=2 et
+" au FileType c set noet sts=2 sw=2 ts=2 nolist
+" au FileType cpp set noet sts=2 sw=2 ts=2 nolist
+" au FileType go set ts=2 sts=2 noet nolist
+" au FileType c set ts=2 sts=2 noet nolist sw=2
+" au FileType sh set ts=4 noet nolist noet
 
 set noswf " no swap file
 
@@ -148,6 +154,8 @@ let g:ctrlp_map = '<leader>f'
 
 highlight Pmenu ctermbg=Black gui=bold ctermfg=Blue
 highlight PmenuSel ctermbg=Blue gui=bold ctermfg=White
+" ruler when longer than 80 characters
+highlight ColorColumn ctermbg=236
 
 let g:SuperTabDefaultCompletionType = "<C-X><C-O>"
 let g:SuperTabDefaultCompletionType = "context"

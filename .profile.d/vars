@@ -4,7 +4,7 @@
 export PATH="/usr/local/bin:.:$HOME/software/bin:$HOME/bin:$PATH:./bin"
 
 # choice editor, pager
-export PAGER="less -R"
+#export PAGER="less -R"
 export EDITOR="vim"
 export GIT_PAGER="less -R"
 

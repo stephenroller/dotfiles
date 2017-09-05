@@ -1,7 +1,11 @@
 #!/bin/sh
 
+function fbcurl () {
+    curl `fwdproxy-config curl` $@
+}
+
 function prowl () {
-    curl -f 'https://api.prowlapp.com/publicapi/add' -d "apikey=`cat ~/.prowlkey | head -c 40`" --data-binary "description=$1" -d "application=`hostname`" > /dev/null 2>&1
+    fbcurl -f 'https://api.prowlapp.com/publicapi/add' -d "apikey=`cat ~/.prowlkey | head -c 40`" --data-binary "description=$1" -d "application=`hostname`" > /dev/null 2>&1
 }
 
 function freq() {
