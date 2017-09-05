@@ -21,8 +21,8 @@ zstyle ":completion:*:commands" rehash 1
 
 # load everything else
 source "$HOME/.profile.d/aliases"
-source "$HOME/.profile.d/functions"
 source "$HOME/.profile.d/vars"
+source "$HOME/.profile.d/functions"
 
 if [ -f "$HOME/.profile.d/uname/`uname`" ]; then
     source "$HOME/.profile.d/uname/`uname`"

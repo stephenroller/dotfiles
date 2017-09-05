@@ -13,3 +13,6 @@ export PYTHONIOENCODING="utf-8"
 
 # helpful for limiting fzf stuff
 export FZF_DEFAULT_COMMAND='ag -g ""'
+
+
+export SCRATCH=/data/users/roller

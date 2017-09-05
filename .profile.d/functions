@@ -12,4 +12,7 @@ function freq() {
     sort $* | uniq -c | sort -rn;
 }
 
+function cds () {
+    cd $SCRATCH/$1
 
+}

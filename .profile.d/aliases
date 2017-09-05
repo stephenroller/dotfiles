@@ -13,7 +13,7 @@ alias beep3="for i in 1 2 3; do beep; sleep 0.25; done"
 # python
 alias poptron="curl http://sfstream1.somafm.com:2200 | mpg321 -"
 
-alias chromewget="wget --user-agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/28.0.1500.71 Chrome/28.0.1500.71 Safari/537.36'"
+alias chrome-wget="wget --user-agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/28.0.1500.71 Chrome/28.0.1500.71 Safari/537.36'"
 
 alias ta="tmux attach"
 
