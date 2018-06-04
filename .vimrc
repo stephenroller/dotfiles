@@ -114,10 +114,12 @@ set ai
 " au FileType javascript set sts=2 ts=2 sw=2 et
 " au FileType css set sts=2 ts=2 sw=2 et
 " au FileType c set noet sts=2 sw=2 ts=2 nolist
-" au FileType cpp set noet sts=2 sw=2 ts=2 nolist
+au FileType cpp set et sts=2 sw=2 ts=2 list
 " au FileType go set ts=2 sts=2 noet nolist
 " au FileType c set ts=2 sts=2 noet nolist sw=2
 " au FileType sh set ts=4 noet nolist noet
+au FileType xml syntax off
+au FileType json syntax off
 
 set noswf " no swap file
 
@@ -142,14 +144,11 @@ set wildignore+=target
 " and hadoop stuff
 set wildignore+=.*.crc
 
-" Bindings and settings for CtrlP
-" text mate style matching
-let g:ctrlp_by_filename = 1
-" key bindings
-map <silent> <leader>b :CtrlPBuffer <CR>
-let g:ctrlp_map = '<leader>f'
-
-
+" Bindings and settings for FZF
+map <silent> <leader>b :Buffers <CR>
+map <silent> <leader>f :Files <CR>
+" I like my fzf
+let g:fzf_layout = {'down': '~20%'}
 
 
 highlight Pmenu ctermbg=Black gui=bold ctermfg=Blue
@@ -194,12 +193,12 @@ nmap <Leader>q :q <Cr>
 
 " show a line at 80 characters
 if version >= 703
-    set cc=80
+    set cc=88
 endif
 
 " trailing whitespace
 set list
-set listchars=tab:»·,trail:· ",eol:¬
+set listchars=tab:».,trail:· ",eol:¬
 " test of white space 	  	asdf	asdf    
 
 " options for latex-suite
@@ -264,12 +263,12 @@ set undofile " Create FILE.un~ files for persistent undo
 
 " python's jedi-vim autocomplete options
 let g:jedi#popup_on_dot = 0
-let g:jedi#documentation_command = "<leader>k"
+let g:jedi#documentation_command = "<leader>k" " instead of default K
 let g:jedi#popup_select_first = 0
+let g:jedi#rename_command = "" " instead of <leader>r
+let g:jedi#goto_command = "" " instead of default <leader>d
+let g:jedi#use_splits_not_buffers="bottom"
 au Filetype python setlocal completeopt-=preview
-" Also use yapf/pep8 to format my python code
-let g:formatter_yapf_style = 'pep8'
-
 
 " ag is better and works on more of my computers
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -277,4 +276,20 @@ let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:vimtex_latexmk_callback = 0
 let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
 let g:vimtex_view_general_options = '-r @line @pdf @tex'
+
+map <silent> <leader>r :AsyncRun lastrerun<CR>
+
+map <silent> <leader>l :AsyncRun! -post=cw mylint %<CR>:copen<CR><c-w><c-p>
+map <silent> <leader>c :ccl<CR>
+map <silent> <leader>d :call HgDiff()<CR>
+set switchbuf=useopen
+map <silent> <leader><space> :b#<CR>
+
+" signify is a little faster if you tell it what vcs you care about
+let g:signify_vcs_list = [ 'hg', 'git' ]
+" Drives me nuts that the gutter appears and disappears constantly. always
+" turn it on
+set signcolumn=yes
+
+let g:jedi#force_py_version=3
 

@@ -36,6 +36,10 @@ if [ -f $HOME/.zshrc_private ]; then
     source $HOME/.zshrc_private
 fi
 
+if [ -f ~/.fzf.zsh ]; then
+    source ~/.fzf.zsh
+fi
+
 # Test for an interactive shell.  There is no need to set anything
 # past this point for scp and rcp, and it's important to refrain from
 # outputting anything in those cases.
@@ -90,10 +94,4 @@ function precmd() {
 
     echo "$(date "+%Y-%m-%d\t%H:%M:%S")\t${HOST}\t$(pwd)\t${last_return}\t$(fc -l -1 | sed 's#^[0-9][0-9]*  *##')" >> ~/.logs/zsh/history_$(date "+%Y%m").log
 }
-
-function preexec() {
-    export _CMD_START_TIME=`date +%s`
-}
-
-
 

@@ -89,17 +89,35 @@ snippet pdb
 snippet ipdb
 	import ipdb; ipdb.set_trace()
 snippet script
-	#!/usr/bin/env python
+	#!/usr/bin/env python3
+
+	from __future__ import absolute_import
+	from __future__ import division
+	from __future__ import print_function
+	from __future__ import unicode_literals
+
 	import sys
 	import argparse
 
+
 	def main():
-	    parser = argparse.ArgumentParser('${1:description}')
-	    parser.add_argument('--input', '-i', type=argparse.FileType('r'), default=sys.stdin,
-	                        help='Input file')
-	    parser.add_argument('--output', '-o', type=argparse.FileType('w'), default=sys.stdout,
-	                        help='Output file')
-	    args = parser.parse_args()
-	
+		parser = argparse.ArgumentParser(
+			description='${1:description}'
+		)
+		parser.add_argument('--input', '-i', type=argparse.FileType('r'),
+							default=sys.stdin, help='Input file')
+		parser.add_argument('--output', '-o', type=argparse.FileType('w'),
+							default=sys.stdout, help='Output file')
+		args = parser.parse_args()
+
+
 	if __name__ == '__main__':
-	    main()
+		main()
+snippet arg
+	parser.add_argument('--${1:flag}',
+						help='${2:help}')
+snippet future
+	from __future__ import absolute_import
+	from __future__ import division
+	from __future__ import print_function
+	from __future__ import unicode_literals

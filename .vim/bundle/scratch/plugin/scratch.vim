@@ -6,7 +6,14 @@ function! MakeScratch()
 endfunction
 
 function! NewScratchBuffer()
-    :botright new
+    botright new
     call MakeScratch()
 endfunction
 
+function! HgDiff()
+    call NewScratchBuffer()
+    read !hg diff
+    setfiletype git-diff
+    set ro
+    normal gg
+endfunction
