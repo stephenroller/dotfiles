@@ -19,7 +19,6 @@
 	ui = true
 [core]
 	WHITESPACE=fix,-indent-with-non-tab,trailing-space,cr-at-eol
-    #pager = "vim -R -c 'set foldmethod=syntax'"
 	pager = cat
 [github]
 	user = stephenroller
@@ -27,19 +26,13 @@
 [user]
 	name = Stephen Roller
 	email = roller@fb.com
-[git-tmbundle "log"]
-	limit = 15
-[git-tmbundle]
-	show-diff-check = yes
 [alias]
-    glog = log --graph --abbrev-commit --decorate
-	ci = commit
 	co = checkout
-	branches = branch -a
-	serve = !git daemon --reuseaddr --verbose  --base-path=. --export-all ./.git
+	branches = branch --list
 	st = status
-	s = status
-	map = log --graph --full-history --all --color --decorate
-	
+	histedit = rebase -i origin/master
+	amend = commit --amend
 [push]
 	default = simple
+[pull]
+	rebase = true

@@ -2,7 +2,7 @@
 jedi-vim - awesome Python autocompletion with VIM
 #################################################
 
-.. image:: https://travis-ci.org/davidhalter/jedi-vim.png?branch=master
+.. image:: https://travis-ci.org/davidhalter/jedi-vim.svg?branch=master
    :target: https://travis-ci.org/davidhalter/jedi-vim
    :alt: Travis-CI build status
 
@@ -34,11 +34,11 @@ Documentation
 Documentation is available in your vim: ``:help jedi-vim``. You can also look
 it up `on github <http://github.com/davidhalter/jedi-vim/blob/master/doc/jedi-vim.txt>`_.
 
-You can read the Jedi library documentation `here <http://jedi.jedidjah.ch>`_.
+You can read the Jedi library documentation `here <http://jedi.readthedocs.io/en/latest/>`_.
 
 If you want to report issues, just use the github issue tracker. In case of
 questions about the software, please use `stackoverflow
-<https://stackoverflow.com>`_ and tag your question with ``jedi-vim``.
+<https://stackoverflow.com/questions/tagged/jedi-vim>`_ and tag your question with ``jedi-vim``.
 
 
 Contributing
@@ -73,7 +73,7 @@ Requirements
 You need a VIM version that was compiled with Python 2.6 or later
 (``+python`` or ``+python3``), which is typical for most distributions on
 Linux.  You can check this from within VIM using
-``:python3 import sys; print sys.version`` (use ``:python`` for Python 2).
+``:python3 import sys; print(sys.version)`` (use ``:python`` for Python 2).
 
 Manual installation
 -------------------
@@ -89,7 +89,15 @@ Example installation command using Pathogen:
 
 .. code-block:: sh
 
-    cd ~/.vim/bundle/ && git clone --recursive https://github.com/davidhalter/jedi-vim.git
+    git clone --recursive https://github.com/davidhalter/jedi-vim.git ~/.vim/bundle/jedi-vim
+
+Example installation using Vundle:
+
+Add the following line in your `~/.vimrc`
+    
+.. code-block:: vim
+
+    Plugin 'davidhalter/jedi-vim'
 
 
 Installation with your distribution
@@ -221,16 +229,30 @@ Don't even think about changing the Jedi command to ``<Tab>``,
 use `supertab <https://github.com/ervandew/supertab>`_!
 
 
-The completion is waaay too slow!
----------------------------------
+The completion is too slow!
+---------------------------
 
-Completion of complex libraries (like Numpy) should only be slow the first time
-you complete it. After that, the results should be cached and very fast.
+1. Completion of complex libraries (like Numpy) should only be slow the first
+   time you complete them. After that the results should be cached and very fast.
 
-If it's still slow, in case you've installed the python-mode VIM plugin, disable
-it. It seems to conflict with jedi-vim. See issue `#163
-<https://github.com/davidhalter/jedi-vim/issues/163>`__.
+2. If it is still slow after the initial completion and you have installed the
+   python-mode Vim plugin, try disabling its rope mode:
 
+   .. code-block:: vim
+
+       let g:pymode_rope = 0
+
+   See issue `#163 <https://github.com/davidhalter/jedi-vim/issues/163>`__.
+
+3. You can also use `deoplete-jedi <https://github.com/zchee/deoplete-jedi>`__
+   for completions, which uses Jedi, but does completions asynchronously
+   (requires Neovim).
+   It makes sense to use both jedi-vim and deoplete-jedi, but you should disable
+   jedi-vim's completions then:
+
+   .. code-block:: vim
+   
+       let g:jedi#completions_enabled = 0
 
 Testing
 =======

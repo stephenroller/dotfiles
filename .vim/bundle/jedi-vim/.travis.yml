@@ -1,7 +1,15 @@
 sudo: false
 language: python
+python: 3.6
+env:
+  matrix:
+    - ENV=test
+    - ENV=check
 install:
-    - pip install pytest
+  - |
+    if [ "$ENV" = "test" ]; then
+      python3.6 -m pip install pytest
+    fi
 script:
-    - vim --version
-    - py.test
+  - vim --version
+  - make "$ENV"

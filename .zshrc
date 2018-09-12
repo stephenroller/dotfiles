@@ -59,6 +59,10 @@ autoload -U colors && colors
 autoload -U compinit
 compinit -C
 
+## git branch info
+autoload -Uz vcs_info
+zstyle ':vcs_info:git:*' formats '%b'
+
 ## case-insensitive (all),partial-word and then substring completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' \
     'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -90,7 +94,14 @@ function precmd() {
     else
         promptchar="»"
     fi
-    PROMPT="%{${HOSTCOLOR}%}%m %F{reset%}%c %F{$promptcolor%}$promptchar %F{reset%}"
+    vcs_info
+    if [[ "${vcs_info_msg_0_}" != "" ]]; then
+        vcs_branch=" %F{yellow%}${vcs_info_msg_0_}%F{reset%}"
+    else
+        vcs_branch=""
+    fi
+
+    PROMPT="%{${HOSTCOLOR}%}%m %F{reset%}%c${vcs_branch} %F{$promptcolor%}$promptchar %F{reset%}"
 
     echo "$(date "+%Y-%m-%d\t%H:%M:%S")\t${HOST}\t$(pwd)\t${last_return}\t$(fc -l -1 | sed 's#^[0-9][0-9]*  *##')" >> ~/.logs/zsh/history_$(date "+%Y%m").log
 }

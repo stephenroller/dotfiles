@@ -12,7 +12,6 @@ export GIT_PAGER="less -R"
 export PYTHONIOENCODING="utf-8"
 
 # helpful for limiting fzf stuff
-export FZF_DEFAULT_COMMAND='ag -g ""'
-
+export FZF_DEFAULT_COMMAND='ag -f -g ""'
 
 export SCRATCH=/data/users/roller

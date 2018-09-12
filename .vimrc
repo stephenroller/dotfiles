@@ -146,10 +146,10 @@ set wildignore+=.*.crc
 
 " Bindings and settings for FZF
 map <silent> <leader>b :Buffers <CR>
-map <silent> <leader>f :Files <CR>
 " I like my fzf
 let g:fzf_layout = {'down': '~20%'}
 
+map <silent> <leader>f :call fzf#vim#files('~/working/proj', 0)<CR>
 
 highlight Pmenu ctermbg=Black gui=bold ctermfg=Blue
 highlight PmenuSel ctermbg=Blue gui=bold ctermfg=White
@@ -278,18 +278,27 @@ let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSuppor
 let g:vimtex_view_general_options = '-r @line @pdf @tex'
 
 map <silent> <leader>r :AsyncRun lastrerun<CR>
+map <silent> <leader>i :AsyncRun lastrerun -i<CR>
+map <silent> <leader>a :Ag 
+map <silent> <leader>h :History<CR>
 
 map <silent> <leader>l :AsyncRun! -post=cw mylint %<CR>:copen<CR><c-w><c-p>
 map <silent> <leader>c :ccl<CR>
-map <silent> <leader>d :call HgDiff()<CR>
 set switchbuf=useopen
 map <silent> <leader><space> :b#<CR>
 
 " signify is a little faster if you tell it what vcs you care about
-let g:signify_vcs_list = [ 'hg', 'git' ]
+let g:signify_vcs_list = [ 'git', 'hg' ]
+let g:signify_realtime = 0
+" update often
+let updatetime = 500
+" auto read in file changes
+set autoread
 " Drives me nuts that the gutter appears and disappears constantly. always
 " turn it on
 set signcolumn=yes
 
 let g:jedi#force_py_version=3
 
+" show the branch in my powerline
+let g:Powerline_symbols="unicode"
