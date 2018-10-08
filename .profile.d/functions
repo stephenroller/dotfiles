@@ -14,5 +14,9 @@ function freq() {
 
 function cds () {
     cd $SCRATCH/$1
+}
 
+
+function cdp () {
+    cd ~/working/parlai/$1
 }

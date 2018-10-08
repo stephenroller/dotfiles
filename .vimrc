@@ -282,7 +282,7 @@ map <silent> <leader>i :AsyncRun lastrerun -i<CR>
 map <silent> <leader>a :Ag 
 map <silent> <leader>h :History<CR>
 
-map <silent> <leader>l :AsyncRun! -post=cw mylint %<CR>:copen<CR><c-w><c-p>
+map <silent> <leader>l :AsyncRun! -post=cw flake8 %<CR>:copen<CR><c-w><c-p>
 map <silent> <leader>c :ccl<CR>
 set switchbuf=useopen
 map <silent> <leader><space> :b#<CR>
