@@ -301,4 +301,4 @@ set signcolumn=yes
 let g:jedi#force_py_version=3
 
 " show the branch in my powerline
-let g:Powerline_symbols="unicode"
+let g:Powerline_symbols="compatible"
