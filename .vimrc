@@ -149,7 +149,9 @@ map <silent> <leader>b :Buffers <CR>
 " I like my fzf
 let g:fzf_layout = {'down': '~20%'}
 
-map <silent> <leader>f :call fzf#vim#files('~/working/proj', 0)<CR>
+map <silent> <leader>F :call fzf#vim#files('~/working/proj', 0)<CR>
+map <silent> <leader>f :GFiles<CR>
+map <silent> <leader>d :GFiles?<CR>
 
 highlight Pmenu ctermbg=Black gui=bold ctermfg=Blue
 highlight PmenuSel ctermbg=Blue gui=bold ctermfg=White
