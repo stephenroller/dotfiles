@@ -1,0 +1,15 @@
+#!/usr/bin/mawk -f
+BEGIN {
+    FS="\t"
+    OFS="\t"
+}
+NF {
+    c = $NF
+    NF -= 1
+    a[$0] += c
+}
+END {
+    for (k in a) {
+        print k "\t" a[k]
+    }
+}

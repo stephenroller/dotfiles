@@ -1,0 +1,25 @@
+#!/bin/zsh
+
+run_ccount=$(mycache squeue -h -u roller -o '%T' | grep RUNNING | wc -l)
+oth_ccount=$(mycache squeue -h -u roller -o '%T' | wc -l)
+ccount="${run_ccount}/${oth_ccount}"
+mem=$(free -m | grep "Mem" | awk '{printf("%3.0f%%", 100 - 100 * $7 / $2)}')
+cpu=$(cpuutil)
+if [ -x /usr/bin/nvidia-smi ]; then
+    gpu=$(nvidia-smi -q | grep Utilization -A 4 | grep Gpu | awk '{t += 1; u += $3} END {printf("%3.0f%%", u / t)}')
+else
+    gpu=""
+fi
+timestamp=$(TZ="America/New_York" date "+%m/%d %H:%M")
+
+for j in $(jobs -p); do
+    wait $j
+done
+
+echo -n "#[fg=colour141]$ccount slr "
+echo -n "#[fg=colour244]$mem mem "
+if [[ "$gpu" != "" ]]; then
+    echo -n "#[fg=colour107]$gpu gpu "
+fi
+echo -n "#[fg=colour111]$cpu cpu "
+echo -n "#[fg=colour216]$timestamp"

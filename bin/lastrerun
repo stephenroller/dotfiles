@@ -1,0 +1,8 @@
+#!/bin/bash
+tmux last-pane
+tmux send-keys C-p C-j
+
+if [[ "$1" != "-i" ]]
+then
+    tmux last-pane
+fi

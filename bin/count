@@ -1,0 +1,2 @@
+#!/bin/sh
+append1 | reduce

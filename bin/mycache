@@ -1,0 +1,18 @@
+#!/bin/bash
+
+set -e
+
+CACHE_FOLDER="$HOME/.cache/mycache"
+CACHE_TIME=3
+CACHE_HASH=$(echo "$@" | md5sum | head -c 16)
+CACHE_FILE="$CACHE_FOLDER/$CACHE_HASH"
+
+# delete all suficiently old cache files
+find "$CACHE_FOLDER" -type f -mmin "+$CACHE_TIME" -exec rm {} ';'
+
+if [ ! -f "$CACHE_FILE" ]; then
+    # if the file doesn't exist, make it
+    "$@" | tee "$CACHE_FILE"
+fi
+
+cat "$CACHE_FILE"

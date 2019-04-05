@@ -246,12 +246,6 @@ set synmaxcol=300
 
 let g:go_doc_keywordprg_enabled=0
 let g:go_def_mapping_enabled=0
-au FileType go nmap <leader>r <Plug>(go-run)
-au FileType go nmap <leader>1 <Plug>(go-build)
-" au FileType go nmap <leader>t <Plug>(go-test)
-" au FileType go nmap <leader>c <Plug>(go-coverage)
-au FileType go nmap <Leader>d <Plug>(go-doc-vertical)
-au FileType go nmap <Leader>w <Plug>(go-doc-browser)
 au filetype crontab setlocal nobackup nowritebackup
 
 " Persistent undo
