@@ -20,3 +20,7 @@ function cds () {
 function cdp () {
     cd ~/working/parlai/$1
 }
+
+function jqg () {
+    jq -c "select($@)"
+}
