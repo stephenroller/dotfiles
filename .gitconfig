@@ -33,6 +33,6 @@
 	histedit = rebase -i origin/master
 	amend = commit --amend
 [push]
-	default = simple
+	default = current
 [pull]
 	rebase = true
