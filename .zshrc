@@ -92,7 +92,7 @@ function precmd() {
     if [[ $USER == "root" ]]; then
         promptchar="#"
     else
-        promptchar="»"
+        promptchar="$"
     fi
     vcs_info
     if [[ "${vcs_info_msg_0_}" != "" ]]; then

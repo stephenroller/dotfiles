@@ -13,6 +13,6 @@ find "$CACHE_FOLDER" -type f -mmin "+$CACHE_TIME" -exec rm {} ';'
 if [ ! -f "$CACHE_FILE" ]; then
     # if the file doesn't exist, make it
     "$@" | tee "$CACHE_FILE"
+else
+    cat "$CACHE_FILE"
 fi
-
-cat "$CACHE_FILE"

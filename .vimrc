@@ -150,7 +150,7 @@ map <silent> <leader>b :Buffers <CR>
 let g:fzf_layout = {'down': '~20%'}
 
 map <silent> <leader>F :call fzf#vim#files('~/working/proj', 0)<CR>
-map <silent> <leader>f :GFiles<CR>
+map <silent> <leader>f :call fzf#run(fzf#wrap({'source': 'mycache projfind'}))<CR>
 map <silent> <leader>d :GFiles?<CR>
 
 highlight Pmenu ctermbg=Black gui=bold ctermfg=Blue
@@ -298,3 +298,8 @@ let g:jedi#force_py_version=3
 
 " show the branch in my powerline
 let g:Powerline_symbols="compatible"
+
+" black everywhere
+let g:black_skip_string_normalization = 1
+let g:autoblack = 1
+autocmd BufWritePre *.py if g:autoblack | execute ':Black' | endif

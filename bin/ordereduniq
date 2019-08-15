@@ -1,0 +1,7 @@
+#!/usr/bin/mawk -f
+{
+  if (!($0 in SEEN)) {
+    print $0
+    SEEN[$0] = 1
+  }
+}

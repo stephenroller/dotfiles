@@ -85,9 +85,9 @@ snippet ifmain
 snippet _
 	__${1:init}__${2}
 snippet pdb
-	import pdb; pdb.set_trace()
+	__import__("pdb").set_trace()  # FIXME
 snippet ipdb
-	import ipdb; ipdb.set_trace()
+	__import__("ipdb").set_trace()  # FIXME
 snippet script
 	#!/usr/bin/env python3
 
