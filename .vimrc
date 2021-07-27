@@ -89,16 +89,25 @@ set et
 " always use utf-8
 set encoding=utf-8
 
-cab csmake :make<CR><CR>
-
 " stuff I mistype all the time
-cab Wq wq
-cab WQ wq
-cab W w
-cab Q q
-cab Q! q!
-cab E e
-cab E! e!
+function! CommandCabbr(abbreviation, expansion)
+      execute 'cabbr ' . a:abbreviation . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:expansion . '" : "' . a:abbreviation . '"<CR>'
+endfunction
+command! -nargs=+ CommandCabbr call CommandCabbr(<f-args>)
+CommandCabbr Wq wq
+CommandCabbr W w
+CommandCabbr WQ wq
+CommandCabbr Q q
+CommandCabbr Q! q!
+CommandCabbr E e
+CommandCabbr E! e!
+" cab Wq wq
+" cab WQ wq
+" cab W w
+" cab Q q
+" cab Q! q!
+" cab E e
+" cab E! e!
 
 " remap ; to :. it's just one less keystroke, but all the time
 " nnoremap ; :
@@ -150,7 +159,7 @@ map <silent> <leader>b :Buffers <CR>
 let g:fzf_layout = {'down': '~20%'}
 
 map <silent> <leader>F :call fzf#vim#files('~/working/proj', 0)<CR>
-map <silent> <leader>f :call fzf#run(fzf#wrap({'source': 'mycache projfind'}))<CR>
+map <silent> <leader>f :call fzf#run(fzf#wrap({'source': 'fastproj'}))<CR>
 map <silent> <leader>d :GFiles?<CR>
 
 highlight Pmenu ctermbg=Black gui=bold ctermfg=Blue
@@ -279,6 +288,7 @@ map <silent> <leader>a :Ag
 map <silent> <leader>h :History<CR>
 
 map <silent> <leader>l :AsyncRun! -post=cw flake8 %<CR>:copen<CR><c-w><c-p>
+map <silent> <leader>t :AsyncRun! -post=cw mypy %<CR>:copen<CR><c-w><c-p>
 map <silent> <leader>c :ccl<CR>
 set switchbuf=useopen
 map <silent> <leader><space> :b#<CR>

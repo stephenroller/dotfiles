@@ -24,3 +24,7 @@ function cdp () {
 function jqg () {
     jq -c "select($@)"
 }
+
+function gpuhang () {
+    kill -9 $(nvidia-smi | grep python | awk '{print $3}')
+}
