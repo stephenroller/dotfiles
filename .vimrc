@@ -52,7 +52,7 @@ au!
 " For all text files set 'textwidth' to 80 characters.
 autocmd FileType text setlocal textwidth=80
 
-autocmd filetype plugin indent on
+" autocmd filetype plugin indent on
 
 " When editing a file, always jump to the last known cursor position.
 " Don't do it when the position is invalid or when inside an event handler
@@ -255,7 +255,6 @@ set synmaxcol=300
 
 let g:go_doc_keywordprg_enabled=0
 let g:go_def_mapping_enabled=0
-au filetype crontab setlocal nobackup nowritebackup
 
 " Persistent undo
 let undodir = expand('~/.vim/undo')
@@ -302,7 +301,7 @@ let updatetime = 500
 set autoread
 " Drives me nuts that the gutter appears and disappears constantly. always
 " turn it on
-set signcolumn=yes
+" set SignColumn=yes
 
 let g:jedi#force_py_version=3
 
