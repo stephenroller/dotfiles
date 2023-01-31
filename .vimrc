@@ -82,6 +82,7 @@ set whichwrap=h,l,~,[,]
 
 " always show line numbers
 set nu
+set norelativenumber
 
 " i love spaces
 set et
@@ -308,6 +309,6 @@ let g:jedi#force_py_version=3
 let g:Powerline_symbols="compatible"
 
 " black everywhere
-let g:black_skip_string_normalization = 1
 let g:autoblack = 1
-autocmd BufWritePre *.py if g:autoblack | execute ':Black' | endif
+let g:black_use_virtualenv = 0
+autocmd BufWritePost *.py if g:autoblack | silent execute "!black -q %" | endif
