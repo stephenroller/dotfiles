@@ -213,43 +213,14 @@ set listchars=tab:».,trail:· ",eol:¬
 " test of white space 	  	asdf	asdf    
 
 " options for latex-suite
-set grepprg=grep\ -nH\ $*
 let g:tex_flavor='latex'
 
-" and vim-latex
-let g:Tex_MultipleCompileFormats="dvi,pdf"
-let g:Tex_DefaultTargetFormat="pdf"
-let g:Tex_CompileRule_pdf='pdflatex -synctex=1 --interaction=nonstopmode $*'
-let g:Tex_GotoError=1
 " i hate those damn placeholders
 let g:Imap_UsePlaceHolders = 0
 
-let g:Tex_IgnoreLevel=4
-let g:Tex_IgnoredWarnings ='
-      \"Underfull\n".
-      \"Overfull\n".
-      \"specifier changed to\n".
-      \"You have requested\n".
-      \"Missing number, treated as zero.\n".
-      \"There were undefined references\n".
-      \"Citation %.%# undefined\n".
-      \"\oval, \circle, or \line size unavailable\n"'
-
-
-au FileType tex nmap <Leader>B :split<CR><C-W>W:e bib.bib<CR>G
-au FileType tex nmap <Leader>/ I% <Esc>
-au FileType tex vmap <Leader>/ I% <Esc>
-au FileType tex let b:autoformat_autoindent=0 " no auto format for latex
 nmap <Leader>v :set paste<CR>:r !pbpaste<CR>:set nopaste<CR>
 
-"let g:Tex_MainFileExpression = 'MainFile(modifier)'
-"function! MainFile(fmod)
-"    if glob('main.tex') != ''
-"        return fnamemodify(glob('main.tex'), a:fmod)
-"    else
-"        return ''
-"    endif
-"endfunction
+nmap <Leader>j "jyy<CR>:call NewScratchBuffer()<CR>"jp<CR>:!jq -r ".text"<CR>
 
 set synmaxcol=300
 
@@ -277,13 +248,9 @@ au Filetype python setlocal completeopt-=preview
 " ag is better and works on more of my computers
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-let g:vimtex_latexmk_callback = 0
-let g:vimtex_view_general_viewer = '/Applications/Skim.app/Contents/SharedSupport/displayline'
-let g:vimtex_view_general_options = '-r @line @pdf @tex'
-
 map <silent> <leader>r :AsyncRun lastrerun<CR>
 map <silent> <leader>i :AsyncRun lastrerun -i<CR>
-map <silent> <leader>a :Ag 
+map <silent> <leader>a :Ag
 map <silent> <leader>h :History<CR>
 
 map <silent> <leader>l :AsyncRun! -post=cw flake8 %<CR>:copen<CR><c-w><c-p>
