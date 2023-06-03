@@ -105,4 +105,4 @@ function precmd() {
 
     echo "$(date "+%Y-%m-%d\t%H:%M:%S")\t${HOST}\t$(pwd)\t${last_return}\t$(fc -l -1 | sed 's#^[0-9][0-9]*  *##')" >> ~/.logs/zsh/history_$(date "+%Y%m").log
 }
-
+source ~/working/dotfiles/fubectl.source
