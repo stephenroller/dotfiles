@@ -75,7 +75,7 @@ export REPORTTIME=30
 if (( $+commands[md5] )); then
     alias md5sum=md5
 fi
-HOSTHASH=`hostname -f | sed 's/^[^.]*\.//' | md5sum | sed "s/[^0-9]//g" | cut -c1-10`
+HOSTHASH=`hostname | md5sum | sed "s/[^0-9]//g" | cut -c1-10`
 
 (( HOSTHASH = ($HOSTHASH % 64) + 65 ))
 HOSTCOLOR="`tput setaf $HOSTHASH`"
