@@ -1,0 +1,3 @@
+#!/bin/sh
+ag -l "" ~/ct | sed "s#$HOME#~#g"
+ag -l "" ~/working/k8s/ | sed "s#$HOME#~#g"
