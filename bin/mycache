@@ -7,6 +7,11 @@ CACHE_TIME=3
 CACHE_HASH=$(echo "$@" | md5sum | head -c 16)
 CACHE_FILE="$CACHE_FOLDER/$CACHE_HASH"
 
+if [ ! -d $CACHE_FOLDER ]
+then
+    mkdir -p $CACHE_FOLDER
+fi
+
 # delete all suficiently old cache files
 find "$CACHE_FOLDER" -type f -mmin "+$CACHE_TIME" -exec rm {} ';'
 

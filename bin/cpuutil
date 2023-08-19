@@ -2,5 +2,5 @@
 top -b -n2 -p 1 -d 0.25 |\
   fgrep "Cpu(s)" |\
   tail -1 |\
-  gawk -F'id,' -v prefix="$prefix"\
+  awk -F'id,' -v prefix="$prefix"\
   '{ split($1, vs, ","); v=vs[length(vs)]; sub("%", "", v); printf "%s%3.f%%\n", prefix, 100 - v }'
