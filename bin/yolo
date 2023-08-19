@@ -1,0 +1,2 @@
+#!/bin/bash
+git push -f && gh pr create -f && gh pr merge -s -d
