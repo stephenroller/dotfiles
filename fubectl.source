@@ -216,24 +216,24 @@ function kkonfig() {
 }
 
 # [kexn] execute command in container from current namespace, usage: kexn CMD [ARGS]
-function kex() {
-    [ -z "$1" ] && printf "kexn: missing argument(s).\nUsage: kexn CMD [ARGS]\n" && return 255
-    local arg_pair=$(kubecolor get po | _inline_fzf | awk '{print $1}')
-    [ -z "$arg_pair" ] && printf "kexn: no pods found. no execution.\n" && return
-    local containers_out=$(echo "$arg_pair" | xargs kubecolor get po -o=jsonpath='{.spec.containers[*].name}' -n)
-    local container_choosen=$(echo "$containers_out" |  tr ' ' "\n" | _inline_fzf_nh)
-    _kctl_tty exec -it ${arg_pair} -c "${container_choosen}" -- "$@"
-}
-
-# # [kex] execute command in container from cluster, usage: kex CMD [ARGS]
 # function kex() {
-#     [ -z "$1" ] && printf "kex: missing argument(s).\nUsage: kex CMD [ARGS]\n" && return 255
-#     local arg_pair=$(kubecolor get po --all-namespaces | _inline_fzf | awk '{print $1, $2}')
-#     [ -z "$arg_pair" ] && printf "kex: no pods found. no execution.\n" && return
+#     [ -z "$1" ] && printf "kexn: missing argument(s).\nUsage: kexn CMD [ARGS]\n" && return 255
+#     local arg_pair=$(kubecolor get po | _inline_fzf | awk '{print $1}')
+#     [ -z "$arg_pair" ] && printf "kexn: no pods found. no execution.\n" && return
 #     local containers_out=$(echo "$arg_pair" | xargs kubecolor get po -o=jsonpath='{.spec.containers[*].name}' -n)
 #     local container_choosen=$(echo "$containers_out" |  tr ' ' "\n" | _inline_fzf_nh)
-#     _kctl_tty exec -it -n ${arg_pair} -c "${container_choosen}" -- "$@"
+#     _kctl_tty exec -it ${arg_pair} -c "${container_choosen}" -- "$@"
 # }
+
+# # [kex] execute command in container from cluster, usage: kex CMD [ARGS]
+function kex() {
+    [ -z "$1" ] && printf "kex: missing argument(s).\nUsage: kex CMD [ARGS]\n" && return 255
+    local arg_pair=$(kubecolor get po --all-namespaces | _inline_fzf | awk '{print $1, $2}')
+    [ -z "$arg_pair" ] && printf "kex: no pods found. no execution.\n" && return
+    local containers_out=$(echo "$arg_pair" | xargs kubecolor get po -o=jsonpath='{.spec.containers[*].name}' -n)
+    local container_choosen=$(echo "$containers_out" |  tr ' ' "\n" | _inline_fzf_nh)
+    _kctl_tty exec -it -n ${arg_pair} -c "${container_choosen}" -- "$@"
+}
 
 # [kforn] port-forward a container port from current namesapce, usage: kforn LOCAL_PORT:CONTAINER_PORT
 function kforn() {

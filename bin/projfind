@@ -1,3 +1,16 @@
-#!/bin/sh
-ag -l "" ~/ct | sed "s#$HOME#~#g"
-ag -l "" ~/working/k8s/ | sed "s#$HOME#~#g"
+#!/bin/bash
+
+function c () {
+    folder=$1
+    mycache ag -l "" $1 | sed "s#$HOME#~#g"
+}
+
+function r () {
+    awk '{ if ( S[$0] == 1 ) {} {print($0); S[$0] = 1 }}'
+}
+
+(
+c $PWD
+c ~/working/k8s/
+c ~/working/dotfiles/
+) | r
