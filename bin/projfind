@@ -13,4 +13,5 @@ function r () {
 c $PWD
 c ~/working/k8s/
 c ~/working/dotfiles/
+c ~/ct/
 ) | r
