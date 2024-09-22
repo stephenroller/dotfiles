@@ -36,3 +36,5 @@
 	rebase = true
 [safe]
 	directory = /shared/home/prajit/character-tech
+[init]
+	defaultBranch = main
