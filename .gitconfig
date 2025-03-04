@@ -22,7 +22,7 @@
 	pager = cat
 [user]
 	name = Stephen Roller
-	email = roller@character.ai
+	email = roller@thinkingmachines.ai
 [alias]
 	co = checkout
 	branches = branch --list
@@ -38,3 +38,5 @@
 	directory = /shared/home/prajit/character-tech
 [init]
 	defaultBranch = main
+[credential]
+	helper = store
