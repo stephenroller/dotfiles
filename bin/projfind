@@ -1,8 +1,10 @@
 #!/bin/bash
 
+TYPES="--py --rust --json --yaml --vim --cpp --cc --markdown --make --shell"
+
 function c () {
     folder=$1
-    mycache ag -l "" $1 | sed "s#$HOME#~#g"
+    mycache ag --noaffinity $TYPES -l "" $1 | sed "s#$HOME#~#g"
 }
 
 function r () {
@@ -11,7 +13,6 @@ function r () {
 
 (
 c $PWD
-c ~/working/k8s/
+c ~/monorepo/
 c ~/working/dotfiles/
-c ~/ct/
 ) | r

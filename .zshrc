@@ -107,3 +107,5 @@ function precmd() {
 }
 source ~/working/dotfiles/fubectl.source
 # conda activate cai-env-20280928
+
+. "/tmp/roller/uv/install/env"

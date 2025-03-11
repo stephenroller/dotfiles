@@ -39,7 +39,7 @@ let colors_name = "stephen-xoria"
 " The real part ----------------------------------------------------------------
 
 "" General colors
-hi Normal       ctermfg=252 guifg=#d0d0d0 ctermbg=000 guibg=#000000 cterm=none gui=none
+hi Normal       ctermfg=252 guifg=#d0d0d0 ctermbg=016 guibg=#000000 cterm=none gui=none
 hi CursorColumn                           ctermbg=238 guibg=#444444
 hi Cursor                                 ctermbg=214 guibg=#ffaf00
 hi CursorLine                             ctermbg=238 guibg=#444444
