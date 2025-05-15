@@ -1,0 +1,2 @@
+#!/bin/bash
+RUFF_OUTPUT_FORMAT=concise uv run ruff check --fix $(gh pr diff --name-only | grep py$)

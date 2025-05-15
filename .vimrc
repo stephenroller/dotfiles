@@ -276,6 +276,6 @@ let g:jedi#force_py_version=3
 let g:Powerline_symbols="compatible"
 
 " black everywhere
-let g:autoblack = 0
+let g:autoblack = 1
 let g:black_use_virtualenv = 0
 autocmd BufWritePost *.py if g:autoblack | silent execute "!black -q %" | endif

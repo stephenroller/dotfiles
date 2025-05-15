@@ -1,0 +1,8 @@
+#!/bin/bash
+
+FILES=${@}
+if [[ -z "$FILES" ]]; then
+    FILES="$(gh pr diff --name-only | grep py$)"
+fi
+
+uv run ruff format $FILES

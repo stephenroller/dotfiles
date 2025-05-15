@@ -34,8 +34,9 @@
 	default = current
 [pull]
 	rebase = true
+	default = current
 [safe]
-	directory = /shared/home/prajit/character-tech
+	directory = /tmp/sbatch_active/monorepo
 [init]
 	defaultBranch = main
 [credential]

@@ -22,3 +22,7 @@ alias tawk='mawk -F'\''\t'\'''
 alias append1='tawk '\''{print $0 "\t1"}'\'''
 
 alias ack=ag
+alias gs="gcloud storage"
+
+alias pyr='uv run pyright $(gh pr diff --name-only | grep py$)'
+alias ruff='uv run ruff check --fix $(gh pr diff --name-only)'

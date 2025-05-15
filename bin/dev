@@ -1,0 +1,4 @@
+#!/bin/sh
+
+HOST=$(squeue -h -u $USER  | grep dev | tail -n 1 | awk '{print $NF}')
+exec ssh $HOST

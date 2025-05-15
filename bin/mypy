@@ -1,0 +1,2 @@
+#!/bin/bash
+uv run pyright $(gh pr diff --name-only | grep py$)

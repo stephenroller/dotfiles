@@ -1,10 +1,10 @@
 #!/bin/bash
 
-TYPES="--py --rust --json --yaml --vim --cpp --cc --markdown --make --shell"
+TYPES="--py --go --rust --json --yaml --vim --cpp --cc --markdown --make --shell"
 
 function c () {
     folder=$1
-    mycache ag --noaffinity $TYPES -l "" $1 | sed "s#$HOME#~#g"
+    mycache ag --noaffinity $TYPES -l "" $1 | sed "s#$HOME#~#g" | grep -v vendor
 }
 
 function r () {
@@ -14,5 +14,6 @@ function r () {
 (
 c $PWD
 c ~/monorepo/
+c ~/working/argocd/
 c ~/working/dotfiles/
 ) | r
