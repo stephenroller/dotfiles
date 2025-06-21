@@ -279,3 +279,4 @@ let g:Powerline_symbols="compatible"
 let g:autoblack = 1
 let g:black_use_virtualenv = 0
 autocmd BufWritePost *.py if g:autoblack | silent execute "!black -q %" | endif
+autocmd BufReadPost *.log AnsiEsc
